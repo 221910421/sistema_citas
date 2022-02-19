@@ -13,7 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('pacientes', function (Blueprint $table) {
+            $table->id('id_pacientes');
+            $table->string('nombre');
+            $table->string('apellido_paterno');
+            $table->string('apellido_materno');
+            $table->enum('genero', ["Hombre", "Mujer"]);
+            $table->integer('edad');
+            $table->string('calle');
+            $table->integer('numero');
+            $table->string('codigo_postal');
+            $table->string('muicipio');
+            $table->string('telefono');
+            $table->string('correo');
+            $table->string('rfc');
+            $table->string('activo');
+
+            $table->timestamps();
+        });
     }
 
     /**
