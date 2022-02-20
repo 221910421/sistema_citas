@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('apellido_materno');
             $table->enum('genero',["Hombre", "Mujer"]);
             $table->integer('edad');
+            $table->string('foto');
             $table->string('cedula')->unique();
             $table->text('correo')->unique();
             $table->string('contraseña');
