@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Models\citas_quiropractica;
+use Models\citas;
 use Models\pacientes;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +20,15 @@ class SystemController extends Controller
     //----------------------------------------------Agregar nuevo usuario-----------------------------//
     public function nuevousuario(Request $request)
     {
-        
+      
+    }
+
+    //---------------------------------------------Ver citas------------------------------------------//
+    public function vercitas()
+    {
+        $usuarios = DB::table('citas')->get();
+        return view("templates.citas")
+        ->with(['citas' => $citas]);
     }
 }
+
