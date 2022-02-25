@@ -17,9 +17,13 @@ Route::name('index')->get('/', function () {
     return view('templates.index');
 });
 
+<<<<<<< HEAD
 Route::name('crear_usuario')->get('/crear_usuario', function () {
     return view('templates.crear_usuario');
 });
 
 
 
+=======
+Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController@verusuarios');
+>>>>>>> 5c5b95022507a4d8e5ef1f8592fa58ec0ee3281d

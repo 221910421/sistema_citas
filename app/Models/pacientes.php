@@ -22,7 +22,9 @@ class pacientes extends Model
         'codigo_postal',
         'municipio',
         'telefono',
+        'usuario',
         'correo',
+        'contraseña',
         'rfc',
         'activo'
     ];
