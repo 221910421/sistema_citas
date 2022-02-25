@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('id_consultorio');
             $table->string('numero_de_consultorio');
             $table->string('id_especialidad');
-            $table->string('activo');
+            $table->string('estatus');
             $table->timestamps();
         });
     }
