@@ -1,4 +1,4 @@
-@extends(layout.headerandfooter)
-@section(body)
+@extends('templates-layouts.headerandfooter')
+@section('body')
 
 @endsection
