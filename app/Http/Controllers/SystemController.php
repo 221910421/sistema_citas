@@ -20,17 +20,6 @@ class SystemController extends Controller
     //----------------------------------------------Agregar nuevo usuario-----------------------------//
     public function nuevousuario(Request $request)
     {
-<<<<<<< HEAD
-      
-    }
-
-    //---------------------------------------------Ver citas------------------------------------------//
-    public function vercitas()
-    {
-        $usuarios = DB::table('citas')->get();
-        return view("templates.citas")
-        ->with(['citas' => $citas]);
-=======
         $correo = $request['correo'];
         $contraseña = $request['contraseña'];
         $confirmcontraseña = $request['confirmarcon'];
@@ -66,7 +55,14 @@ class SystemController extends Controller
                         history.go(-1);
                         </script>';  
       }
->>>>>>> f30a892e269f690a80e47b0fbc6b95d7758205f6
+    }
+
+    //---------------------------------------------Ver citas------------------------------------------//
+    public function vercitas()
+    {
+        $usuarios = DB::table('citas')->get();
+        return view("templates.citas")
+        ->with(['citas' => $citas]);
     }
 }
 
