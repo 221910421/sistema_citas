@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::name('index')->get('/', function () {
     return view('templates.index');
 });
+
+Route::name('crear_usuario')->get('/crear_usuario', function () {
+    return view('templates.crear_usuario');
+});
+
+
+
