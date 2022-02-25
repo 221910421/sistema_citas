@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('cedula')->unique();
             $table->text('correo')->unique();
             $table->string('contraseña');
-            $table->string('estatus');
+            $table->enum('estatus',['Activo', 'Inactivo']);
             $table->timestamps();
         });
     }
