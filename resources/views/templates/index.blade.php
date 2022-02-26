@@ -1,5 +1,4 @@
-@extends.layouts(headerandfooter)
+@extends(layout.headerandfooter)
 @section(body)
 
 @endsection
-@endextends
