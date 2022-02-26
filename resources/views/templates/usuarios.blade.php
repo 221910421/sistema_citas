@@ -43,7 +43,7 @@
     @foreach ($usuarios as $usuario)
     <tr>
         <td>{{$usuario->nombre}} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</td>
-        <td><img src="{{asset('images/'.$usuario->foto)}}" alt="foto de perfil" width="120"></td>
+        <td><img src="{{('images/'.$usuario->foto)}}" alt="foto de perfil" height= "120px"; width="120"></td>
         <td>{{$usuario->genero}}</td>
         <td>{{$usuario->edad}}</td>
         <td>{{$usuario->calle}} {{$usuario->numero}}</td>
