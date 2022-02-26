@@ -20,15 +20,16 @@ return new class extends Migration
             $table->string('apellido_materno');
             $table->enum('genero', ["Hombre", "Mujer"]);
             $table->integer('edad');
+            $table->string('foto');
             $table->string('calle');
             $table->integer('numero');
             $table->string('codigo_postal');
             $table->string('muicipio');
             $table->string('telefono');
-            $table->string('correo');
+            $table->string('correo')->unique();
+            $tavle->string('contraseña');
             $table->string('rfc');
             $table->string('activo');
-
             $table->timestamps();
         });
     }
