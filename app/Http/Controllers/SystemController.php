@@ -7,7 +7,5 @@ use Illuminate\Http\Request;
 class SystemController extends Controller
 {
     //----------------------------------------------Crear nuevo usuario------------------------------//
-
-
-    //---------------------------------------------Guardar usuario----------------------------------//
+    
 }
