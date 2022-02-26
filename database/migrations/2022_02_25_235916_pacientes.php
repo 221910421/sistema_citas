@@ -25,10 +25,10 @@ return new class extends Migration
             $table->string('codigo_postal');
             $table->string('muicipio');
             $table->string('telefono');
-            $table->string('correo');
+            $table->string('correo')->unique();
+            $tavle->string('contraseña');
             $table->string('rfc');
             $table->string('activo');
-
             $table->timestamps();
         });
     }
