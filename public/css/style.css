@@ -220,7 +220,7 @@ nav.fixed-navi ul li {
     right: 0;
     box-shadow: 1px 2px 5px 1px rgba(8, 8, 8, 0.35);
     z-index: 999;
-    background: #008F39;
+    background: #07a0b4;
     -webkit-transition: box-shadow .3s ease-in-out;
     -moz-transition: box-shadow .3s ease-in-out;
     -ms-transition: box-shadow .3s ease-in-out;
@@ -394,7 +394,7 @@ button.submit:hover {
 }
 
 .banner-info_agile_w3ls h3 span {
-    background: #008F39;
+    background: #07a0b4;
     padding: 0 15px;
 }
 
@@ -408,7 +408,7 @@ button.submit:hover {
     padding: 13px 24px;
     letter-spacing: 1px;
     font-size: 14px;
-    background: #008F39;
+    background: #07a0b4;
     display: inline-block;
     border: 1px solid #ffffffba;
 }
@@ -679,14 +679,14 @@ h6.text-white {
 }
 
 .welcome-left h3 {
-    color: #008F39;
+    color: #07a0b4;
     font-size: 38px;
     letter-spacing: 1px;
     font-weight: 600;
 }
 
 .welcome-left h6 {
-    color: #008F39;
+    color: #07a0b4;
     letter-spacing: 1px;
     font-size: 18px;
 }
@@ -1235,7 +1235,7 @@ ul.blog_list.my-3 li {
 .leave-coment-form input[type="submit"] {
     outline: none;
     border: none;
-    background: #008F39;
+    background: #07a0b4;
     padding: 14px 36px;
     font-size: 15px;
     color: #fff;
@@ -1430,7 +1430,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .contact-right-w3l input[type="submit"] {
-    background: #008F39;
+    background: #07a0b4;
     color: #fff;
     padding: 13px 26px;
     margin-top: 2em;

@@ -52,12 +52,12 @@
 							<!-- social icons -->
 							<ul class="col-lg-4 col-6 top-right-info text-center">
 								<li>
-									<a href="https://www.facebook.com/UNEVT.Edomex">
+									<a href="">
 										<i class="fab fa-facebook-f"></i>
 									</a>
 								</li>
 								<li class="mx-3">
-									<a href="https://twitter.com/UNEVTOficial">
+									<a href="">
 										<i class="fab fa-twitter"></i>
 									</a>
 								</li>
@@ -65,8 +65,7 @@
 							<!-- //social icons -->
 							<div class="col-6 header-top_w3layouts pl-3 text-lg-left text-center">
 								<p class="text-white">
-									<i class="fas fa-map-marker-alt mr-2"></i>Acueducto del Alto Lerma Pedregal de
-									Guadalupe Hidalgo, Méx.
+									<i class="fas fa-map-marker-alt mr-2"></i>
 								</p>
 							</div>
 						</div>
@@ -76,13 +75,13 @@
 							<div class="col-lg-7 col-6 top-w3layouts">
 								<p class="text-white">
 									<i class="fas fa-globe"></i>
-									<a href="https://unevt.edomex.gob.mx/" class="text-white">Nuestro Sitio Web</a>
+									<a href="" class="text-white">Nuestro Sitio Web</a>
 								</p>
 							</div>
 							<div class="col-lg-5 col-6 header-w3layouts pl-4 text-lg-left">
 								<p class="text-white">
-									<i class="fas fa-phone mr-2"></i><a href="tel:7282878382"
-										style="color:#FFF;">7282878382</a>
+									<i class="fas fa-phone mr-2"></i><a href=""
+										style="color:#FFF;"></a>
 								</p>
 							</div>
 						</div>
@@ -206,7 +205,7 @@
 					<div class="modal-body">
 						<div class="login px-4 mx-auto mw-100">
 							<h5 class="text-center mb-4">Inicia ahora</h5>
-							<form action="{{route('login')}}" method="post">
+							<form action="" method="post">
 								@csrf
 								<div class="form-group">
 									<label>Usuario</label>
@@ -218,6 +217,7 @@
 										required="">
 								</div>
 								<button type="submit" class="btn submit mb-4">Iniciar sesión</button>
+                                <input type="button" onclick="location.href='{{route('crear_usuario')}}';" class="btn submit mb-4" value="Registrarse" />
 							</form>
 						</div>
 					</div>
@@ -248,17 +248,17 @@
 						<ul class="list-unstyled">
 							<li>
 								<i class="fas fa-location-arrow float-left"></i>
-								<p class="ml-4">Acueducto del Alto Lerma Pedregal de Guadalupe Hidalgo, Méx.</p>
+								<!--<p class="ml-4">Acueducto del Alto Lerma Pedregal de Guadalupe Hidalgo, Méx.</p>-->
 								<div class="clearfix"></div>
 							</li>
 							<li class="my-3">
 								<i class="fas fa-phone float-left"></i>
-								<p class="ml-4">728 287 8382</p>
+								<p class="ml-4"></p>
 								<div class="clearfix"></div>
 							</li>
 							<li>
 								<i class="fas fa-globe"></i>
-								<a href="https://unevt.edomex.gob.mx/" class="text-white">Nuestro Sitio Web</a>
+								<!--<a href="" class="text-white">Nuestro Sitio Web</a>-->
 								<div class="clearfix"></div>
 							</li>
 						</ul>

@@ -1,7 +1,14 @@
 @extends('templates-layouts.headerandfooter')
 @section('body')
-<h1>Reporte de pacientes</h1>
-<table>
+<div class="inner-banner-w3ls">
+    <div class="container">
+
+    </div>
+    <!-- //banner 2 -->
+</div>
+<h1>Reporte de Pacientes</h1>
+    <div class="table-responsive">
+    <table class="table">
     <thead>
     <tr>
         <th>
@@ -43,7 +50,7 @@
     @foreach ($usuarios as $usuario)
     <tr>
         <td>{{$usuario->nombre}} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</td>
-        <td><img src="{{('images/'.$usuario->foto)}}" alt="foto de perfil" height= "120px"; width="120"></td>
+        <td><img src="{{('images/user/'.$usuario->foto)}}" alt="foto de perfil" height= "60px"; width="60"></td>
         <td>{{$usuario->genero}}</td>
         <td>{{$usuario->edad}}</td>
         <td>{{$usuario->calle}} {{$usuario->numero}}</td>
@@ -56,5 +63,46 @@
     </tr>
     @endforeach
 </tbody>
-</table>
-@endsection
+    </table>
+</div>
+
+    <!-- Js files -->
+	<!-- JavaScript -->
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<!-- Default-JavaScript-File -->
+
+	<!-- banner slider -->
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: true,
+				speed: 1000,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+		});
+	</script>
+	<!-- //banner slider -->
+    
+	<!-- smooth scrolling -->
+	<script src="js/SmoothScroll.min.js"></script>
+	<!-- move-top -->
+	<script src="js/move-top.js"></script>
+	<!-- easing -->
+	<script src="js/easing.js"></script>
+	<!--  necessary snippets for few javascript files -->
+	<script src="js/medic.js"></script>
+
+	<script src="js/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<!-- //Js files -->
+    @endsection
