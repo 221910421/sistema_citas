@@ -78,5 +78,20 @@ class SystemController extends Controller
         return view("templates.usuarios")
         ->with(['usuarios' => $usuarios]);
     }
+    //----------------------------------------------Ver doctores--------------------------------------//
+    public function verdoctores()
+    {
+        $doctores = DB::table('doctores')->get();
+        return view("templates.doctores")
+        ->with(['doctores' => $doctores]);
+    }
+    //----------------------------------------------Ver Consultorios-----------------------------------//
+    public function verconsultorios()
+    {
+        $consultorios = DB::table('consultorios')->get();
+        return view("templates.consultorios")
+        ->with(['consultorios' => $consultorios]);
+    }
 }
+
 

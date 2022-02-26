@@ -12,7 +12,7 @@ class LoginController extends Controller
         $usuario = $request['usuario'];
         $contraseña = $request['contraseña'];
 
-        $consulta = DB::select("SELECT * FROM pacientes WHERE correo = '$usuario' OR usuario = '$usuario' AND contraseña = '$contraseña'");
+        $consulta = DB::select("SELECT * FROM pacientes WHERE correo = '$usuario' AND contraseña = '$contraseña'");
         if(count($consulta) == 0){
             echo '<script type="text/javascript">
             alert("Usuario no existente o desactivado por favor intentelo de nuevo");

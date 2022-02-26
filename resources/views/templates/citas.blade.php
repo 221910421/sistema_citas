@@ -32,10 +32,10 @@
     <tr>
         <td>{{$cita->id_paciente}}</td>
         <td>{{$cita->id_doctor}}</td>
-        <td>{{$$cita->id_especialidad}}</td>
-        <td>{{$cita->estatus_citas}}</td>
-        <td>{{$$cita->fecha_cita}}</td>
-        <td>{{$cita->hora_cita}}</td>
+        <td>{{$cita->id_especialidad}}</td>
+        <td>{{$cita->estatus}}</td>
+        <td>{{$cita->fecha}}</td>
+        <td>{{$cita->hora}}</td>
         <td>{{$cita->id_consultorio}}</td>
     </tr>
     @endforeach
