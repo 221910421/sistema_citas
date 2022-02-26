@@ -13,7 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('consultorios', function (Blueprint $table) {
+            $table->id('id_consultorio');
+            $table->string('numero_de_consultorio');
+            $table->string('id_especialidad');
+            $table->string('activo');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('consultorios');
     }
 };
