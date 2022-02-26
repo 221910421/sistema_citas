@@ -1,17 +1,17 @@
 @extends('templates-layouts.headerandfooter')
 @section('body')
-<h1>Reporte de especialidades</h1>
+<h1>Reporte de Especialidades</h1>
 <table>
     <thead>
     <tr>
         <th>
-            <h3>nombre</h3>
+            <h3>Nombre</h3>
         </th>
         <th>
-            <h3>precio</h3>
+            <h3>Precio</h3>
         </th>
         <th>
-            <h3>id_consultorio</h3>
+            <h3>id del Consultorio</h3>
         </th>
     </tr>
 </thead>
