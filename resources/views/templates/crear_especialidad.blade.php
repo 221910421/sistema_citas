@@ -1,6 +1,6 @@
 @extends('templates-layouts.headerandfooter')
 @section('body')
-<h1>Ingresa los datos del formulario para registrarte</h1>
+<h1>Ingresa los datos del formulario</h1>
 <form action="{{route('guardar_especialidad')}}" method="post" enctype="multipart/form-data">
   @csrf
   <label>Nombre:</label><br>
