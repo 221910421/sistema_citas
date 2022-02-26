@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::name('index')->get('/', function () {
     return view('templates.index');
 });
+
 
 ///---------------iniciar sesion--------------
 Route::get('iniciarsesion/', function () {
@@ -23,3 +24,11 @@ Route::get('iniciarsesion/', function () {
 });
 Route::name('login')->post('login/', 'App\Http\Controllers\loginController@validar');
 Route::name('salir')->get('salir/', 'App\Http\Controllers\loginController@logout');
+
+Route::name('crear_usuario')->get('/crear_usuario', function () {
+    return view('templates.crear_usuario');
+});
+
+
+Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController@verusuarios');
+

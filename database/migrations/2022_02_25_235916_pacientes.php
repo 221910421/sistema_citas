@@ -24,12 +24,12 @@ return new class extends Migration
             $table->string('calle');
             $table->integer('numero');
             $table->string('codigo_postal');
-            $table->string('muicipio');
+            $table->string('municipio');
             $table->string('telefono');
             $table->string('correo')->unique();
             $tavle->string('contraseña');
             $table->string('rfc');
-            $table->string('activo');
+            $table->string('estatus');
             $table->timestamps();
         });
     }
