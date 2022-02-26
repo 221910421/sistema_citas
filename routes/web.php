@@ -33,10 +33,9 @@ Route::name('crear_usuario')->get('/crear_usuario', function () {
 Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController@verusuarios');
 Route::name('guardar_usuario')->post('guardar_usuario/', 'App\Http\Controllers\SystemController@nuevousuario');
 
-<<<<<<< HEAD
 //------------------citas------------------
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
-=======
+
 
 
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
@@ -46,4 +45,3 @@ Route::name('doctores')->get('doctores/', 'App\Http\Controllers\SystemController
 Route::name('consultorios')->get('consultorios/', 'App\Http\Controllers\SystemController@verconsultorios');
 
 
->>>>>>> 34db78608ed4cdd7d7a08e60a2c3ac37add83f50
