@@ -17,6 +17,7 @@ class pacientes extends Model
         'apellido_materno',
         'genero',
         'edad',
+        'foto',
         'calle',
         'numero',
         'codigo_postal',

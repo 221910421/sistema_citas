@@ -31,9 +31,7 @@ Route::name('crear_usuario')->get('/crear_usuario', function () {
     return view('templates.crear_usuario');
 });
 Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController@verusuarios');
+Route::name('guardar_usuario')->post('guardar_usuario/', 'App\Http\Controllers\SystemController@nuevousuario');
 
-<<<<<<< HEAD
-
+//------------------citas------------------
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
-=======
->>>>>>> f30a892e269f690a80e47b0fbc6b95d7758205f6

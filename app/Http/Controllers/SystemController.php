@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Models\citas;
-use Models\pacientes;
+use App\Models\pacientes;
 use Illuminate\Support\Facades\DB;
 
 class SystemController extends Controller
@@ -23,14 +23,28 @@ class SystemController extends Controller
         $correo = $request['correo'];
         $contraseña = $request['contraseña'];
         $confirmcontraseña = $request['confirmarcon'];
+        if($request->file('foto') != ''){
+            $file = $request->file('foto');
+
+            $foto = $file->getClientOriginalName();
+
+            $date = date('Ymd_His_');
+                $foto2 = $date . $foto;
+
+            \Storage::disk('local')->put($foto2, \File::get($file));
+        }
+        else{
+            $foto2 = "shadow.png";
+        }
         if($contraseña = $confirmcontraseña){
         $emailexist = DB::select("SELECT * FROM pacientes  WHERE correo = '$correo'");
         if(count($emailexist) == 0){
-            $pacientes = pacientes::create(array(
+            $paciente = pacientes::create(array(
                 'nombre' => strtoupper($request['nombre']),
                 'apellido_paterno' => strtoupper($request['apellido_paterno']),
                 'apellido_materno' => strtoupper($request['apellido_materno']),
                 'genero' => $request['genero'],
+                'foto' => $foto2,
                 'edad' => $request['edad'],
                 'calle' => strtoupper($request['calle']),
                 'numero' => $request['numero'],
@@ -61,8 +75,8 @@ class SystemController extends Controller
     public function vercitas()
     {
         $usuarios = DB::table('citas')->get();
-        return view("templates.citas")
-        ->with(['citas' => $citas]);
+        return view("templates.usuarios")
+        ->with(['usuarios' => $usuarios]);
     }
 }
 
