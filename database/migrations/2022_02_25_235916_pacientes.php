@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('correo')->unique();
             $tavle->string('contraseña');
             $table->string('rfc');
-            $table->string('activo');
+            $table->string('estatus');
             $table->timestamps();
         });
     }

@@ -16,4 +16,10 @@ class SystemController extends Controller
         return view("templates.usuarios")
         ->with(['usuarios' => $usuarios]);
     }
+
+    //----------------------------------------------Agregar nuevo usuario-----------------------------//
+    public function nuevousuario(Request $request)
+    {
+        
+    }
 }
