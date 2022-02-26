@@ -8,6 +8,9 @@
             <h3>Nombre completo</h3>
         </th>
         <th>
+            <h3>Foto</h3>
+        </th>
+        <th>
             <h3>Genero</h3>
         </th>
         <th>
@@ -40,6 +43,7 @@
     @foreach ($usuarios as $usuario)
     <tr>
         <td>{{$usuario->nombre}} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</td>
+        <td><img src="{{asset('images/'.$usuario->foto)}}" alt="foto de perfil" width="120"></td>
         <td>{{$usuario->genero}}</td>
         <td>{{$usuario->edad}}</td>
         <td>{{$usuario->calle}} {{$usuario->numero}}</td>
