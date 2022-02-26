@@ -13,7 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('especialidades', function (Blueprint $table) {
+            $table->id('id_especialidad');
+            $table->string('nombre');
+            $table->string('precio');
+            $table->string('id_cita');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('especialidades');
     }
 };
