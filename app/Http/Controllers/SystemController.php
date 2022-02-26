@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Models\citas;
 use App\Models\pacientes;
 use Illuminate\Support\Facades\DB;
+use \Crypt;
 
 class SystemController extends Controller
 {
     //----------------------------------------------Ver pacientes---------------------------------------//
     public function verusuarios()
     {
+        $query = DB::select("SELECT 'rfc' FROM pacientes");
         $usuarios = DB::table('pacientes')->get();
         return view("templates.usuarios")
         ->with(['usuarios' => $usuarios]);
@@ -53,10 +55,10 @@ class SystemController extends Controller
                 'telefono' => $request['telefono'],
                 'correo' => $request['correo'],
                 'contraseña' => $request['contraseña'],
-                'rfc' => $request['rfc'],
+                'rfc' =>  $request['rfc'],
                 'estatus' => $request['estatus']
             ));
-            echo '<script language="javascript">alert("Usuario registrado exitosamente"); window.location.href="/usuarios";</script>';
+            echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
         }else{
             echo'<script type="text/javascript">
                         alert("El usuario ya ha sido registrado anteriormente");

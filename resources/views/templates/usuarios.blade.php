@@ -1,4 +1,5 @@
 @extends('templates-layouts.headerandfooter')
+use Crypt;
 @section('body')
 <div class="inner-banner-w3ls">
     <div class="container">

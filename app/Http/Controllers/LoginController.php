@@ -9,23 +9,23 @@ class LoginController extends Controller
 {
     public function validar(Request $request)
     {
-        $usuario = $request['usuario'];
+        $usuario = $request['correo'];
         $contraseña = $request['contraseña'];
 
         $consulta = DB::select("SELECT * FROM pacientes WHERE correo = '$usuario' AND contraseña = '$contraseña'");
-        if(count($consulta) == 0){
+        if(count($consulta)==0){
             echo '<script type="text/javascript">
             alert("Usuario no existente o desactivado por favor intentelo de nuevo");
-            window.location.href="iniciarsesion";
+            window.location.href="/";
             </script>';
+            print_r(count($consulta));
         }else{
-            $request->session()->put('session_id', $consulta[0]->id);
+            $request->session()->put('session_id', $consulta[0]->id_pacientes);
             $request->session()->put('session_name', $consulta[0]->nombre);
             $request->session()->put('session_ap', $consulta[0]->apellido_paterno);
             $request->session()->put('session_am', $consulta[0]->apellido_materno);
             $request->session()->put('session_correo', $consulta[0]->correo);
             $request->session()->put('session_password', $consulta[0]->contraseña);
-            $request->session()->put('session_usuario', $consulta[0]->usuario);
 
             $session_id = $request->session()->get('session_id');
             $session_name = $request->session()->get('session_name');
@@ -33,9 +33,8 @@ class LoginController extends Controller
             $session_am = $request->session()->get('session_am');
             $session_correo = $request->session()->get('session_correo');
             $session_password = $request->session()->get('session_password');
-            $session_usuario = $request->session()->get('session_usuario');
             return view('templates.index')
-            ->with($nombre = $session_name);/**/
+            ->with($nombre = $session_name);
         }
     }
 
@@ -48,7 +47,6 @@ class LoginController extends Controller
         $request->session()->forget('session_am');
         $request->session()->forget('session_correo');
         $request->session()->forget('session_password');
-        $request->session()->forget('session_usuario');
 
         return view('templates.index');
     }
