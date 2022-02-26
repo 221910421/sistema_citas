@@ -32,3 +32,8 @@ Route::name('crear_usuario')->get('/crear_usuario', function () {
 });
 Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController@verusuarios');
 
+<<<<<<< HEAD
+
+Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
+=======
+>>>>>>> f30a892e269f690a80e47b0fbc6b95d7758205f6
