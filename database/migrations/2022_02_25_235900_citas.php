@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('citas', function (Blueprint $table) {
             $table->id('id_cita');
             $table->string('id_paciente');
             $table->string('id_doctor');
             $table->string('id_especialidad');
+            $table->string('estatus_cita');
             $table->date('fecha_cita');
             $table->string('hora_cita');
+            $table->string('id_consultorio');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('citas');
     }
 };

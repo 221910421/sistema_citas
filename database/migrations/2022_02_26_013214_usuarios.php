@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('doctores', function (Blueprint $table) {
-            $table->id('id_doctor');
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->id('id_usuario');
             $table->string('nombre');
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
             $table->enum('genero',["Hombre", "Mujer"]);
             $table->integer('edad');
-            $table->string('cedula');
-            $table->text('correo');
+            $table->string('correo');
+            $table->text('contraseña');
+            $table->enum('tipo_sesión',['Administrador', 'Usuario']);
             $table->string('activo');
             $table->timestamps();
         });
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctores');
+        Schema::dropIfExists('usuarios');
     }
 };
