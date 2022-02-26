@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('apellido_materno');
             $table->enum('genero', ["Hombre", "Mujer"]);
             $table->integer('edad');
+            $table->string('foto');
             $table->string('calle');
             $table->integer('numero');
             $table->string('codigo_postal');
