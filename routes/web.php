@@ -38,4 +38,6 @@ Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@verci
 
 Route::name('doctores')->get('doctores/', 'App\Http\Controllers\SystemController@verdoctores');
 
+Route::name('consultorios')->get('consultorios/', 'App\Http\Controllers\SystemController@verconsultorios');
+
 
