@@ -48,7 +48,7 @@
         <td>{{$usuario->telefono}}</td>
         <td>{{$usuario->correo}}</td>
         <td>{{$usuario->rfc}}</td>
-        <td>{{$usuario->activo}}</td>
+        <td>{{$usuario->estatus}}</td>
     </tr>
     @endforeach
 </tbody>

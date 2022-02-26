@@ -27,9 +27,9 @@ return new class extends Migration
             $table->string('municipio');
             $table->string('telefono');
             $table->string('correo')->unique();
-            $tavle->string('contraseña');
+            $table->string('contraseña');
             $table->string('rfc');
-            $table->string('estatus');
+            $table->enum('estatus',['Activo', 'Inactivo']);
             $table->timestamps();
         });
     }

@@ -20,6 +20,40 @@ class SystemController extends Controller
     //----------------------------------------------Agregar nuevo usuario-----------------------------//
     public function nuevousuario(Request $request)
     {
-        
+        $correo = $request['correo'];
+        $contraseña = $request['contraseña'];
+        $confirmcontraseña = $request['confirmarcon'];
+        if($contraseña = $confirmcontraseña){
+        $emailexist = DB::select("SELECT * FROM pacientes  WHERE correo = '$correo'");
+        if(count($emailexist) == 0){
+            $pacientes = pacientes::create(array(
+                'nombre' => strtoupper($request['nombre']),
+                'apellido_paterno' => strtoupper($request['apellido_paterno']),
+                'apellido_materno' => strtoupper($request['apellido_materno']),
+                'genero' => $request['genero'],
+                'edad' => $request['edad'],
+                'calle' => strtoupper($request['calle']),
+                'numero' => $request['numero'],
+                'codigo_postal' =>$request['cp'],
+                'municipio' => strtoupper($request['municipio']),
+                'telefono' => $request['telefono'],
+                'correo' => $request['correo'],
+                'contraseña' => $request['contraseña'],
+                'rfc' => $request['rfc'],
+                'estatus' => $request['estatus']
+            ));
+            echo '<script language="javascript">alert("Usuario registrado exitosamente"); window.location.href="/usuarios";</script>';
+        }else{
+            echo'<script type="text/javascript">
+                        alert("El usuario ya ha sido registrado anteriormente");
+                        history.go(-1);
+                        </script>';  
+        }
+      }else{
+        echo'<script type="text/javascript">
+                        alert("Las contraseñas deben ser iguales por favor verifique");
+                        history.go(-1);
+                        </script>';  
+      }
     }
 }
