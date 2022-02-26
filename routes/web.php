@@ -36,12 +36,16 @@ Route::name('guardar_usuario')->post('guardar_usuario/', 'App\Http\Controllers\S
 //------------------citas------------------
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
 
-
-
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
 
+//--------------doctores----------------
 Route::name('doctores')->get('doctores/', 'App\Http\Controllers\SystemController@verdoctores');
 
+//--------------Consultorios----------------
 Route::name('consultorios')->get('consultorios/', 'App\Http\Controllers\SystemController@verconsultorios');
 
+//--------------especialidades----------------
+Route::name('especialidades')->get('especialidades/', 'App\Http\Controllers\SystemController@verespecialidades');
 
+//--------------consultas----------------
+Route::name('consultas')->get('consultas/', 'App\Http\Controllers\SystemController@verconsultas');
