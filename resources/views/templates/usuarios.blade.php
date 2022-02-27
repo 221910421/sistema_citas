@@ -1,5 +1,4 @@
 @extends('templates-layouts.headerandfooter')
-use Crypt;
 @section('body')
 <div class="inner-banner-w3ls">
     <div class="container">
@@ -51,7 +50,7 @@ use Crypt;
     @foreach ($usuarios as $usuario)
     <tr>
         <td>{{$usuario->nombre}} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</td>
-        <td><img src="{{('images/user/'.$usuario->foto)}}" alt="foto de perfil" height= "60px"; width="60"></td>
+        <td><img src="{{('images/user/'.$usuario->foto)}}" class="foto_perfil" alt="foto de perfil" height= "60px"; width="60"></td>
         <td>{{$usuario->genero}}</td>
         <td>{{$usuario->edad}}</td>
         <td>{{$usuario->calle}} {{$usuario->numero}}</td>

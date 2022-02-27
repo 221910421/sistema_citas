@@ -125,45 +125,42 @@
 									<a class="nav-link" href="">Acerca de Nosotros</a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-									<li class="nav-item">
-										<a class="nav-link" href="">Conócenos</a>
-									</li>
-								@if(empty(session('session_id')))
-
-								<!-- login -->
-							</ul>
-							<a href="#" class="login-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3" data-toggle="modal"
-								data-target="#exampleModalCenter1">
-								<i class="fas fa-sign-in-alt mr-2"></i>Ingresar</a>
-							<!-- //login -->
-							@else
-							<li class="nav-item mx-lg-4 my-lg-0 my-3">
-								<li class="nav-item">
 									<a class="nav-link" href="">Conócenos</a>
 								</li>
-							<li class="nav-item mx-lg-4 my-lg-0 my-3">
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-									<a class="dropdown-item" href="">Agendar Cita</a>
-									<a class="dropdown-item" href="">Ver mis citas</a>
-								</div>
-							</li>
-							<li class="nav-item">
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sesión de
-									{{session('session_name')}} {{session('session_ap')}}</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="">Agendar Cita</a>
+										<a class="dropdown-item" href="">Ver mis citas</a>
+									</div>
+								</li>
+								</li>
+								@if(empty(session('session_id')))
+								<!-- login -->
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+									<a href="#" class="login-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3"
+										data-toggle="modal" data-target="#exampleModalCenter1">
+										<i class="fas fa-sign-in-alt mr-2"></i>Ingresar</a>
+								</li>
+								@else
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sesión de
+										{{session('session_name')}} <img class="foto_perfil"
+											src="images/user/{{session('session_foto')}}" alt="Foto de perfil"
+											width="50" height="50"></a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-									<a class="dropdown-item" href="{{route('salir')}}">Cerrar sesión</a>
-								</div>
-							</li>
-							</li>
+										<a class="dropdown-item" href="{{route('salir')}}">Cerrar sesión</a>
+									</div>
+								</li>
+								</li>
+								@endif
 							</ul>
-							@endif
 						</div>
 					</div>
 				</nav>

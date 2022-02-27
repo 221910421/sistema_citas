@@ -26,6 +26,7 @@ class LoginController extends Controller
             $request->session()->put('session_am', $consulta[0]->apellido_materno);
             $request->session()->put('session_correo', $consulta[0]->correo);
             $request->session()->put('session_password', $consulta[0]->contraseña);
+            $request->session()->put('session_foto', $consulta[0]->foto);
 
             $session_id = $request->session()->get('session_id');
             $session_name = $request->session()->get('session_name');
@@ -33,8 +34,8 @@ class LoginController extends Controller
             $session_am = $request->session()->get('session_am');
             $session_correo = $request->session()->get('session_correo');
             $session_password = $request->session()->get('session_password');
-            return view('templates.index')
-            ->with($nombre = $session_name);
+            $session_password = $request->session()->get('session_foto');
+            return redirect(route('index'));
         }
     }
 
@@ -48,6 +49,6 @@ class LoginController extends Controller
         $request->session()->forget('session_correo');
         $request->session()->forget('session_password');
 
-        return view('templates.index');
+        return redirect(route('index'));
     }
 }
