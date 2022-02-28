@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Foto*:</label>
                         <input type="file" class="form-control" 
-                            name="foto" id="recipient-phone" required="">
+                            name="foto" id="recipient-phone" required="" accept="image/*" type="file">
                     </div>
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Calle*:</label>

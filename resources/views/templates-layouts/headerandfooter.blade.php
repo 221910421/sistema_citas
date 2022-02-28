@@ -1,9 +1,5 @@
 <html>
 
-<head>
-	<title>Sistema citas</title>
-</head>
-
 <body>
 
 	<head>
@@ -79,7 +75,7 @@
 								<div class="col-lg-7 col-6 top-w3layouts">
 									<p class="text-white">
 										<i class="fas fa-globe"></i>
-										<a href="https://unevt.edomex.gob.mx/" class="text-white">Nuestro Sitio Web</a>
+										<a href="" class="text-white">Nuestro Sitio Web</a>
 									</p>
 								</div>
 								<div class="col-lg-5 col-6 header-w3layouts pl-4 text-lg-left">
@@ -127,18 +123,17 @@
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 									<a class="nav-link" href="">Conócenos</a>
 								</li>
+								@if(empty(session('session_id')))
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-										<a class="dropdown-item" href="">Agendar Cita</a>
-										<a class="dropdown-item" href="">Ver mis citas</a>
+										<a class="dropdown-item" href="#">inicia sesión</a>
 									</div>
 								</li>
 								</li>
-								@if(empty(session('session_id')))
 								<!-- login -->
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 									<a href="#" class="login-button ml-lg-5 mt-lg-0 mt-4 mb-lg-0 mb-3"
@@ -146,6 +141,16 @@
 										<i class="fas fa-sign-in-alt mr-2"></i>Ingresar</a>
 								</li>
 								@else
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="">Agendar Cita</a>
+										<a class="dropdown-item" href="">Mis citas</a>
+									</div>
+								</li>
+								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -192,6 +197,9 @@
 											required="">
 									</div>
 									<button type="submit" class="btn submit mb-4">Iniciar sesión</button>
+								</form>
+								<form action="{{route('crear_usuario')}}" method="get">
+									<button type="submit" class="btn submit mb-4">Registarse</button>
 								</form>
 							</div>
 						</div>
@@ -268,8 +276,6 @@
 			</div>
 		</footer>
 		<!-- //footer -->
-
-
 	</body>
 
 </html>

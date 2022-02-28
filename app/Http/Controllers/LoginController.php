@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\support\Facades\Crypt;
 
 class LoginController extends Controller
 {
@@ -34,7 +35,7 @@ class LoginController extends Controller
             $session_am = $request->session()->get('session_am');
             $session_correo = $request->session()->get('session_correo');
             $session_password = $request->session()->get('session_password');
-            $session_password = $request->session()->get('session_foto');
+            $session_foto = $request->session()->get('session_foto');
             return redirect(route('index'));
         }
     }
