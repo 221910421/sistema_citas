@@ -6,16 +6,30 @@ use Illuminate\Http\Request;
 use Models\citas;
 use App\Models\pacientes;
 use Illuminate\Support\Facades\DB;
-use \Crypt;
+use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
 class SystemController extends Controller
 {
     //----------------------------------------------Ver pacientes---------------------------------------//
     public function verusuarios()
     {
-        $query = DB::select("SELECT 'rfc' FROM pacientes");
-        $usuarios = DB::table('pacientes')->get();
-        return view("templates.usuarios")
+        return view("templates.usuarios");
+    }
+
+    //----------------------------------------------Actualizar tabla usuarios--------------------------//
+    public function actualizartablausuarios()
+    {
+        $usuarios = pacientes::all();
+        return view('templates-tables-data.table-data-usu')
+        ->with(['usuarios' => $usuarios]);
+    }
+
+    //----------------------------------------------Ver detalles usuario------------------------------//
+    public function detallesusu(Request $request)
+    {
+        $id = $request['id_usu'];
+        $usuarios = pacientes::select("")->where('id_pacientes','');
+        return view('templates.detalles-usu')
         ->with(['usuarios' => $usuarios]);
     }
 
@@ -28,7 +42,7 @@ class SystemController extends Controller
         if($request->file('foto') != ''){
             $file = $request->file('foto');
 
-            $foto = $file->getClientOriginalName();
+            $foto = crypt::encrypt($file->getClientOriginalName()); //Encriptación del nombre de la foto
 
             $date = date('Ymd_His_');
                 $foto2 = $date . $foto;

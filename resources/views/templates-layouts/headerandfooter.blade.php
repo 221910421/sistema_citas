@@ -65,7 +65,7 @@
 								<div class="col-6 header-top_w3layouts pl-3 text-lg-left text-center">
 									<p class="text-white">
 										<i class="fas fa-map-marker-alt mr-2"></i>Acueducto del Alto Lerma Pedregal de
-										Guadalupe Hidalgo, Méx.
+										Guadalupe Hidalgo, Méx. <!--cambiar-->
 									</p>
 								</div>
 							</div>
@@ -81,7 +81,7 @@
 								<div class="col-lg-5 col-6 header-w3layouts pl-4 text-lg-left">
 									<p class="text-white">
 										<i class="fas fa-phone mr-2"></i><a href="tel:7282878382"
-											style="color:#FFF;">7282878382</a>
+											style="color:#FFF;">7282878382</a><!--Cambiar-->
 									</p>
 								</div>
 							</div>
