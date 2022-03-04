@@ -27,8 +27,8 @@ class SystemController extends Controller
     //----------------------------------------------Ver detalles usuario------------------------------//
     public function detallesusu(Request $request)
     {
-        $id = $request['id_usu'];
-        $usuarios = pacientes::select("")->where('id_pacientes','');
+        $id = $request['id'];
+        $usuarios = pacientes::select('*')->where('id_pacientes','=',$id)->get();
         return view('templates.detalles-usu')
         ->with(['usuarios' => $usuarios]);
     }
