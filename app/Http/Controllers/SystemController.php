@@ -42,10 +42,10 @@ class SystemController extends Controller
         if($request->file('foto') != ''){
             $file = $request->file('foto');
 
-            $foto = crypt::encrypt($file->getClientOriginalName()); //Encriptación del nombre de la foto
+            $foto =$file->getClientOriginalName(); 
 
             $date = date('Ymd_His_');
-                $foto2 = $date . $foto;
+                $foto2 =  $date . $foto;
 
             \Storage::disk('local')->put($foto2, \File::get($file));
         }

@@ -59,34 +59,32 @@
                             class="col-form-label">Femenino</label>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Edad*:</label>
-                            <input type="text" pattern="[0-9]{2}" maxlength="2" minlength="1" class="form-control"
-                                placeholder="Ingresa tu edad" name="edad" id="recipient-phone" required="">
+                            <input type="text" maxlength="2" pattern="[0-9]{2}" class="form-control"
+                                placeholder="Ingresa tu edad" name="edad" required="">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Foto*:</label>
-                            <input type="file" class="form-file" name="foto" id="recipient-phone" required=""
-                                accept="image/*" type="file">
+                            <input type="file" class="form-file" name="foto" required="" accept="image/*" type="file">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Calle*:</label>
                             <input type="text" class="form-control" placeholder="Ingresa tu calle" name="calle"
-                                id="recipient-phone" required="">
+                                required="">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Numero:</label>
-                            <input type="text" class="form-control" pattern="[0-9]{4}"
+                            <input type="text" class="form-control" pattern="[0-9]{2}"
                                 placeholder="Ingresa el número de tu dirección, (Dejar vacio si no cuenta con número)"
-                                name="numero" id="recipient-phone">
+                                name="numero" maxlength="4" minlength="2">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Codigo postal:*</label>
                             <input type="text" class="form-control" maxlength="5" placeholder="Ingresa tu codigo postal"
-                                name="cp" id="recipient-phone">
+                                name="cp">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Municipio:*</label>
-                            <input type="text" class="form-control" placeholder="Ingresa tú municipio" name="municipio"
-                                id="recipient-phone">
+                            <input type="text" class="form-control" placeholder="Ingresa tú municipio" name="municipio">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Telefono:*</label>
@@ -96,18 +94,18 @@
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Correo*:</label>
                             <input type="email" class="form-control" placeholder="Verifica el correo antes de enviar"
-                                name="correo" id="recipient-phone" required="">
+                                name="correo" required="">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Contraseña*:</label>
-                            <input type="password" class="form-control" name="contraseña" id="recipient-name"
+                            <input type="password" class="form-control" name="contraseña"
                                 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*{8}"
                                 title="La contraseña debe empezar con una letra, contener al menos un dígito y una longitud total de 8 digitos"
                                 required="">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Verifica tu contraseña*:</label>
-                            <input type="password" class="form-control" name="confirmarcon" id="recipient-name"
+                            <input type="password" class="form-control" name="confirmarcon"
                                 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*{8}"
                                 title="La contraseña debe empezar con una letra, contener al menos un dígito y una longitud total de 8 digitos"
                                 required="">
@@ -116,7 +114,7 @@
                             <label for="recipient-name" class="col-form-label">RFC:*</label>
                             <input type="text" class="form-control" minlength="13" maxlength="13"
                                 placeholder="Ingresa el número de tu dirección, (Dejar vacio si no cuenta con número)"
-                                name="rfc" id="recipient-name">
+                                name="rfc">
                         </div>
                         <input type="submit" value="Guardar nuevo usuario" class="btn_apt">
                 </form>
