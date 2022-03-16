@@ -68,7 +68,7 @@ class SystemController extends Controller
                 'municipio' => strtoupper($request['municipio']),
                 'telefono' => $request['telefono'],
                 'correo' => $request['correo'],
-                'contraseña' => $request['contraseña'],
+                'contraseña' => Crypt::encrypt($contraseña),
                 'rfc' =>  $request['rfc'],
                 'estatus' => $request['estatus']
             ));
