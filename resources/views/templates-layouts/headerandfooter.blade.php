@@ -190,7 +190,7 @@
 									@csrf
 									<div class="form-group">
 										<label>Correo</label>
-										<input type="text" class="form-control" name="correo" placeholder=""
+										<input type="mail" class="form-control" name="correo"
 											required="">
 									</div>
 									<div class="form-group">

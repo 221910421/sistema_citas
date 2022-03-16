@@ -38,7 +38,7 @@ Route::name('detallesusu')->post('detalles-usuario/', 'App\Http\Controllers\Syst
 //------------------citas------------------
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
 
-Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
+Route::name('crear_mi_cita')->get('crear_mi_cita/', 'App\Http\Controllers\SystemController@crear_citas');
 
 //--------------doctores----------------
 Route::name('doctores')->get('doctores/', 'App\Http\Controllers\SystemController@verdoctores');
