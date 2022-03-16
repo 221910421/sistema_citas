@@ -46,6 +46,9 @@
                     <h3>Correo</h3>
                 </th>
                 <th>
+                    <h3>RFC</h3>
+                </th>
+                <th>
                     <h3>Estatus</h3>
                 </th>
             </tr>
@@ -62,6 +65,7 @@
                 <td>{{$usuario->municipio}}</td>
                 <td>{{$usuario->telefono}}</td>
                 <td>{{$usuario->correo}}</td>
+                <td>{{$rfc}}</td>
                 <td>{{$usuario->estatus}}</td>
             </tr>
             @endforeach

@@ -29,8 +29,12 @@ class SystemController extends Controller
     {
         $id = $request['id'];
         $usuarios = pacientes::select('*')->where('id_pacientes','=',$id)->get();
+        foreach($usuarios as $usuarior){
+            $rfc = Crypt::decrypt($usuarior->rfc);
+        }
         return view('templates.detalles-usu')
-        ->with(['usuarios' => $usuarios]);
+        ->with(['usuarios' => $usuarios])
+        ->with('rfc', $rfc);
     }
 
     //----------------------------------------------Agregar nuevo usuario-----------------------------//
@@ -69,7 +73,7 @@ class SystemController extends Controller
                 'telefono' => $request['telefono'],
                 'correo' => $request['correo'],
                 'contraseña' => Crypt::encrypt($contraseña),
-                'rfc' =>  $request['rfc'],
+                'rfc' => Crypt::encrypt($request['rfc']),
                 'estatus' => $request['estatus']
             ));
             echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
