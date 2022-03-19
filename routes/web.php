@@ -34,6 +34,7 @@ Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController
 Route::name('guardar_usuario')->post('guardar_usuario/', 'App\Http\Controllers\SystemController@nuevousuario');
 Route::name('actualizartablausu')->get('actualiartabalausuarios/', 'App\Http\Controllers\SystemController@actualizartablausuarios');
 Route::name('detallesusu')->post('detalles-usuario/', 'App\Http\Controllers\SystemController@detallesusu');
+Route::name('misdatos')->get('misdatos/', 'App\Http\Controllers\UserController@verdatosuser');
 
 //------------------citas------------------
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
