@@ -161,7 +161,7 @@
 											src="images/user/{{session('session_foto')}}" alt="Foto de perfil"
 											width="50" height="50"></a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="">Mis datos</a>
+										<a class="dropdown-item" href="{{route('misdatos')}}">Mis datos</a>
 										<a class="dropdown-item" href="{{route('salir')}}">Cerrar sesión</a>
 									</div>
 								</li>

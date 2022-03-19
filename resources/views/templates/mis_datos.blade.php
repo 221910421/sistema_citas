@@ -35,7 +35,7 @@
             <div class="contact-right-w3l appoint-form">
                 <h5 class="title-w3 text-center mb-5">Si deseas modificar los datos de tu usuario por favor escribe tu
                     contraseña al final para habilitar el botón modificar</h5>
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route('actualizar_datos')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @foreach ($mis_datos as $dato)
                     <div class="form-group">
@@ -53,20 +53,20 @@
                         <input type="text" class="form-control" placeholder="Ingresa tu apellido materno"
                             name="apellido_materno" id="recipient-name" value="{{$dato->apellido_materno}}" required="">
                     </div>
-                    @if($dato->genero = "Hombre")
+                    @if($dato->genero == "Mujer")
                     <div class="form-group">
                         <p>Género:</p>
-                        <input type="radio" id="Masculino" value="Hombre" checked name="genero"><label
+                        <input type="radio" id="Masculino" value="Hombre"  name="genero"><label
                             class="col-form-label">Masculino</label>
-                        <input type="radio" id="Femenino" value="Mujer" name="genero"><label
+                        <input type="radio" id="Femenino" value="Mujer" checked name="genero"><label
                             class="col-form-label">Femenino</label>
                         <div class="form-group">
-                            @else
+                            @elseif($dato->genero == "Hombre")
                             <div class="form-group">
                                 <p>Género:</p>
-                                <input type="radio" id="Masculino" value="Hombre" name="genero"><label
+                                <input type="radio" id="Masculino" value="Hombre" checked name="genero"><label
                                     class="col-form-label">Masculino</label>
-                                <input type="radio" id="Femenino" value="Mujer" checked name="genero"><label
+                                <input type="radio" id="Femenino" value="Mujer" name="genero"><label
                                     class="col-form-label">Femenino</label>
                                 <div class="form-group">
                                     @endif

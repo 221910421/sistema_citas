@@ -35,6 +35,7 @@ Route::name('guardar_usuario')->post('guardar_usuario/', 'App\Http\Controllers\S
 Route::name('actualizartablausu')->get('actualiartabalausuarios/', 'App\Http\Controllers\SystemController@actualizartablausuarios');
 Route::name('detallesusu')->post('detalles-usuario/', 'App\Http\Controllers\SystemController@detallesusu');
 Route::name('misdatos')->get('misdatos/', 'App\Http\Controllers\UserController@verdatosuser');
+Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers\UserController@actualizar_datos');
 
 //------------------citas------------------
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
