@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\citas;
 use App\Models\pacientes;
+use App\Models\especialidades;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
-use App\Models\especialidades;
 
 
 class SystemController extends Controller
@@ -111,6 +111,24 @@ class SystemController extends Controller
             'id_consultorio' => $request['consultorio']
         ));
         echo '<script language="javascript">alert("Cita agendada correctamente"); window.location.href="/";</script>';
+    }
+
+    //------------------------------------------- Crear Consultorio-------------------------------------------//
+    public function nuevo_consultorio(){
+        $especialidades = especialidades::all();
+        return view('templates.consultorios.crear_consultorios')
+        ->with(["especialidades" => $especialidades]);
+    }
+    public function guardar_consultorio(Request $request){
+
+    $consultorio = consultorios::create(array(
+        'numero_de_consultorio' => $request['numero_de_consultorio'],
+        'id_especialidad' =>$request['id_especialidad'],
+        'estatus' => $request['estatus']
+    ));
+
+    echo '<script language="javascript">alert("Tu consultorio se guardo exitosamente"); window.location.href="/";</script>';
+
     }
 }
 
