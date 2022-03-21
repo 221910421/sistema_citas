@@ -39,3 +39,11 @@ Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers
 
 
 //-----------------Citas--------------------//
+
+
+
+//------------------Especialidades----------
+Route::name('crear_especialidades')->get('/crear_especialidades', function () {
+    return view('templates.crear_especialidades');});
+Route::name('guardar_especialidad')->post('guardar_especialidad/', 'App\Http\Controllers\SystemController@nueva_especialidad');
+

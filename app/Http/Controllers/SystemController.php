@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\citas;
 use App\Models\pacientes;
+use App\Models\especialidades;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
@@ -95,6 +96,24 @@ class SystemController extends Controller
     public function crear_cita(){
         
     }
+
+
+     //----------------------------------------------Agregar nueva especialidad-----------------------------//
+    public function nueva_especialidad(){
+        $especialidad = especialidades::all();
+        return view('templates.crear_especialidades') 
+          ->with(["especialidades" =>$especialidad]);
+    }
+
+    public function guardar_especialidades(){
+        $especialidad = especialidades::create(array(
+            'nombre' => $request['nombre'],
+            'precio' =>$request['cp'],
+            'id_consultorio' => $request['id_consultorio']
+        ));
+    }
+ 
+
 }
 
 
