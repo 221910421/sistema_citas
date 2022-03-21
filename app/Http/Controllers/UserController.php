@@ -24,8 +24,6 @@ class UserController extends Controller
 
     public function actualizar_datos(Request $request)
     {
-        //dd($request->all());
-
         if($request->file('foto') != ''){
             $file = $request->file('foto');
 

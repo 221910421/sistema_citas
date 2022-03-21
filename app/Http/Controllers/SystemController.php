@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Models\citas;
+use App\Models\citas;
 use App\Models\pacientes;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
@@ -94,9 +94,9 @@ class SystemController extends Controller
     //---------------------------------------------Ver citas------------------------------------------//
     public function vercitas()
     {
-        $usuarios = DB::table('citas')->get();
-        return view("templates.usuarios")
-        ->with(['usuarios' => $usuarios]);
+        $citas = citas::all();
+        return view("templates.citas")
+        ->with(['citas' => $citas]);
     }
     //----------------------------------------------Ver doctores--------------------------------------//
     public function verdoctores()
