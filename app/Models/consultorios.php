@@ -14,6 +14,6 @@ class consultorios extends Model
     protected $fillable = [
         'numero_de_consultorio',
         'id_especialidad',
-        'id_estatus',
+        'estatus',
     ];
 }

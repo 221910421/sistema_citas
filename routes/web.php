@@ -39,3 +39,9 @@ Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers
 
 
 //-----------------Citas--------------------//
+
+
+//------------------Consultorios---------------------------//
+Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controllers\SystemController@nuevo_consultorio');
+
+Route::name('guardar_consultorio')->post('guardar_consultorio/', 'App\Http\Controllers\SystemController@guardar_consultorio');
