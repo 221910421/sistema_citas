@@ -37,19 +37,5 @@ Route::name('detallesusu')->post('detalles-usuario/', 'App\Http\Controllers\Syst
 Route::name('misdatos')->get('misdatos/', 'App\Http\Controllers\UserController@verdatosuser');
 Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers\UserController@actualizar_datos');
 
-//------------------citas------------------
-Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
 
-Route::name('crear_mi_cita')->get('crear_mi_cita/', 'App\Http\Controllers\SystemController@crear_citas');
-
-//--------------doctores----------------
-Route::name('doctores')->get('doctores/', 'App\Http\Controllers\SystemController@verdoctores');
-
-//--------------Consultorios----------------
-Route::name('consultorios')->get('consultorios/', 'App\Http\Controllers\SystemController@verconsultorios');
-
-//--------------especialidades----------------
-Route::name('especialidades')->get('especialidades/', 'App\Http\Controllers\SystemController@verespecialidades');
-
-//--------------consultas----------------
-Route::name('consultas')->get('consultas/', 'App\Http\Controllers\SystemController@verconsultas');
+//-----------------Citas--------------------//

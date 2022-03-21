@@ -91,41 +91,9 @@ class SystemController extends Controller
       }
     }
 
-    //---------------------------------------------Ver citas------------------------------------------//
-    public function vercitas()
-    {
-        $citas = citas::all();
-        return view("templates.citas")
-        ->with(['citas' => $citas]);
-    }
-    //----------------------------------------------Ver doctores--------------------------------------//
-    public function verdoctores()
-    {
-        $doctores = DB::table('doctores')->get();
-        return view("templates.doctores")
-        ->with(['doctores' => $doctores]);
-    }
-    
-    //----------------------------------------------Ver Consultorios-----------------------------------//
-    public function verconsultorios()
-    {
-        $consultorios = DB::table('consultorios')->get();
-        return view("templates.consultorios")
-        ->with(['consultorios' => $consultorios]);
-    }
-    //----------------------------------------------Ver Especialidades-----------------------------------//
-    public function verespecialidades()
-    {
-        $especialidades = DB::table('especialidades')->get();
-        return view("templates.especialidades")
-        ->with(['especialidades' => $especialidades]);
-    }
-    //----------------------------------------------Ver consultas-----------------------------------//
-    public function verconsultas()
-    {
-        $consultas = DB::table('consulta')->get();
-        return view("templates.consultas")
-        ->with(['consultas' => $consultas]);
+
+    public function crear_cita(){
+        
     }
 }
 
