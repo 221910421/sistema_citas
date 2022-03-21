@@ -7,6 +7,8 @@ use App\Models\citas;
 use App\Models\pacientes;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
+use App\Models\especialidades;
+
 
 class SystemController extends Controller
 {
@@ -91,9 +93,24 @@ class SystemController extends Controller
       }
     }
 
+//-----------------------------------------crear_cita-------------------------//
+    public function nueva_cita(){
+        $especialidades = especialidades::all();
+        return view('templates.citas.crear_cita')
+        ->with(["especialidades" => $especialidades]);
+    }
 
-    public function crear_cita(){
-        
+    public function guardar_cita(Request $request){
+        $paciente = citas::create(array(
+            'id_paciente' => session('session_id'),
+            'id_doctor' => 1,
+            'id_especialidad' => $request['especialidad'],
+            'estatus_cita' => "Activo",
+            'fecha_cita' => $request['fecha'],
+            'hora_cita' => $request['hora'],
+            'id_consultorio' => $request['consultorio']
+        ));
+        echo '<script language="javascript">alert("Cita agendada correctamente"); window.location.href="/";</script>';
     }
 }
 
