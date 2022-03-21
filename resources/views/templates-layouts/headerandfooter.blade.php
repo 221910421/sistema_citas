@@ -64,8 +64,7 @@
 								<!-- //social icons -->
 								<div class="col-6 header-top_w3layouts pl-3 text-lg-left text-center">
 									<p class="text-white">
-										<i class="fas fa-map-marker-alt mr-2"></i>Acueducto del Alto Lerma Pedregal de
-										Guadalupe Hidalgo, Méx. <!--cambiar-->
+										<i class="fas fa-map-marker-alt mr-2"></i>Av.Miguel Hidalgo,Bo.San Miguel. San Mateo Atenc, Méx. <!--cambiar-->
 									</p>
 								</div>
 							</div>
@@ -81,7 +80,7 @@
 								<div class="col-lg-5 col-6 header-w3layouts pl-4 text-lg-left">
 									<p class="text-white">
 										<i class="fas fa-phone mr-2"></i><a href="tel:7282878382"
-											style="color:#FFF;">7282878382</a><!--Cambiar-->
+											style="color:#FFF;">7221209216</a><!--Cambiar-->
 									</p>
 								</div>
 							</div>
@@ -269,7 +268,7 @@
 						</div>
 					</div>
 					<div class="border-top mt-5 pt-lg-4 pt-3 pb-lg-0 pb-3 text-center">
-						<p class="copy-right-grids mt-lg-1">2021 AGENDA CLÍNICA DIGITAL. Todos los derechos reservados
+						<p class="copy-right-grids mt-lg-1">2022 AGENDA CLÍNICA DIGITAL. Todos los derechos reservados
 						</p>
 					</div>
 				</div>
