@@ -41,7 +41,16 @@ Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers
 //-----------------Citas--------------------//
 
 
+<<<<<<< HEAD
 //------------------Consultorios---------------------------//
 Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controllers\SystemController@nuevo_consultorio');
 
 Route::name('guardar_consultorio')->post('guardar_consultorio/', 'App\Http\Controllers\SystemController@guardar_consultorio');
+=======
+
+//------------------Especialidades----------
+Route::name('crear_especialidades')->get('/crear_especialidades', function () {
+    return view('templates.crear_especialidades');});
+Route::name('guardar_especialidad')->post('guardar_especialidad/', 'App\Http\Controllers\SystemController@nueva_especialidad');
+
+>>>>>>> 44843ea424514b44daa8c06688974e6889ec455e
