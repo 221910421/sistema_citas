@@ -13,9 +13,7 @@ class consultas extends Model
 
     protected $fillable = [
         'id_cita',
-        'nombre_paciente',
-        'apellido_paterno_paciente',
-        'apellido_materno_paciente',
+        'id_paciente',
         'estatura',
         'peso',
         'temperatura',

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EjemploController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,11 +34,13 @@ Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController
 Route::name('guardar_usuario')->post('guardar_usuario/', 'App\Http\Controllers\SystemController@nuevousuario');
 Route::name('actualizartablausu')->get('actualiartabalausuarios/', 'App\Http\Controllers\SystemController@actualizartablausuarios');
 Route::name('detallesusu')->post('detalles-usuario/', 'App\Http\Controllers\SystemController@detallesusu');
+Route::name('misdatos')->get('misdatos/', 'App\Http\Controllers\UserController@verdatosuser');
+Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers\UserController@actualizar_datos');
 
 //------------------citas------------------
 Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
 
-Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@vercitas');
+Route::name('crear_mi_cita')->get('crear_mi_cita/', 'App\Http\Controllers\SystemController@crear_citas');
 
 //--------------doctores----------------
 Route::name('doctores')->get('doctores/', 'App\Http\Controllers\SystemController@verdoctores');

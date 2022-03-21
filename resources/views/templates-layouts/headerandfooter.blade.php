@@ -64,7 +64,13 @@
 								<!-- //social icons -->
 								<div class="col-6 header-top_w3layouts pl-3 text-lg-left text-center">
 									<p class="text-white">
+<<<<<<< HEAD
 										<i class="fas fa-map-marker-alt mr-2"></i>Av.Miguel Hidalgo,Bo.San Miguel. San Mateo Atenc, Méx. <!--cambiar-->
+=======
+										<i class="fas fa-map-marker-alt mr-2"></i>Acueducto del Alto Lerma Pedregal de
+										Guadalupe Hidalgo, Méx.
+										<!--cambiar-->
+>>>>>>> dc13007175f59de77272a6535ef2eb36cc6b6427
 									</p>
 								</div>
 							</div>
@@ -80,7 +86,12 @@
 								<div class="col-lg-5 col-6 header-w3layouts pl-4 text-lg-left">
 									<p class="text-white">
 										<i class="fas fa-phone mr-2"></i><a href="tel:7282878382"
+<<<<<<< HEAD
 											style="color:#FFF;">7221209216</a><!--Cambiar-->
+=======
+											style="color:#FFF;">7282878382</a>
+										<!--Cambiar-->
+>>>>>>> dc13007175f59de77272a6535ef2eb36cc6b6427
 									</p>
 								</div>
 							</div>
@@ -158,7 +169,7 @@
 											src="images/user/{{session('session_foto')}}" alt="Foto de perfil"
 											width="50" height="50"></a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
+										<a class="dropdown-item" href="{{route('misdatos')}}">Mis datos</a>
 										<a class="dropdown-item" href="{{route('salir')}}">Cerrar sesión</a>
 									</div>
 								</li>
@@ -187,7 +198,7 @@
 									@csrf
 									<div class="form-group">
 										<label>Correo</label>
-										<input type="text" class="form-control" name="correo" placeholder=""
+										<input type="mail" class="form-control" name="correo"
 											required="">
 									</div>
 									<div class="form-group">

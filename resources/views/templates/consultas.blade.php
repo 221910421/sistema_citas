@@ -5,9 +5,6 @@
     <thead>
     <tr>
         <th>
-            <h3>id de la Cita</h3>
-        </th>
-        <th>
             <h3>Nombre completo del paciente</h3>
         </th>
         <th>
@@ -39,8 +36,7 @@
 <tbody>
     @foreach ($consultas as $consulta)
     <tr>
-        <td>{{$consulta->id_cita}}</td>
-        <td>{{$consulta->nombre_paciente}} {{$consulta->apellido_paterno_paciente}} {{$consulta->apellido_materno_paciente}}</td>
+        <td>{{consulta->id_paciente}}</td>
         <td>{{$consulta->estatura}}</td>
         <td>{{$consulta->peso}}</td>
         <td>{{$consulta->temperatura}}</td>

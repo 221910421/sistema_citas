@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Models\citas;
+use App\Models\citas;
 use App\Models\pacientes;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
@@ -27,10 +27,14 @@ class SystemController extends Controller
     //----------------------------------------------Ver detalles usuario------------------------------//
     public function detallesusu(Request $request)
     {
-        $id = $request['id_usu'];
-        $usuarios = pacientes::select("")->where('id_pacientes','');
+        $id = $request['id'];
+        $usuarios = pacientes::select('*')->where('id_pacientes','=',$id)->get();
+        foreach($usuarios as $usuarior){
+            $rfc = Crypt::decrypt($usuarior->rfc);
+        }
         return view('templates.detalles-usu')
-        ->with(['usuarios' => $usuarios]);
+        ->with(['usuarios' => $usuarios])
+        ->with('rfc', $rfc);
     }
 
     //----------------------------------------------Agregar nuevo usuario-----------------------------//
@@ -42,10 +46,10 @@ class SystemController extends Controller
         if($request->file('foto') != ''){
             $file = $request->file('foto');
 
-            $foto = crypt::encrypt($file->getClientOriginalName()); //Encriptación del nombre de la foto
+            $foto =$file->getClientOriginalName(); 
 
             $date = date('Ymd_His_');
-                $foto2 = $date . $foto;
+                $foto2 =  $date . $foto;
 
             \Storage::disk('local')->put($foto2, \File::get($file));
         }
@@ -68,8 +72,8 @@ class SystemController extends Controller
                 'municipio' => strtoupper($request['municipio']),
                 'telefono' => $request['telefono'],
                 'correo' => $request['correo'],
-                'contraseña' => $request['contraseña'],
-                'rfc' =>  $request['rfc'],
+                'contraseña' => Crypt::encrypt($contraseña),
+                'rfc' => Crypt::encrypt($request['rfc']),
                 'estatus' => $request['estatus']
             ));
             echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
@@ -90,9 +94,9 @@ class SystemController extends Controller
     //---------------------------------------------Ver citas------------------------------------------//
     public function vercitas()
     {
-        $usuarios = DB::table('citas')->get();
-        return view("templates.usuarios")
-        ->with(['usuarios' => $usuarios]);
+        $citas = citas::all();
+        return view("templates.citas")
+        ->with(['citas' => $citas]);
     }
     //----------------------------------------------Ver doctores--------------------------------------//
     public function verdoctores()

@@ -16,9 +16,7 @@ return new class extends Migration
         Schema::create('consulta', function (Blueprint $table) {
             $table->id('id_consulta');
             $table->string('id_cita');
-            $table->string('nombre_paciente');
-            $table->string('apellido_paterno_paciente');
-            $table->string('apellido_materno_paciente');
+            $table->string('id_paciente');
             $table->string('estatura');
             $table->string('peso');
             $table->string('temperatura');

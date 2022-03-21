@@ -4,23 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\support\Facades\Crypt;
+use \Crypt;
+use App\Models\pacientes;
 
 class LoginController extends Controller
 {
     public function validar(Request $request)
     {
-        $usuario = $request['correo'];
+        $usuarioc = $request['correo'];
         $contraseña = $request['contraseña'];
 
-        $consulta = DB::select("SELECT * FROM pacientes WHERE correo = '$usuario' AND contraseña = '$contraseña'");
-        if(count($consulta)==0){
-            echo '<script type="text/javascript">
-            alert("Usuario no existente o desactivado por favor intentelo de nuevo");
-            window.location.href="/";
-            </script>';
-            print_r(count($consulta));
-        }else{
+        $usuarios = pacientes::select('*')->where('correo','=',$usuarioc)->where('estatus', '=', 'Activo')->get();
+        if(count($usuarios) == 1){
+        foreach($usuarios as $usuario){
+            $decryptpass = Crypt::decrypt($usuario->contraseña);
+            $correo = $usuario->correo;
+        }
+
+        if($correo == $usuarioc && $decryptpass == $contraseña){
+            $consulta = DB::select("SELECT * FROM pacientes WHERE correo = '$usuarioc'");
+
             $request->session()->put('session_id', $consulta[0]->id_pacientes);
             $request->session()->put('session_name', $consulta[0]->nombre);
             $request->session()->put('session_ap', $consulta[0]->apellido_paterno);
@@ -37,7 +40,18 @@ class LoginController extends Controller
             $session_password = $request->session()->get('session_password');
             $session_foto = $request->session()->get('session_foto');
             return redirect(route('index'));
+        }else{
+            echo '<script type="text/javascript">
+            alert("Contraseña incorrecta por favor verifiquela");
+            window.location.href="/";
+            </script>';
         }
+    }else{
+        echo '<script type="text/javascript">
+        alert("Usuario no existente o desactivado por favor intentelo de nuevo");
+        window.location.href="/";
+        </script>';
+    }
     }
 
     public function logout(Request $request)
