@@ -111,6 +111,8 @@ class SystemController extends Controller
             'precio' =>$request['cp'],
             'id_consultorio' => $request['id_consultorio']
         ));
+        '<script language="javascript">alert("Se creo correctamente la especialidad"); window.location.href="/";</script>';
+       
     }
  
 
