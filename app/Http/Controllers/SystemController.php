@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\citas;
 use App\Models\pacientes;
 use App\Models\especialidades;
+use App\Models\consultorios;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 

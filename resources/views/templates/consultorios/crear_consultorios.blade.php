@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Especialidades</label>
-                       <select name="id_especialidad" id="id_especialidad">
+                       <select name="id_especialidad" id="id_especialidad" class="form-control">
                            <option value="0">Seleccione una Especialidad</option>
                            @foreach($especialidades as $especialidad)
                            <option value="{{$especialidad-> id_especialidad}}"> {{$especialidad->nombre}}          
