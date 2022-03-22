@@ -101,18 +101,28 @@ class SystemController extends Controller
         ->with(["especialidades" => $especialidades]);
     }
 
+//----------------------------------------Guardar cita------------------------//
     public function guardar_cita(Request $request){
+        $letra_usu = substr(session("session_name"), 0, 2); 
+        $folio = $request['especialidad'].".".$request['fecha'].".".$request['hora'].".".$letra_usu;
+        $citaexist = DB::select("SELECT * FROM citas  WHERE folio = '$folio'");
+        if(count($citaexist) == 0){
         $paciente = citas::create(array(
             'id_paciente' => session('session_id'),
             'id_doctor' => 1,
             'id_especialidad' => $request['especialidad'],
             'estatus_cita' => "Activo",
+            'folio' => $folio,
             'fecha_cita' => $request['fecha'],
             'hora_cita' => $request['hora'],
             'id_consultorio' => $request['consultorio']
         ));
         echo '<script language="javascript">alert("Cita agendada correctamente"); window.location.href="/";</script>';
+    }else{
+        echo'<script type="text/javascript">alert("Esta cita ya fue agendada con anterioridad");history.go(-1);</script>';
     }
+    }
+
 
     //------------------------------------------- Crear Consultorio-------------------------------------------//
     public function nuevo_consultorio(){

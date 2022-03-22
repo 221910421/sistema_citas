@@ -42,6 +42,7 @@ Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers
 Route::name('nueva_cita')->get('nueva_cita/', 'App\Http\Controllers\SystemController@nueva_cita');
 Route::name('consultorios_cita')->get('consultorios_cita/', 'App\Http\Controllers\CitasController@consultorios_cita');
 Route::name('guardar_cita')->post('guardar_cita/', 'App\Http\Controllers\SystemController@guardar_cita');
+Route::name('fechas_ocupadas')->post('fechas_ocupadas/', 'App\Http\Controllers\SystemController@fechas_ocupadas');
 
 
 //------------------Consultorios---------------------------//
