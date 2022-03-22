@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-group" id="consultorios">
                         <label for="recipient-name" class="col-form-label">Consultorio*:</label>
-                        <select name="consultorio" id="consultorio" class="form-control" required>
+                        <select name="consultorio" id="consultorio" disabled class="form-control" required>
                             <option value="0">Selecciona una especialidad antes</option>
                         </select>
                     </div>
@@ -87,6 +87,7 @@
         $("#especialidad").change(function () {
             var valespecialidad = $("#especialidad").val();
             if (valespecialidad == 0) {
+                $('#consultorios').html('<label for="recipient-name" class="col-form-label">Consultorio*:</label><select name="consultorio" id="consultorio" disabled class="form-control" required><option value="0">Selecciona una especialidad antes</option></select>');
             }
             else {
                 $('#consultorios').empty();

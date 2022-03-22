@@ -7,6 +7,7 @@ use App\Models\citas;
 use App\Models\pacientes;
 use App\Models\especialidades;
 use App\Models\consultorios;
+use App\Models\consultas;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
@@ -16,15 +17,18 @@ class SystemController extends Controller
     //----------------------------------------------Ver pacientes---------------------------------------//
     public function verusuarios()
     {
-        return view("templates.usuarios");
+        $usuarios = pacientes::all();
+        return view('templates.usuarios')
+        ->with(['usuarios' => $usuarios]);
     }
 
     //----------------------------------------------Actualizar tabla usuarios--------------------------//
-    public function actualizartablausuarios()
+    public function verificar_sesion()
     {
-        $usuarios = pacientes::all();
-        return view('templates-tables-data.table-data-usu')
-        ->with(['usuarios' => $usuarios]);
+        if(empty(session('session_id'))){
+            echo '<script language="javascript"> alert("No tiene los permisos suficientes para acceder a esta ventana por favor inicie sesión o contacte a un administrador");
+            window.location.href = "/";</script>';
+        }
     }
 
     //----------------------------------------------Ver detalles usuario------------------------------//
@@ -94,6 +98,15 @@ class SystemController extends Controller
       }
     }
 
+
+//----------------------------------------- ver citas ------------------------------//
+    public function citas ()
+    {
+        $citas = citas::orderBy('fecha_cita', 'ASC', 'hora_cita', 'DESC')->get();
+        return view('templates.citas.ver_citas')
+        ->with(['citas' => $citas]);
+    }
+
 //-----------------------------------------crear_cita-------------------------//
     public function nueva_cita(){
         $especialidades = especialidades::all();
@@ -121,6 +134,16 @@ class SystemController extends Controller
     }else{
         echo'<script type="text/javascript">alert("Esta cita ya fue agendada con anterioridad");history.go(-1);</script>';
     }
+    }
+
+    //----------------------------------------------Ver detalles cita------------------------------//
+    public function detalles_cita(Request $request)
+    {
+        $id = $request['id'];
+        $citas = consultas::select('*')->where('id_cita','=',$id)->get();
+        if(count($citas)==0){
+            echo '<script language="javascript">alert("La cita no cuenta con detalles sera redirigido al formualrio para crear los respectivos"); window.location.href="/";</script>';
+        }
     }
 
 

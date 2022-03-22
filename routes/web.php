@@ -32,7 +32,7 @@ Route::name('crear_usuario')->get('/crear_usuario', function () {
 });
 Route::name('usuarios')->get('usuarios/', 'App\Http\Controllers\SystemController@verusuarios');
 Route::name('guardar_usuario')->post('guardar_usuario/', 'App\Http\Controllers\SystemController@nuevousuario');
-Route::name('actualizartablausu')->get('actualiartabalausuarios/', 'App\Http\Controllers\SystemController@actualizartablausuarios');
+Route::name('verificar_sesion')->get('verificar_sesion/', 'App\Http\Controllers\SystemController@verificar_sesion');
 Route::name('detallesusu')->post('detalles-usuario/', 'App\Http\Controllers\SystemController@detallesusu');
 Route::name('misdatos')->get('misdatos/', 'App\Http\Controllers\UserController@verdatosuser');
 Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers\UserController@actualizar_datos');
@@ -42,7 +42,8 @@ Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers
 Route::name('nueva_cita')->get('nueva_cita/', 'App\Http\Controllers\SystemController@nueva_cita');
 Route::name('consultorios_cita')->get('consultorios_cita/', 'App\Http\Controllers\CitasController@consultorios_cita');
 Route::name('guardar_cita')->post('guardar_cita/', 'App\Http\Controllers\SystemController@guardar_cita');
-Route::name('fechas_ocupadas')->post('fechas_ocupadas/', 'App\Http\Controllers\SystemController@fechas_ocupadas');
+Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@citas');
+Route::name('detalles_cita')->post('detalles_cita/', 'App\Http\Controllers\SystemController@detalles_cita');
 
 
 //------------------Consultorios---------------------------//

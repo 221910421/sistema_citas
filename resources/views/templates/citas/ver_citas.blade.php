@@ -20,45 +20,56 @@
         }, 500);
     });
 </script>
-<h1>Reporte de Pacientes</h1>
+<h1>Reporte de citas</h1>
 <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    <h3>Nombre completo</h3>
+                    <h3>Paciente</h3>
                 </th>
                 <th>
-                    <h3>Foto</h3>
+                    <h3>Especialidad</h3>
                 </th>
                 <th>
-                    <h3>Edad</h3>
+                    <h3>Folio</h3>
                 </th>
                 <th>
-                    <h3>Telefono</h3>
+                    <h3>Fecha</h3>
                 </th>
                 <th>
-                    <h3>Correo</h3>
+                    <h3>Hora</h3>
                 </th>
-               <th>
-                   <h3>Opciones</h3>
-               </th> 
+                <th>
+                    <h3>Estatus</h3>
+                </th>
+                <th>
+                    <h3>opciones</h3>
+                </th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($usuarios as $usuario)
+            @foreach ($citas as $cita)
             <tr>
-                <td>{{$usuario->nombre}} {{$usuario->apellido_paterno}} {{$usuario->apellido_materno}}</td>
-                <td><img src="{{('images/user/'.$usuario->foto)}}" class="foto_perfil" alt="foto de perfil"
-                        height="60px" ; width="60"></td>
-                <td>{{$usuario->edad}}</td>
-                <td>{{$usuario->telefono}}</td>
-                <td>{{$usuario->correo}}</td>
-                <td><form action="{{route('detallesusu')}}" method="post">
-                    @csrf
-                    <input type="text" name="id" readonly value="{{$usuario->id_pacientes}}" hidden>
-                    <input type="submit" style="border-radius: 5px; width: 100px; cursor: pointer; background-color: aqua;" value="Ver detalles">
-                </form></td>
+                <td>{{$cita->id_paciente}}</td>
+                <td>{{$cita->id_especialidad}}</td>
+                <td>{{$cita->folio}}</td>
+                <td>{{$cita->fecha_cita}}</td>
+                <td>{{$cita->hora_cita}}</td>
+                <td>{{$cita->estatus_cita}}</td>
+                <td>
+                    <form action="{{route('detalles_cita')}}" method="post">
+                        @csrf
+                        <input type="text" name="id" readonly value="{{$cita->id_cita}}" hidden>
+                        <input type="submit" style="border-radius: 5px; width: 100px; cursor: pointer; background-color: aqua;" value="Ver detalles">
+                    </form>
+                    <form action="" method="post">
+                        @csrf
+                        <input type="text" name="id" readonly value="{{$cita->id_cita}}" hidden>
+                        <input type="submit" style="border-radius: 5px; width: 100px; cursor: pointer; background-color: aqua;" value="Editar cita">
+
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

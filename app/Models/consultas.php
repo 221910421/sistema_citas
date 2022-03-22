@@ -9,7 +9,7 @@ class consultas extends Model
 {
     use HasFactory;
 
-    protected $table = 'consultas';
+    protected $table = 'consulta';
 
     protected $fillable = [
         'id_cita',
