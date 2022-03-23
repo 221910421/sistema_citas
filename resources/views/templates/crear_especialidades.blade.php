@@ -12,7 +12,7 @@
             <li class="breadcrumb-item">
                 <a href="{{route('index')}}">Inicio</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Registrarse</li>
+            <li class="breadcrumb-item active" aria-current="page">Especialidades</li>
         </ol>
     </div>
 </div>
@@ -33,45 +33,60 @@
             </div>
             <div class="contact-right-w3l appoint-form">
                 <h5 class="title-w3 text-center mb-5">Llenar con los datos de la nueva especialidad</h5>
-                <form action="{{route('guardar_especialidad')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('guardar_especialidad')}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Nombre de la especialidad*:</label>
-                        <input type="text" class="form-control" placeholder="Ingresa el nombre de la nueva especialidad" name="nombre"
-                            id="recipient-name" required="">
+                        <input type="text" class="form-control" placeholder="Ingresa el nombre de la nueva especialidad"
+                            name="especialidad" id="especialidad" onkeyup="mayusculas()" required="">
                     </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Precio:</label>
-                            <input type="text" class="form-control" maxlength="6" placeholder="Ingresa el precio" name="precio"
-                                required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Numero de Consultorio:*</label>
-                            <input type="text" class="form-control" maxlength="2" placeholder="Ingresa el numero de consultorio"
-                                name="numero_consultorio">
-                        </div>
-                        
-                        <div id="enviar">
-                            <input type="submit" value="Guardar nueva especialidad" class="btn_apt">
-                        </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Precio:</label>
+                        <input type="text" class="form-control" maxlength="6" placeholder="Ingresa el precio"
+                            name="precio" required="">
+                    </div>
+                    <div id="enviar">
+                        <input type="submit" value="Guardar nueva especialidad" class="btn_apt">
+                    </div>
                 </form>
             </div>
             <div class="clerafix"></div>
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
-    function comprobarpass() {
-        var pass = document.getElementById('contraseña').value;
-        var confirmpass = document.getElementById('confirmcontraseña').value;
-        if (pass == confirmpass) {
-            $("#error").empty();
-            $("#enviar").html('<input type="submit" value="Guardar nueva especialidad" class="btn_apt">');
-        }else {
-            $("#error").html('<label style="color: red;">Las contraseñas deben ser iguales</label>');
-            $("#enviar").html('<input type="submit" value="Guardar nueva especialidad" disabled class="btn_apt">');
-        }
+    function mayusculas() {
+        var especialidad = document.getElementById('especialidad').value;
+        var mayusculas = especialidad.toUpperCase();
+        document.getElementById("especialidad").value = mayusculas;
     }
+</script>
+
+<!-- //contact -->
+<!-- Js files -->
+<!-- JavaScript -->
+<script src="js/jquery-2.2.3.min.js"></script>
+<!-- Default-JavaScript-File -->
+
+<!-- banner slider -->
+<script src="js/responsiveslides.min.js"></script>
+<script>
+    $(function () {
+        $("#slider4").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: true,
+            speed: 1000,
+            namespace: "callbacks",
+            before: function () {
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+                $('.events').append("<li>after event fired.</li>");
+            }
+        });
+    });
 </script>
 
 <!-- //contact -->

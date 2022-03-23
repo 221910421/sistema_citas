@@ -142,7 +142,7 @@ class SystemController extends Controller
         $id = $request['id'];
         $citas = consultas::select('*')->where('id_cita','=',$id)->get();
         if(count($citas)==0){
-            echo '<script language="javascript">alert("La cita no cuenta con detalles sera redirigido al formualrio para crear los respectivos"); window.location.href="/";</script>';
+            echo '<script language="javascript">alert("La cita no cuenta con detalles sera redirigido al formualrio para crear los respectivos"); window.location.href="/crear_detalles_cita";</script>';
         }
     }
 
@@ -153,16 +153,32 @@ class SystemController extends Controller
         return view('templates.consultorios.crear_consultorios')
         ->with(["especialidades" => $especialidades]);
     }
-    public function guardar_consultorio(Request $request){
 
-    $consultorio = consultorios::create(array(
-        'numero_de_consultorio' => $request['numero_de_consultorio'],
-        'id_especialidad' =>$request['id_especialidad'],
-        'estatus' => $request['estatus']
-    ));
+//--------------------------------------------------Guardar Consultorio---------------------------------------//
+    public function guardar_consultorio(Request $request){
+        $consult_exist = consultorios::select('*')->where('numero_de_consultorio', '=', $request['numero_de_consultorio'])->where('id_especialidad', '=', $request['id_especialidad'])->get();
+        if(count($consult_exist)==0){
+        $consultorio = consultorios::create(array(
+            'numero_de_consultorio' => $request['numero_de_consultorio'],
+            'id_especialidad' =>$request['id_especialidad'],
+            'estatus' => $request['estatus']
+        ));
 
     echo '<script language="javascript">alert("Tu consultorio se guardo exitosamente"); window.location.href="/";</script>';
+    }
+    }
 
+//---------------------------------------------------Guardar especialidad--------------------------------------------//
+    public function guardar_especialidad(Request $request)
+    {
+        $especialidad_exist = especialidades::select('*')->where('nombre', '=', $request['especialidad'])->get();
+        if(count($especialidad_exist)==0){
+            $especialidad = especialidades::create(array(
+                'nombre' => $request['especialidad'],
+                'precio' => $request['precio']
+            ));
+            echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';
+        }
     }
 }
 

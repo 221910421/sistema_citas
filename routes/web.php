@@ -48,5 +48,11 @@ Route::name('detalles_cita')->post('detalles_cita/', 'App\Http\Controllers\Syste
 
 //------------------Consultorios---------------------------//
 Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controllers\SystemController@nuevo_consultorio');
-
 Route::name('guardar_consultorio')->post('guardar_consultorio/', 'App\Http\Controllers\SystemController@guardar_consultorio');
+
+
+//-------------------Especialidad-------------------------//
+Route::name('crear_especialidad')->get('/crear_especialidad', function () {
+    return view('templates.crear_especialidades');
+});
+Route::name('guardar_especialidad')->post('guardar_especialidad/', 'App\Http\Controllers\SystemController@guardar_especialidad');
