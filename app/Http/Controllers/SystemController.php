@@ -142,6 +142,7 @@ class SystemController extends Controller
         $id = $request['id'];
         $folio = $request['folio'];
         $paciente = $request['paciente'];
+        $pacientes = pacientes::select('*')->where('id_pacientes', '=', $paciente)->get();
         $citas = consultas::select('*')->where('id_cita','=',$id)->get();
         if(count($citas)==0){
             echo '<script language="javascript">alert("La cita no cuenta con detalles sera redirigido al formualrio para crear los respectivos");</script>';
@@ -150,7 +151,12 @@ class SystemController extends Controller
             ->with(['folio' => $folio])
             ->with(['paciente' => $paciente]);
         }else{
-            return view('detalles_cita')
+            foreach ($pacientes as $paci){
+                $nombre_completopa = $paci->nombre." ".$paci->apellido_paterno." ".$paci->apellido_materno; 
+            }
+            return view('templates.citas.detalles_cita')
+            ->with(['folio' => $folio])
+            ->with('nombre_completopa', $nombre_completopa)
             ->with(['citas' => $citas]);
         }
     }
