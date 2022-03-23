@@ -140,10 +140,52 @@ class SystemController extends Controller
     public function detalles_cita(Request $request)
     {
         $id = $request['id'];
+        $folio = $request['folio'];
+        $paciente = $request['paciente'];
         $citas = consultas::select('*')->where('id_cita','=',$id)->get();
         if(count($citas)==0){
-            echo '<script language="javascript">alert("La cita no cuenta con detalles sera redirigido al formualrio para crear los respectivos"); window.location.href="/crear_detalles_cita";</script>';
+            echo '<script language="javascript">alert("La cita no cuenta con detalles sera redirigido al formualrio para crear los respectivos");</script>';
+            return view('templates.citas.crear_detalle_cita')
+            ->with(['id' => $id])
+            ->with(['folio' => $folio])
+            ->with(['paciente' => $paciente]);
+        }else{
+            return view('detalles_cita')
+            ->with(['citas' => $citas]);
         }
+    }
+
+    public function guardar_detalles_cita(Request $request)
+    {
+        if($request->file('observacion') != ''){
+            $file = $request->file('observacion');
+
+            $foto =$file->getClientOriginalName(); 
+
+            $date = date('Ymd_His_');
+                $foto2 =  $date . $request['folio'] .$foto;
+
+            \Storage::disk('local')->put($foto2, \File::get($file));
+        }
+        else{
+            $foto2 = "N/A";
+        }
+        
+
+        $detalles_cita = consultas::create(array(
+            'id_cita' => $request['id_cita'],
+            'id_paciente' =>$request['paciente'],
+            'estatura' => $request['estatura'],
+            'peso' => $request['peso'],
+            'temperatura' => $request['temperatura'],
+            'alergias' => $request['alergias'],
+            'sintomas' => $request['sintomas'],
+            'diagnostico' => $request['diagnostico'],
+            'medicamentos_recetados' => $request['medicamentos'],
+            'observaciones' => $foto2,
+        ));
+        echo '<script language="javascript">alert("Detalles de cita guardada correctamente"); window.location.href="/";</script>';
+
     }
 
 
