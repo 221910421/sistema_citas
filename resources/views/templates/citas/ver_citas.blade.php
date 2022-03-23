@@ -65,9 +65,11 @@
                         <input type="text" name="folio" readonly value="{{$cita->folio}}" hidden>
                         <input type="submit" style="border-radius: 5px; width: 100px; cursor: pointer; background-color: aqua;" value="Ver detalles">
                     </form>
-                    <form action="" method="post">
+                    <form action="{{route('editar_cita')}}" method="post">
                         @csrf
                         <input type="text" name="id" readonly value="{{$cita->id_cita}}" hidden>
+                        <input type="text" name="paciente" readonly value="{{$cita->id_paciente}}" hidden>
+                        <input type="text" name="folio" readonly value="{{$cita->folio}}" hidden>
                         <input type="submit" style="border-radius: 5px; width: 100px; cursor: pointer; background-color: aqua;" value="Editar cita">
 
                     </form>

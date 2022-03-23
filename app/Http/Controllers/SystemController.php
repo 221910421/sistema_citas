@@ -160,7 +160,7 @@ class SystemController extends Controller
             ->with(['citas' => $citas]);
         }
     }
-
+//-------------------------------------------------------------guardar detalles cita---------------------------------------------//
     public function guardar_detalles_cita(Request $request)
     {
         if($request->file('observacion') != ''){
@@ -169,7 +169,7 @@ class SystemController extends Controller
             $foto =$file->getClientOriginalName(); 
 
             $date = date('Ymd_His_');
-                $foto2 =  $date . $request['folio'] .$foto;
+                $foto2 =  $date.$foto;
 
             \Storage::disk('local')->put($foto2, \File::get($file));
         }
@@ -190,12 +190,19 @@ class SystemController extends Controller
             'medicamentos_recetados' => $request['medicamentos'],
             'observaciones' => $foto2,
         ));
-        echo '<script language="javascript">alert("Detalles de cita guardada correctamente"); window.location.href="/";</script>';
+        echo '<script language="javascript">alert("Detalles de cita guardada correctamente"); window.location.href="/citas";</script>';
 
     }
 
+//----------------------------------------------- Editar cita-------------------------------------------------//
+    public function editar_cita(Request $request)
+    {
+        $citas = citas::select('*')->where('id_cita', '=', $request['id'])->get();
+        print_r($citas);
+    }
 
-    //------------------------------------------- Crear Consultorio-------------------------------------------//
+
+//----------------------------------------------- Crear Consultorio-------------------------------------------//
     public function nuevo_consultorio(){
         $especialidades = especialidades::all();
         return view('templates.consultorios.crear_consultorios')

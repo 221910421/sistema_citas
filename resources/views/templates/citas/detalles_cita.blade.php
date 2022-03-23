@@ -1,5 +1,11 @@
 @extends('templates-layouts.headerandfooter')
 @section('body')
+@if(empty(session('session_id')))
+<script type="text/javascript">
+    alert("No tiene los permisos suficientes para acceder a esta ventana por favor inicie sesión o contacte a un administrador");
+    window.location.href = "/";
+</script>
+@else
 <div class="inner-banner-w3ls">
     <div class="container">
 
@@ -45,7 +51,7 @@
                 <td>Peso:</td><td>{{$cita->peso}} kg</td>
             </tr>
             <tr>
-                <td>Temperatura:</td><td>{{$cita->temperatura}}°</td>
+                <td>Temperatura:</td><td>{{$cita->temperatura}}°C</td>
             </tr>
             <tr>
                 <td>Alergías:</td><td>{{$cita->alergias}}</td>
@@ -60,10 +66,11 @@
                 <td>Medicamentos recetados:</td><td>{{$cita->medicamentos_recetados}}</td>
             </tr>
             <tr>
-                <td>Imagen observaciones:</td><td><a href="{{('images/user/'.$cita->observaciones)}}">Ver la imagen</a></td>
+                <td>Imagen observaciones:</td><td><a href="{{('images/user/'.$cita->observaciones)}}">Ver imagen completa</a></td>
             </tr>
             @endforeach
         </table>
+        <img src="{{('images/user/'.$cita->observaciones)}}" alt="imagen citas" width="25%" height="auto">
     </center>
         <div class="clerafix"></div>
     </div>
@@ -113,4 +120,5 @@
 <!-- Necessary-JavaScript-File-For-Bootstrap -->
 
 <!-- //Js files -->
+@endif
 @endsection
