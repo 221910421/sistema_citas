@@ -243,8 +243,6 @@ class SystemController extends Controller
             echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';
         }
     }
-<<<<<<< HEAD
-=======
 
 //--------------------------------------------Ver especialidades-----------------------------------------
 public function ver_especialidad (){{
@@ -253,7 +251,6 @@ public function ver_especialidad (){{
         ->with(['especialidades' => $especialidades]);
     }
   }
->>>>>>> 49f1ce021defaadbfe6f908cbd007d66ce47da80
 }
 
 
