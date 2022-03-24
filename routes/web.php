@@ -53,12 +53,8 @@ Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controller
 Route::name('guardar_consultorio')->post('guardar_consultorio/', 'App\Http\Controllers\SystemController@guardar_consultorio');
 
 
-<<<<<<< HEAD
-
-=======
 //-------------------Especialidad-------------------------//
 Route::name('crear_especialidad')->get('/crear_especialidad', function () {
     return view('templates.crear_especialidades');
 });
 Route::name('guardar_especialidad')->post('guardar_especialidad/', 'App\Http\Controllers\SystemController@guardar_especialidad');
->>>>>>> 63fcaa78b6f8ab22d9aaf81101a1f0e862c9f4f1
