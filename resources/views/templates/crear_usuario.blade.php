@@ -101,22 +101,26 @@
                             <input type="password" class="form-control" name="contraseña" id="contraseña"
                                 pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*{8}"
                                 title="La contraseña debe empezar con una letra, contener al menos un dígito y una longitud total de 8 digitos"
-                                required="">
+                                required="" onkeyup="comprobarpass()">
+
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Verifica tu contraseña*:</label>
                             <input type="password" class="form-control" name="confirmarcon" id="confirmcontraseña"
-                                pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*{8}"
-                                title="La contraseña debe empezar con una letra, contener al menos un dígito y una longitud total de 8 digitos"
-                                onkeyup="comprobarpass()">
-                            <div id="error">
+                            onkeyup="comprobarpassiguales()"
+                            pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*{8}"
+                                title="La contraseña debe empezar con una letra, contener al menos un dígito y una longitud total de 8 digitos">
+                            <div id="error_pass_iguales">
+
+                            </div>
+                            <div id="error_longitud">
 
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">RFC:*</label>
                             <input type="text" class="form-control" minlength="13" maxlength="13"
-                                placeholder="Ingresa el número de tu dirección, (Dejar vacio si no cuenta con número)"
+                                placeholder="Ingresa tu RFC" required
                                 name="rfc">
                         </div>
                         <div id="enviar">
@@ -132,16 +136,32 @@
     function comprobarpass() {
         var pass = document.getElementById('contraseña').value;
         var confirmpass = document.getElementById('confirmcontraseña').value;
-        if (pass == confirmpass) {
-            $("#error").empty();
-            $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" class="btn_apt">');
-        }else {
-            $("#error").html('<label style="color: red;">Las contraseñas deben ser iguales</label>');
-            $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" disabled class="btn_apt">');
-        }
+       
+        if ( pass.length >= 8 ) {
+            $("#error_longitud").empty();
+    } else {
+        $("#error_longitud").html('<label style="color: red;">La contraseña debe contener 8 caracteres</label>');
+    }
+
     }
 </script>
 
+
+<script type="text/javascript">
+    function comprobarpassiguales() {
+        var pass = document.getElementById('contraseña').value;
+        var confirmpass = document.getElementById('confirmcontraseña').value;
+        if (pass == confirmpass) {
+            $("#error_pass_iguales").empty();
+            $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" class="btn_apt">');
+        }else {
+            $("#error_pass_iguales").html('<label style="color: red;">Las contraseñas deben ser iguales</label>');
+            $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" disabled class="btn_apt">');
+        }
+         if (pass)
+    
+    }
+</script>
 <!-- //contact -->
 <!-- Js files -->
 <!-- JavaScript -->

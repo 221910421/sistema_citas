@@ -5,10 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\citas;
 use App\Models\pacientes;
-<<<<<<< HEAD
-use App\Models\consultorios;
-=======
->>>>>>> 63fcaa78b6f8ab22d9aaf81101a1f0e862c9f4f1
 use App\Models\especialidades;
 use App\Models\consultorios;
 use App\Models\consultas;
@@ -111,9 +107,6 @@ class SystemController extends Controller
         ->with(['citas' => $citas]);
     }
 
-<<<<<<< HEAD
-    //------------------------------------------- Crear Consultorio-------------------------------------------//
-=======
 //-----------------------------------------crear_cita-------------------------//
     public function nueva_cita(){
         $especialidades = especialidades::all();
@@ -210,7 +203,6 @@ class SystemController extends Controller
 
 
 //----------------------------------------------- Crear Consultorio-------------------------------------------//
->>>>>>> 63fcaa78b6f8ab22d9aaf81101a1f0e862c9f4f1
     public function nuevo_consultorio(){
         $especialidades = especialidades::all();
         return view('templates.consultorios.crear_consultorios')
@@ -229,8 +221,6 @@ class SystemController extends Controller
 
     echo '<script language="javascript">alert("Tu consultorio se guardo exitosamente"); window.location.href="/";</script>';
     }
-<<<<<<< HEAD
-=======
     }
 
 //---------------------------------------------------Guardar especialidad--------------------------------------------//
@@ -245,7 +235,6 @@ class SystemController extends Controller
             echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';
         }
     }
->>>>>>> 63fcaa78b6f8ab22d9aaf81101a1f0e862c9f4f1
 }
 
 
