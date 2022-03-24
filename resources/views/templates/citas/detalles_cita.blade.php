@@ -1,5 +1,11 @@
 @extends('templates-layouts.headerandfooter')
 @section('body')
+@if(empty(session('session_id')))
+<script type="text/javascript">
+    alert("No tiene los permisos suficientes para acceder a esta ventana por favor inicie sesión o contacte a un administrador");
+    window.location.href = "/";
+</script>
+@else
 <div class="inner-banner-w3ls">
     <div class="container">
 
@@ -13,7 +19,8 @@
             <li class="breadcrumb-item">
                 <a href="{{route('index')}}">Inicio</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Nuevo consultorio</li>
+            <li class="breadcrumb-item"><a href="{{route('citas')}}">Citas</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Detalles cita</li>
         </ol>
     </div>
 </div>
@@ -23,43 +30,49 @@
 <div class="appointment py-5">
     <div class="py-xl-5 py-lg-3">
         <div class="w3ls-titles text-center mb-5">
-            <h3 class="title">Crear nuevo consultorio</h3>
+            <h3 class="title">Detalles de la cita con folio: {{$folio}}</h3>
             <span>
                 <i class="fas fa-user-md"></i>
             </span>
         </div>
-        <div class="d-flex">
-            <div class="appoint-img">
-
-            </div>
-            <div class="contact-right-w3l appoint-form">
-                <h5 class="title-w3 text-center mb-5">Llenar con los datos correctos del consultorio</h5>
-                <form action="{{route('guardar_consultorio')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Numero del consultorio</label>
-                        <input type="text" class="form-control" placeholder="Ingresa el numero de tu consultorio" name="numero_de_consultorio"
-                            id="recipient-name" required="">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Especialidades</label>
-                       <select name="id_especialidad" id="id_especialidad" class="form-control">
-                           <option value="0">Seleccione una Especialidad</option>
-                           @foreach($especialidades as $especialidad)
-                           <option value="{{$especialidad-> id_especialidad}}"> {{$especialidad->nombre}}          
-                           </option>
-                           @endforeach
-</select>   
-                    </div>
-                    <input type="text" name="estatus" value="Activo" hidden>
-                    
-                        <div id="enviar">
-                            <input type="submit" value="Guardar consultorio" class="btn_apt">
-                        </div>
-                </form>
-            </div>
-            <div class="clerafix"></div>
-        </div>
+        <center>
+        <table>
+            <tr>
+                <td>Nombre del paciente: </td><td>{{$nombre_completopa}}</td>
+            </tr>
+            <tr>
+                <td>Folio de la cita:</td><td>{{$folio}}</td>
+            </tr>
+            @foreach($citas as $cita)
+            <tr>
+                <td>Estatura del paciente</td><td>{{$cita->estatura}} cm</td>
+            </tr>
+            <tr>
+                <td>Peso:</td><td>{{$cita->peso}} kg</td>
+            </tr>
+            <tr>
+                <td>Temperatura:</td><td>{{$cita->temperatura}}°C</td>
+            </tr>
+            <tr>
+                <td>Alergías:</td><td>{{$cita->alergias}}</td>
+            </tr>
+            <tr>
+                <td>Sintomas:</td><td>{{$cita->sintomas}}</td>
+            </tr>
+            <tr>
+                <td>Diagnostico:</td><td>{{$cita->diagnostico}}</td>
+            </tr>
+            <tr>
+                <td>Medicamentos recetados:</td><td>{{$cita->medicamentos_recetados}}</td>
+            </tr>
+            <tr>
+                <td>Imagen observaciones:</td><td><a href="{{('images/user/'.$cita->observaciones)}}">Ver imagen completa</a></td>
+            </tr>
+            @endforeach
+        </table>
+        <img src="{{('images/user/'.$cita->observaciones)}}" alt="imagen citas" width="25%" height="auto">
+    </center>
+        <div class="clerafix"></div>
     </div>
 </div>
 
@@ -107,4 +120,5 @@
 <!-- Necessary-JavaScript-File-For-Bootstrap -->
 
 <!-- //Js files -->
+@endif
 @endsection

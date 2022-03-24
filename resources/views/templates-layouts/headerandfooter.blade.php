@@ -64,13 +64,9 @@
 								<!-- //social icons -->
 								<div class="col-6 header-top_w3layouts pl-3 text-lg-left text-center">
 									<p class="text-white">
-<<<<<<< HEAD
-										<i class="fas fa-map-marker-alt mr-2"></i>Av.Miguel Hidalgo,Bo.San Miguel. San Mateo Atenc, Méx. <!--cambiar-->
-=======
 										<i class="fas fa-map-marker-alt mr-2"></i>Acueducto del Alto Lerma Pedregal de
 										Guadalupe Hidalgo, Méx.
 										<!--cambiar-->
->>>>>>> dc13007175f59de77272a6535ef2eb36cc6b6427
 									</p>
 								</div>
 							</div>
@@ -86,12 +82,8 @@
 								<div class="col-lg-5 col-6 header-w3layouts pl-4 text-lg-left">
 									<p class="text-white">
 										<i class="fas fa-phone mr-2"></i><a href="tel:7282878382"
-<<<<<<< HEAD
-											style="color:#FFF;">7221209216</a><!--Cambiar-->
-=======
 											style="color:#FFF;">7282878382</a>
 										<!--Cambiar-->
->>>>>>> dc13007175f59de77272a6535ef2eb36cc6b6427
 									</p>
 								</div>
 							</div>
@@ -156,7 +148,7 @@
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="">Agendar Cita</a>
+										<a class="dropdown-item" href="{{route('nueva_cita')}}">Agendar Cita</a>
 										<a class="dropdown-item" href="">Mis citas</a>
 									</div>
 								</li>
@@ -265,11 +257,8 @@
 									<li class="mt-2">
 										<a href="">Acerca de Nosotros</a>
 									</li>
-									<!--<li class="mt-2">
-									<a href="gallery.html">Gallery</a>
-								</li>-->
 									<li class="mt-2">
-										<a href="">Agendar Cita</a>
+										<a href="{{route('nueva_cita')}}">Agendar Cita</a>
 									</li>
 									<li class="mt-2">
 										<a href="">Conocenos</a>

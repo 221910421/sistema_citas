@@ -14,6 +14,5 @@ class especialidades extends Model
     protected $fillable = [
         'nombre',
         'precio',
-        'id_consultorio',
     ];
 }

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id('id_especialidad');
             $table->string('nombre');
             $table->string('precio');
-            $table->string('id_consultorio');
             $table->timestamps();
         });
     }
