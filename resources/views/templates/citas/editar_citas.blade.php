@@ -23,7 +23,7 @@
 <div class="appointment py-5">
     <div class="py-xl-5 py-lg-3">
         <div class="w3ls-titles text-center mb-5">
-            <h3 class="title">Editar cita con folio:</h3>
+            <h3 class="title">Editar cita con folio: {{$folio}}</h3>
             <span>
                 <i class="fas fa-user-md"></i>
             </span>
@@ -33,13 +33,15 @@
 
             </div>
             <div class="contact-right-w3l appoint-form">
-                <h5 class="title-w3 text-center mb-5">Llenar correctamente los datos de tu cita</h5>
-                <form action="" method="post">
+                <h5 class="title-w3 text-center mb-5">Ingresar los nuevos datos de la cita con folio: {{$folio}}</h5>
+                <form action="" method="get">
                     @csrf
+                    @foreach($citas as $cita)
                     <div class="form-group" id="especialidades">
                         <label for="recipient-name" class="col-form-label">Especialidad*:</label>
+
                         <select name="especialidad" id="especialidad" required class="form-control" required>
-                            <option value="0">Seleccione una especialidad</option>
+                            <option value="0">Vuelva a seleccionar la especialidad</option>
                             @foreach($especialidades as $especialidad)
                             <option value="{{$especialidad->id_especialidad}}">{{$especialidad->nombre}}</option>
                             @endforeach
@@ -48,7 +50,7 @@
                     <div class="form-group" id="consultorios">
                         <label for="recipient-name" class="col-form-label">Consultorio*:</label>
                         <select name="consultorio" id="consultorio" disabled class="form-control" required>
-                            <option value="0">Selecciona una especialidad antes</option>
+                            <option value="0">Vuelva a seleccionar el consultorio</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -56,7 +58,7 @@
                         <input type="date" name="fecha" id="fecha" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Consultorio*:</label>
+                        <label for="recipient-name" class="col-form-label">Hora de la cita*:</label>
                         <select name="hora" id="hora" class="form-control" required>
                             <option value="">Selecciona la hora de su cita</option>
                             <option value="08:00">08:00</option>
@@ -85,7 +87,7 @@
         </div>
     </div>
 </div>
-
+@endforeach
 
 <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
 <script type="text/javascript">

@@ -198,7 +198,14 @@ class SystemController extends Controller
     public function editar_cita(Request $request)
     {
         $citas = citas::select('*')->where('id_cita', '=', $request['id'])->get();
-        print_r($citas);
+        $especialidades = especialidades::all();
+        $especialidad_cita = especialidades::select('*')->where('id_especialidad', '=' , $request['id_especialidad'])->get();
+        $folio = $request['folio'];
+        return view('templates.citas.editar_citas')
+        ->with(['especialidad_cita' => $especialidad_cita])
+        ->with(['citas' => $citas])
+        ->with('folio', $folio)
+        ->with(['especialidades' => $especialidades]);
     }
 
 
@@ -223,18 +230,30 @@ class SystemController extends Controller
     }
     }
 
+    
 //---------------------------------------------------Guardar especialidad--------------------------------------------//
     public function guardar_especialidad(Request $request)
     {
-        $especialidad_exist = especialidades::select('*')->where('nombre', '=', $request['especialidad'])->get();
+        $especialidad_exist = especialidades::select('*')->where('nombre_especialidad', '=', $request['nombre_especialidad'])->get();
         if(count($especialidad_exist)==0){
             $especialidad = especialidades::create(array(
-                'nombre' => $request['especialidad'],
+                'nombre_especialidad' => $request['nombre_especialidad'],
                 'precio' => $request['precio']
             ));
             echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';
         }
     }
+<<<<<<< HEAD
+=======
+
+//--------------------------------------------Ver especialidades-----------------------------------------
+public function ver_especialidad (){{
+        $especialidades = pacientes::all();
+        return view('templates.especialidades.ver_especialidad')
+        ->with(['especialidades' => $especialidades]);
+    }
+  }
+>>>>>>> 49f1ce021defaadbfe6f908cbd007d66ce47da80
 }
 
 
