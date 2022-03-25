@@ -223,18 +223,27 @@ class SystemController extends Controller
     }
     }
 
+    
 //---------------------------------------------------Guardar especialidad--------------------------------------------//
     public function guardar_especialidad(Request $request)
     {
-        $especialidad_exist = especialidades::select('*')->where('nombre', '=', $request['especialidad'])->get();
+        $especialidad_exist = especialidades::select('*')->where('nombre', '=', $request['nombre'])->get();
         if(count($especialidad_exist)==0){
             $especialidad = especialidades::create(array(
-                'nombre' => $request['especialidad'],
+                'nombre' => $request['nombre'],
                 'precio' => $request['precio']
             ));
             echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';
         }
     }
+
+//------------------Ver especialidades--------
+public function ver_especialidad (){{
+        $especialidades = pacientes::all();
+        return view('templates.especialidades.ver_especialidad')
+        ->with(['especialidades' => $especialidades]);
+    }
+  }
 }
 
 

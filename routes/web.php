@@ -55,6 +55,7 @@ Route::name('guardar_consultorio')->post('guardar_consultorio/', 'App\Http\Contr
 
 //-------------------Especialidad-------------------------//
 Route::name('crear_especialidad')->get('/crear_especialidad', function () {
-    return view('templates.crear_especialidades');
+    return view('templates.especialidades.crear_especialidades');
 });
 Route::name('guardar_especialidad')->post('guardar_especialidad/', 'App\Http\Controllers\SystemController@guardar_especialidad');
+Route::name('ver_especialidad')->get('ver_especialidad/', 'App\Http\Controllers\SystemController@ver_especialidad');
