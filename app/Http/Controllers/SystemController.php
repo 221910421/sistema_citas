@@ -198,7 +198,14 @@ class SystemController extends Controller
     public function editar_cita(Request $request)
     {
         $citas = citas::select('*')->where('id_cita', '=', $request['id'])->get();
-        print_r($citas);
+        $especialidades = especialidades::all();
+        $especialidad_cita = especialidades::select('*')->where('id_especialidad', '=' , $request['id_especialidad'])->get();
+        $folio = $request['folio'];
+        return view('templates.citas.editar_citas')
+        ->with(['especialidad_cita' => $especialidad_cita])
+        ->with(['citas' => $citas])
+        ->with('folio', $folio)
+        ->with(['especialidades' => $especialidades]);
     }
 
 

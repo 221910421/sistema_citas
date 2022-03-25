@@ -56,7 +56,7 @@
                         <input type="date" name="fecha" id="fecha" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Consultorio*:</label>
+                        <label for="recipient-name" class="col-form-label">Hora de la cita*:</label>
                         <select name="hora" id="hora" class="form-control" required>
                             <option value="">Selecciona la hora de su cita</option>
                             <option value="08:00">08:00</option>
