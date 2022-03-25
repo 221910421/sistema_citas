@@ -61,7 +61,7 @@
 		<div class="container py-xl-5 py-lg-3">
 			<div class="row">
 				<div class="col-lg-5 welcome-right">
-					<img src="images/b2.png" alt=" " class="img-fluid">
+					<img src="images/b2.jpg" alt=" " class="img-fluid">
 				</div>
 				<div class="col-lg-7 welcome-left mt-4">
 					<h3>Nos adaptamos a la nuevas medidas de higiene</h3>
