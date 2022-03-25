@@ -40,7 +40,7 @@
             @foreach ($especialidades as $especialidad)
             <tr>
                 <td>{{$especialidad->id_especialidad}}</td>
-                <td>{{$especialidad->nombre}}</td>
+                <td>{{$especialidad->nombre_especialidad}}</td>
                 <td>{{$especialidad->precio}}</td>
                 
             </tr>
