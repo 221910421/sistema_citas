@@ -156,8 +156,7 @@
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sesión de
-										{{session('session_name')}} <img class="foto_perfil"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{session('session_name')}}<br><img class="foto_perfil"
 											src="images/user/{{session('session_foto')}}" alt="Foto de perfil"
 											width="50" height="50"></a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">

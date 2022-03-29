@@ -194,20 +194,16 @@ class SystemController extends Controller
 
     }
 
-//----------------------------------------------- Editar cita-------------------------------------------------//
-    public function editar_cita(Request $request)
+//----------------------------------------------- Cancelar cita-------------------------------------------------//
+    public function cancelar_cita(Request $request)
     {
-        $citas = citas::select('*')->where('id_cita', '=', $request['id'])->get();
-        $especialidades = especialidades::all();
-        $especialidad_cita = especialidades::select('*')->where('id_especialidad', '=' , $request['id_especialidad'])->get();
-        $folio = $request['folio'];
-        return view('templates.citas.editar_citas')
-        ->with(['especialidad_cita' => $especialidad_cita])
-        ->with(['citas' => $citas])
-        ->with('folio', $folio)
-        ->with(['especialidades' => $especialidades]);
+        $id_cita = $request['id'];
+        $cancelar_cita = DB::table('citas')->where('id_cita', '=', $id_cita)->update([
+            'folio' => 'Cancelado', 
+            'estatus_cita' => 'Desactivado'
+    ]);
+    echo '<script language="javascript">alert("La cita se a cancelado correctamente"); window.location.href="/citas";</script>';
     }
-
 
 //----------------------------------------------- Crear Consultorio-------------------------------------------//
     public function nuevo_consultorio(){
@@ -243,17 +239,14 @@ class SystemController extends Controller
             echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';
         }
     }
-<<<<<<< HEAD
-=======
 
 //--------------------------------------------Ver especialidades-----------------------------------------
 public function ver_especialidad (){{
-        $especialidades = pacientes::all();
+        $especialidades = especialidades::all();
         return view('templates.especialidades.ver_especialidad')
         ->with(['especialidades' => $especialidades]);
     }
   }
->>>>>>> 49f1ce021defaadbfe6f908cbd007d66ce47da80
 }
 
 

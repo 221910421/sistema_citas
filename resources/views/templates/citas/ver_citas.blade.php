@@ -26,12 +26,6 @@
         <thead>
             <tr>
                 <th>
-                    <h3>Paciente</h3>
-                </th>
-                <th>
-                    <h3>Especialidad</h3>
-                </th>
-                <th>
                     <h3>Folio</h3>
                 </th>
                 <th>
@@ -51,8 +45,6 @@
         <tbody>
             @foreach ($citas as $cita)
             <tr>
-                <td>{{$cita->id_paciente}}</td>
-                <td>{{$cita->id_especialidad}}</td>
                 <td>{{$cita->folio}}</td>
                 <td>{{$cita->fecha_cita}}</td>
                 <td>{{$cita->hora_cita}}</td>
@@ -63,16 +55,23 @@
                         <input type="text" name="id" readonly value="{{$cita->id_cita}}" hidden>
                         <input type="text" name="paciente" readonly value="{{$cita->id_paciente}}" hidden>
                         <input type="text" name="folio" readonly value="{{$cita->folio}}" hidden>
-                        <input type="submit" style="border-radius: 5px; width: 100px; cursor: pointer; background-color: aqua;" value="Ver detalles">
+                        <input type="submit"
+                            style="border-radius: 5px; width: 130px; cursor: pointer; background-color: aqua;"
+                            value="Ver detalles">
                     </form>
-                    <form action="{{route('editar_cita')}}" method="post">
+                    <form id="cancelar" action="{{route('cancelar_cita')}}" method="post">
                         @csrf
                         <input type="text" name="id" readonly value="{{$cita->id_cita}}" hidden>
-                        <input type="text" name="paciente" readonly value="{{$cita->id_paciente}}" hidden>
                         <input type="text" name="folio" readonly value="{{$cita->folio}}" hidden>
-                        <input type="text" name="id_especialidad" id="id_especialidad" value="{{$cita->id_especialidad}}" readonly hidden>
-                        <input type="submit" style="border-radius: 5px; width: 100px; cursor: pointer; background-color: aqua;" value="Editar cita">
-
+                        @if($cita->folio != "Cancelado")
+                        <input type="button" value="Cancelar cita"
+                            style="border-radius: 5px; width: 130px; cursor: pointer; background-color: red;"
+                            onclick="confirmacion()">
+                        @else
+                        <input type="button" value="Cancelar cita"
+                            style="border-radius: 5px; width: 130px; cursor: pointer; background-color: red;"
+                            onclick="cancelado()">
+                        @endif
                     </form>
                 </td>
             </tr>
@@ -108,6 +107,23 @@
             }
         });
     });
+</script>
+
+<script>
+    function confirmacion() {
+        var mensaje = confirm("Se va a cancelar la cita este proceso es irreversible");
+        if (mensaje) {
+            document.getElementById("cancelar").submit();
+        }else{
+            alert("No se ha cancelado la cita has denegado la cancelación");
+        }
+    }
+</script>
+
+<script>
+    function cancelado() {
+        alert("Ya se ha cancelado la cita anteriormente");
+    }
 </script>
 <!-- //banner slider -->
 
