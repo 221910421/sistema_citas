@@ -15,6 +15,7 @@ class citas extends Model
         'id_paciente',
         'id_doctor',
         'id_especialidad',
+        'curp_paciente',
         'estatus_cita',
         'folio',
         'fecha_cita',

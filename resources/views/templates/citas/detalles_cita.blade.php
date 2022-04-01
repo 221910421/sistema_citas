@@ -65,12 +65,19 @@
             <tr>
                 <td>Medicamentos recetados:</td><td>{{$cita->medicamentos_recetados}}</td>
             </tr>
+            @if($cita->observaciones != "N/A")
             <tr>
                 <td>Imagen observaciones:</td><td><a href="{{('images/user/'.$cita->observaciones)}}">Ver imagen completa</a></td>
             </tr>
+            @else
+            @endif
             @endforeach
         </table>
+        @if($cita->observaciones != "N/A")
         <img src="{{('images/user/'.$cita->observaciones)}}" alt="imagen citas" width="25%" height="auto">
+        @else
+        <p>No se subio ninguna imagen a esta consulta</p>
+        @endif
     </center>
         <div class="clerafix"></div>
     </div>

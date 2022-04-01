@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('correo')->unique();
             $table->string('contraseña');
-            $table->string('rfc');
-            $table->enum('estatus',['Activo', 'Inactivo']);
+            $table->string('curp');
+            $table->enum('estatus',['Activo', 'Cancelado']);
             $table->timestamps();
         });
     }

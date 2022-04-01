@@ -31,14 +31,16 @@ class LoginController extends Controller
             $request->session()->put('session_correo', $consulta[0]->correo);
             $request->session()->put('session_password', $consulta[0]->contraseña);
             $request->session()->put('session_foto', $consulta[0]->foto);
+            $request->session()->put('session_curp', $consulta[0]->curp);
 
-            $session_id = $request->session()->get('session_id');
+            /*$session_id = $request->session()->get('session_id');
             $session_name = $request->session()->get('session_name');
             $session_ap = $request->session()->get('session_ap');
             $session_am = $request->session()->get('session_am');
             $session_correo = $request->session()->get('session_correo');
             $session_password = $request->session()->get('session_password');
             $session_foto = $request->session()->get('session_foto');
+            $session_curp = $request->session()->get('session_curp');*/
             return redirect(route('index'));
         }else{
             echo '<script type="text/javascript">

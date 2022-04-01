@@ -26,7 +26,7 @@ class pacientes extends Model
         'usuario',
         'correo',
         'contraseña',
-        'rfc',
+        'curp',
         'activo'
     ];
 }

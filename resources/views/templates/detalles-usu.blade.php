@@ -46,7 +46,7 @@
                     <h3>Correo</h3>
                 </th>
                 <th>
-                    <h3>RFC</h3>
+                    <h3>CURP</h3>
                 </th>
                 <th>
                     <h3>Estatus</h3>

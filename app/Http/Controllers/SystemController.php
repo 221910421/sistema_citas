@@ -37,7 +37,7 @@ class SystemController extends Controller
         $id = $request['id'];
         $usuarios = pacientes::select('*')->where('id_pacientes','=',$id)->get();
         foreach($usuarios as $usuarior){
-            $rfc = Crypt::decrypt($usuarior->rfc);
+            $rfc = Crypt::decrypt($usuarior->curp);
         }
         return view('templates.detalles-usu')
         ->with(['usuarios' => $usuarios])
@@ -80,7 +80,7 @@ class SystemController extends Controller
                 'telefono' => $request['telefono'],
                 'correo' => $request['correo'],
                 'contraseña' => Crypt::encrypt($contraseña),
-                'rfc' => Crypt::encrypt($request['rfc']),
+                'curp' => Crypt::encrypt($request['curp']),
                 'estatus' => $request['estatus']
             ));
             echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
@@ -103,8 +103,17 @@ class SystemController extends Controller
     public function citas ()
     {
         $citas = citas::orderBy('fecha_cita', 'ASC', 'hora_cita', 'DESC')->get();
-        return view('templates.citas.ver_citas')
-        ->with(['citas' => $citas]);
+        if(count($citas) >= 1){
+            foreach($citas as $cita){
+                $curp = Crypt::decrypt($cita->curp_paciente);
+            }
+            return view('templates.citas.ver_citas')
+            ->with(['citas' => $citas])
+            ->with(['curp' => $curp]);
+        }else{
+            return view('templates.citas.ver_citas')
+            ->with(['citas' => $citas]);
+    }
     }
 
 //-----------------------------------------crear_cita-------------------------//
@@ -124,6 +133,7 @@ class SystemController extends Controller
             'id_paciente' => session('session_id'),
             'id_doctor' => 1,
             'id_especialidad' => $request['especialidad'],
+            'curp_paciente'=> session('session_curp'),
             'estatus_cita' => "Activo",
             'folio' => $folio,
             'fecha_cita' => $request['fecha'],
@@ -158,7 +168,7 @@ class SystemController extends Controller
             ->with(['folio' => $folio])
             ->with('nombre_completopa', $nombre_completopa)
             ->with(['citas' => $citas]);
-        }
+        }/**/
     }
 //-------------------------------------------------------------guardar detalles cita---------------------------------------------//
     public function guardar_detalles_cita(Request $request)
@@ -200,7 +210,7 @@ class SystemController extends Controller
         $id_cita = $request['id'];
         $cancelar_cita = DB::table('citas')->where('id_cita', '=', $id_cita)->update([
             'folio' => 'Cancelado', 
-            'estatus_cita' => 'Desactivado'
+            'estatus_cita' => 'Cancelado'
     ]);
     echo '<script language="javascript">alert("La cita se a cancelado correctamente"); window.location.href="/citas";</script>';
     }
@@ -230,10 +240,10 @@ class SystemController extends Controller
 //---------------------------------------------------Guardar especialidad--------------------------------------------//
     public function guardar_especialidad(Request $request)
     {
-        $especialidad_exist = especialidades::select('*')->where('nombre_especialidad', '=', $request['nombre_especialidad'])->get();
+        $especialidad_exist = especialidades::select('*')->where('nombre_especialidad', '=', $request['especialidad'])->get();
         if(count($especialidad_exist)==0){
             $especialidad = especialidades::create(array(
-                'nombre_especialidad' => $request['nombre_especialidad'],
+                'nombre_especialidad' => $request['especialidad'],
                 'precio' => $request['precio']
             ));
             echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';

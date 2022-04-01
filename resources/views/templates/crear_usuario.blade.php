@@ -118,10 +118,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">RFC:*</label>
-                            <input type="text" class="form-control" minlength="13" maxlength="13"
-                                placeholder="Ingresa tu RFC" required
-                                name="rfc">
+                            <label for="recipient-name" class="col-form-label">CURP:*</label>
+                            <input type="text" class="form-control" minlength="18" maxlength="18"
+                                placeholder="Ingresa tu CURP a 18 Digitos" required
+                                name="curp">
                         </div>
                         <div id="enviar">
                             <input type="submit" value="Guardar nuevo usuario" class="btn_apt">
@@ -158,8 +158,6 @@
             $("#error_pass_iguales").html('<label style="color: red;">Las contraseñas deben ser iguales</label>');
             $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" disabled class="btn_apt">');
         }
-         if (pass)
-    
     }
 </script>
 <!-- //contact -->

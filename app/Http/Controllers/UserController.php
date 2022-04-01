@@ -14,7 +14,7 @@ class UserController extends Controller
         $mis_datos = pacientes::select('*')->where('id_pacientes','=',session('session_id'))->get();
         foreach($mis_datos as $password){
             $contraseña = Crypt::decrypt($password->contraseña);
-            $rfc = Crypt::decrypt($password->rfc);
+            $rfc = Crypt::decrypt($password->curp);
         }
         return view('templates.mis_datos')
         ->with(["mis_datos" => $mis_datos])
@@ -49,7 +49,7 @@ class UserController extends Controller
         'municipio' => $request['municipio'],
         'telefono' => $request['telefono'],
         'correo' => $request['correo'],
-        'rfc' => Crypt::encrypt($request['rfc'])
+        'curp' => Crypt::encrypt($request['rfc'])
     ]);
     echo '<script language="javascript">alert("Tus datos se han actualizado correctamente"); window.location.href="/misdatos";</script>';
     }

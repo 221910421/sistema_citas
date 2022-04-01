@@ -26,6 +26,9 @@
         <thead>
             <tr>
                 <th>
+                    <h3>CURP del paciente</h3>
+                </th>
+                <th>
                     <h3>Folio</h3>
                 </th>
                 <th>
@@ -45,6 +48,7 @@
         <tbody>
             @foreach ($citas as $cita)
             <tr>
+                <td>{{$curp}}</td>
                 <td>{{$cita->folio}}</td>
                 <td>{{$cita->fecha_cita}}</td>
                 <td>{{$cita->hora_cita}}</td>

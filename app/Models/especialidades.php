@@ -12,7 +12,7 @@ class especialidades extends Model
     protected $table = 'especialidades';
 
     protected $fillable = [
-        'nombre',
+        'nombre_especialidad',
         'precio',
     ];
 }

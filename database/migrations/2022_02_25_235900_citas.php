@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_cita');
             $table->string('id_paciente');
             $table->string('id_doctor');
+            $table->string('curp_paciente');
             $table->string('id_especialidad');
             $table->string('folio');
             $table->string('estatus_cita');

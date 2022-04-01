@@ -41,7 +41,7 @@
                         <select name="especialidad" id="especialidad" required class="form-control" required>
                             <option value="0">Seleccione una especialidad</option>
                             @foreach($especialidades as $especialidad)
-                            <option value="{{$especialidad->id_especialidad}}">{{$especialidad->nombre}}</option>
+                            <option value="{{$especialidad->id_especialidad}}">{{$especialidad->nombre_especialidad}}</option>
                             @endforeach
                         </select>
                     </div>
