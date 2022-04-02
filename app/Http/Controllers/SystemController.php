@@ -120,12 +120,8 @@ class SystemController extends Controller
 //-----------------------------------------crear_cita-------------------------//
     public function nueva_cita(){
         $especialidades = especialidades::all();
-        $citas = citas::select('hora_cita')->get();
-        $horas = horarios::all();
         return view('templates.citas.crear_cita')
-        ->with(["especialidades" => $especialidades])
-        ->with(["citas" => $citas ])
-        ->with(["horas" => $horas]);
+        ->with(["especialidades" => $especialidades]);
     }
 
 //----------------------------------------Guardar cita------------------------//
@@ -175,6 +171,21 @@ class SystemController extends Controller
             ->with(['citas' => $citas]);
         }/**/
     }
+
+
+//-------------------------------------------------------------Comprobar horarios citas------------------------------------------//
+public function horarios_cita(Request $request)
+{
+    $especialidad = $request['especialidad'];
+    $consultorio = $request['consultorio'];
+    $fecha = $request['fecha'];
+    $horas = horarios::all();
+    $citas = citas::orderBy('hora_cita', 'ASC')->where('id_consultorio', '=', $consultorio)->where('id_especialidad', '=', $especialidad)->where('fecha_cita', '=', $fecha)->get();
+    return view('templates.citas.horarios.horarios_cita')
+    ->with(["horas" => $horas])
+    ->with(["citas" => $citas]);
+}
+
 //-------------------------------------------------------------guardar detalles cita---------------------------------------------//
     public function guardar_detalles_cita(Request $request)
     {

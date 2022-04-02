@@ -46,7 +46,7 @@ Route::name('citas')->get('citas/', 'App\Http\Controllers\SystemController@citas
 Route::name('detalles_cita')->post('detalles_cita/', 'App\Http\Controllers\SystemController@detalles_cita');
 Route::name('guardar_detalles_cita')->post('guardar_detalles_cita/', 'App\Http\Controllers\SystemController@guardar_detalles_cita');
 Route::name('cancelar_cita')->post('cancelar_cita/', 'App\Http\Controllers\SystemController@cancelar_cita');
-
+Route::name('horarios_cita')->get('horarios_cita/', 'App\Http\Controllers\SystemController@horarios_cita');
 
 //------------------Consultorios---------------------------//
 Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controllers\SystemController@nuevo_consultorio');

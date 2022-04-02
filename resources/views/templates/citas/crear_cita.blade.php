@@ -51,23 +51,14 @@
                             <option value="0">Selecciona una especialidad antes</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="fechas">
                         <label for="recipient-name" class="col-form-label">Fecha*:</label>
-                        <input type="date" name="fecha" id="fecha" class="form-control" required>
+                        <input type="date" name="fecha" id="fecha" class="form-control" required onchange="comprobarHora()">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="horarios">
                         <label for="recipient-name" class="col-form-label">Hora de la cita*:</label>
                         <select name="hora" id="hora" class="form-control" required>
                             <option value="">Selecciona la hora de su cita</option>
-                            @foreach($citas as $cita)
-                            @foreach($horas as $hora)
-                            @if($hora->hora == $cita->hora_cita)
-                            <option value="{{$hora->hora}}" disabled>{{$hora->hora}}</option>
-                            @else
-                            <option value="{{$hora->hora}}">{{$hora->hora}}</option>
-                            @endif
-                            @endforeach
-                            @endforeach
                         </select>
                     </div>
                     <div id="enviar">
@@ -95,6 +86,31 @@
             }
         });
     });
+</script>
+
+<script type="text/javascript">
+    function comprobarHora() {
+        var especialidad = $('#especialidad').val();
+        var consultorio = $('#consultorio').val();
+        if(especialidad == 0 && consultorio == 0){
+            alert ("Seleccione una especialidad y un consultorio antes");
+            $('#fechas').html('<label for="recipient-name" class="col-form-label">Fecha*:</label><input type="date" name="fecha" id="fecha" class="form-control" value="" required onchange="comprobarHora()">');
+        }else{
+            if(especialidad == 0){
+                alert ("Seleccione una especialidad antes");
+            $('#fechas').html('<label for="recipient-name" class="col-form-label">Fecha*:</label><input type="date" name="fecha" id="fecha" class="form-control" value="" required onchange="comprobarHora()">');
+            }else{
+                if(consultorio == 0){
+                alert ("Seleccione un consultorio antes");
+            $('#fechas').html('<label for="recipient-name" class="col-form-label">Fecha*:</label><input type="date" name="fecha" id="fecha" class="form-control" value="" required onchange="comprobarHora()">');
+            }else{
+                var fecha = $('#fecha').val();
+                $('#horarios').empty();
+                $("#horarios").load("{{route('horarios_cita')}}?especialidad=" + especialidad + "&consultorio=" + consultorio + "&fecha=" + fecha).serialize();
+            }
+        }
+    }
+}
 </script>
 
 <!-- //contact -->
