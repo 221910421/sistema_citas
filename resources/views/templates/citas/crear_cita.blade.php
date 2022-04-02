@@ -59,15 +59,15 @@
                         <label for="recipient-name" class="col-form-label">Hora de la cita*:</label>
                         <select name="hora" id="hora" class="form-control" required>
                             <option value="">Selecciona la hora de su cita</option>
-                            <option value="08:00">08:00</option>
-                            <option value="09:00">09:00</option>
-                            <option value="10:00">10:00</option>
-                            <option value="11:00">11:00</option>
-                            <option value="12:00">12:00</option>
-                            <option value="13:00">13:00</option>
-                            <option value="14:00">14:00</option>
-                            <option value="15:00">15:00</option>
-                            <option value="16:00">16:00</option>
+                            @foreach($citas as $cita)
+                            @foreach($horas as $hora)
+                            @if($hora->hora == $cita->hora_cita)
+                            <option value="{{$hora->hora}}" disabled>{{$hora->hora}}</option>
+                            @else
+                            <option value="{{$hora->hora}}">{{$hora->hora}}</option>
+                            @endif
+                            @endforeach
+                            @endforeach
                         </select>
                     </div>
                     <div id="enviar">
@@ -96,6 +96,7 @@
         });
     });
 </script>
+
 <!-- //contact -->
 <!-- Js files -->
 <!-- JavaScript -->

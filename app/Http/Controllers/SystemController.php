@@ -8,6 +8,7 @@ use App\Models\pacientes;
 use App\Models\especialidades;
 use App\Models\consultorios;
 use App\Models\consultas;
+use App\Models\horarios;
 use Illuminate\Support\Facades\DB;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
@@ -119,8 +120,12 @@ class SystemController extends Controller
 //-----------------------------------------crear_cita-------------------------//
     public function nueva_cita(){
         $especialidades = especialidades::all();
+        $citas = citas::select('hora_cita')->get();
+        $horas = horarios::all();
         return view('templates.citas.crear_cita')
-        ->with(["especialidades" => $especialidades]);
+        ->with(["especialidades" => $especialidades])
+        ->with(["citas" => $citas ])
+        ->with(["horas" => $horas]);
     }
 
 //----------------------------------------Guardar cita------------------------//
@@ -212,6 +217,8 @@ class SystemController extends Controller
             'folio' => 'Cancelado', 
             'estatus_cita' => 'Cancelado'
     ]);
+
+    print_r($id_cita);
     echo '<script language="javascript">alert("La cita se a cancelado correctamente"); window.location.href="/citas";</script>';
     }
 

@@ -79,6 +79,7 @@
                                     <input type="file" class="form-file" name="foto" accept="image/*"
                                         value="{{$dato->foto}}" type="file">
                                 </div>
+                                <input type="text" value="{{$dato->foto}}" hidden readonly name="foto_original">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Calle*:</label>
                                     <input type="text" class="form-control" placeholder="Ingresa tu calle" name="calle"
@@ -126,7 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">RFC:*</label>
+                                    <label for="recipient-name" class="col-form-label">CURP:*</label>
                                     <input type="text" class="form-control" minlength="13" maxlength="13"
                                         placeholder="Ingresa el número de tu dirección, (Dejar vacio si no cuenta con número)"
                                         name="rfc" value="{{$rfc}}">

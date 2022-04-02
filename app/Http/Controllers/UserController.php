@@ -33,10 +33,10 @@ class UserController extends Controller
                 $foto2 =  $date . $foto;
 
             \Storage::disk('local')->put($foto2, \File::get($file));
+        }else{
+            $foto2 = $request['foto_original'];
         }
-        else{
-            $foto2 = "shadow.png";
-        }
+
         $actualizar_dato = DB::table('pacientes')->where('id_pacientes', 1)->update(['nombre' => strtoupper($request['nombre']), 
         'apellido_paterno' => strtoupper($request['apellido_paterno']),
         'apellido_materno' => strtoupper($request['apellido_materno']),
