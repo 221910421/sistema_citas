@@ -120,8 +120,11 @@ class SystemController extends Controller
 //-----------------------------------------crear_cita-------------------------//
     public function nueva_cita(){
         $especialidades = especialidades::all();
+        $date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
+        $next_date = date('Y-m-d', strtotime($date .' +1 day'));
         return view('templates.citas.crear_cita')
-        ->with(["especialidades" => $especialidades]);
+        ->with(["especialidades" => $especialidades])
+        ->with(['next_date' => $next_date]);
     }
 
 //----------------------------------------Guardar cita------------------------//
@@ -180,7 +183,7 @@ public function horarios_cita(Request $request)
     $consultorio = $request['consultorio'];
     $fecha = $request['fecha'];
     $horas = horarios::all();
-    $citas = citas::orderBy('hora_cita', 'ASC')->where('id_consultorio', '=', $consultorio)->where('id_especialidad', '=', $especialidad)->where('fecha_cita', '=', $fecha)->get();
+    $citas = citas::orderBy('hora_cita', 'ASC')->where('id_consultorio', '=', $consultorio)->where('id_especialidad', '=', $especialidad)->where('fecha_cita', '=', $fecha)->where('estatus_cita', '=', 'Activo')->get();
     return view('templates.citas.horarios.horarios_cita')
     ->with(["horas" => $horas])
     ->with(["citas" => $citas]);

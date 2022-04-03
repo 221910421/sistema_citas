@@ -149,7 +149,7 @@
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<a class="dropdown-item" href="{{route('nueva_cita')}}">Agendar Cita</a>
-										<a class="dropdown-item" href="">Mis citas</a>
+										<a class="dropdown-item" href="{{route('citas')}}">Ver todas las citas</a>
 									</div>
 								</li>
 								</li>

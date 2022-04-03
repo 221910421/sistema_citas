@@ -47,13 +47,13 @@
                     </div>
                     <div class="form-group" id="consultorios">
                         <label for="recipient-name" class="col-form-label">Consultorio*:</label>
-                        <select name="consultorio" id="consultorio" disabled class="form-control" required>
+                        <select name="consultorio" id="consultorio" disabled class="form-control" required onchange="restaturarfecha()">
                             <option value="0">Selecciona una especialidad antes</option>
                         </select>
                     </div>
                     <div class="form-group" id="fechas">
                         <label for="recipient-name" class="col-form-label">Fecha*:</label>
-                        <input type="date" name="fecha" id="fecha" class="form-control" required onchange="comprobarHora()">
+                        <input type="date" min="{{$next_date}}" name="fecha" id="fecha" class="form-control" required onchange="comprobarHora()">
                     </div>
                     <div class="form-group" id="horarios">
                         <label for="recipient-name" class="col-form-label">Hora de la cita*:</label>
@@ -79,13 +79,16 @@
             var valespecialidad = $("#especialidad").val();
             if (valespecialidad == 0) {
                 $('#consultorios').html('<label for="recipient-name" class="col-form-label">Consultorio*:</label><select name="consultorio" id="consultorio" disabled class="form-control" required><option value="0">Selecciona una especialidad antes</option></select>');
+                $('#fechas').html('<label for="recipient-name" class="col-form-label">Fecha*:</label><input type="date" min="{{$next_date}}" name="fecha" id="fecha" class="form-control" value="" required onchange="comprobarHora()">');
             }
             else {
                 $('#consultorios').empty();
                 $("#consultorios").load("{{ route('consultorios_cita')}}?id_especialidad=" + valespecialidad).serialize();
+                $('#fechas').html('<label for="recipient-name" class="col-form-label">Fecha*:</label><input type="date" min="{{$next_date}}" name="fecha" id="fecha" class="form-control" value="" required onchange="comprobarHora()">');
             }
         });
-    });
+    })
+
 </script>
 
 <script type="text/javascript">
@@ -112,6 +115,8 @@
     }
 }
 </script>
+
+
 
 <!-- //contact -->
 <!-- Js files -->
