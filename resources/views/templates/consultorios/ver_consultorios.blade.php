@@ -21,6 +21,8 @@
     });
 </script>
 <h1>Reporte de especialidades</h1>
+<form action="{{route('nuevo_consultorio')}}" method="get">
+<input style="border-radius: 4px; background-color:green" type="submit" value="Crear nuevo consultorio"></form>
 <div class="table-responsive">
     <table class="table">
         <thead>
@@ -37,6 +39,9 @@
                 <th>
                     <h3>Estatus</h3>
                 </th>
+                <th>
+                    <h3>Opciones</h3>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +51,12 @@
                 <td>{{$consultorio->numero_de_consultorio}}</td>
                 <td>{{$consultorio->id_especialidad}}</td>
                 <td>{{$consultorio->estatus}}</td>
+                <td>
+                    <form action="" method="get"> 
+                    <input type="text" name="id" id="id" value="{{$consultorio->id_consultorio}}" hidden>
+                    <input style="border-radius: 4px; background-color:green" type="submit" value="Editar consultorio">
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
