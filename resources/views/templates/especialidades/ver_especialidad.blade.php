@@ -21,6 +21,8 @@
     });
 </script>
 <h1>Reporte de especialidades</h1>
+<form action="{{route('nuevo_consultorio')}}" method="get">
+    <input style="border-radius: 4px; background-color:green" type="submit" value="Crear nueva especialidad"></form>
 <div class="table-responsive">
     <table class="table">
         <thead>
@@ -34,6 +36,9 @@
                 <th>
                     <h3>Precio</h3>
                 </th>
+                <th>
+                    <h3>Opciones</h3>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +47,18 @@
                 <td>{{$especialidad->id_especialidad}}</td>
                 <td>{{$especialidad->nombre_especialidad}}</td>
                 <td>{{$especialidad->precio}}</td>
-                
+                <td>
+                    <form action="{{route('editar_especialidad')}}" method="post"> 
+                        @csrf
+                    <input type="text" name="id" id="id" value="{{$especialidad->id_especialidad}}" hidden>
+                    <input style="border-radius: 4px; background-color:green" type="submit" value="Editar especialidad">
+                    </form>
+                    <form action="{{route('borrar_especialidad')}}" method="POST">
+                        @csrf
+                        <input type="text" name="id" id="id" value="{{$especialidad->id_especialidad}}" hidden>
+                        <input style="border-radius: 4px; background-color:red" type="submit" value="Borrar especialidad">
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -53,6 +53,9 @@ Route::name('busqueda_tiempo_real')->get('busqueda_tiempo_real', 'App\Http\Contr
 Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controllers\SystemController@nuevo_consultorio');
 Route::name('guardar_consultorio')->post('guardar_consultorio/', 'App\Http\Controllers\SystemController@guardar_consultorio');
 Route::name('consultorios')->get('consultorios/', 'App\Http\Controllers\SystemController@consultorios');
+Route::name('editar_consultorio')->post('editar_consultorio/', 'App\Http\Controllers\SystemController@editar_consultorio');
+Route::name('actualizar_consultorio')->post('actualizar_consultorio/', 'App\Http\Controllers\SystemController@actualizar_consultorio');
+Route::name('borrar_consultorio')->post('borrar_consultorio/', 'App\Http\Controllers\SystemController@borrar_consultorio');
 
 //-------------------Especialidad-------------------------//
 Route::name('crear_especialidad')->get('/crear_especialidad', function () {
@@ -60,3 +63,6 @@ Route::name('crear_especialidad')->get('/crear_especialidad', function () {
 });
 Route::name('guardar_especialidad')->post('guardar_especialidad/', 'App\Http\Controllers\SystemController@guardar_especialidad');
 Route::name('ver_especialidad')->get('ver_especialidad/', 'App\Http\Controllers\SystemController@ver_especialidad');
+Route::name('editar_especialidad')->post('editar_especialidad/', 'App\Http\Controllers\SystemController@editar_especialidad');
+Route::name('actualizar_especialidad')->post('actualizar_especialidad/', 'App\Http\Controllers\SystemController@actualizar_especialidad');
+Route::name('borrar_especialidad')->post('borrar_especialidad/', 'App\Http\Controllers\SystemController@borrar_especialidad');

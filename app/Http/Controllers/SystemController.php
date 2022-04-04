@@ -292,6 +292,43 @@ public function horarios_cita(Request $request)
         ->with(["consultorios" => $consultorios]);
     }
     
+
+//---------------------------------------------------Editar consultorio----------------------------------------------//
+    public function editar_consultorio(Request $request)
+    {
+        $consultorioE = consultorios::select('*')->where('id_consultorio', '=', $request['id'])->get();
+        $especialidades = especialidades::all();
+        return view('templates.consultorios.editar_consultorio')
+        ->with(["consultorioE" => $consultorioE])
+        ->with(["especialidades" => $especialidades]);
+    }
+
+//----------------------------------------------------Actualizar consultorio----------------------------------------------------//
+    public function actualizar_consultorio(Request $request){
+        $especialidad = $request['id_especialidad'];
+
+        if($especialidad == 0){
+        $cancelar_cita = DB::table('consultorios')->where('id_consultorio', '=', $request['id'])->update([
+            'numero_de_consultorio' => $request['numero_de_consultorio'],
+            'id_especialidad' => $request['especialidad']
+        ]);
+        }else{
+            $cancelar_cita = DB::table('consultorios')->where('id_consultorio', '=', $request['id'])->update([
+                'numero_de_consultorio' => $request['numero_de_consultorio'],
+                'id_especialidad' => $request['id_especialidad']
+            ]);
+        }
+        echo '<script language="javascript">alert("Tu consultorio se a actualizado correctamente"); window.location.href="consultorios";</script>';
+    }
+
+//---------------------------------------------------Borrar consultorio----------------------------------------------//
+    public function borrar_consultorio(Request $request)
+    {
+        $id_consultorio = $request['id'];
+        $consultorios = consultorios::select('*')->where('id_consultorio', '=', $id_consultorio)->delete();
+        echo '<script language="javascript">alert("Tu consultorio se borro correctamente"); window.location.href="consultorios";</script>';
+    }
+
 //---------------------------------------------------Guardar especialidad--------------------------------------------//
     public function guardar_especialidad(Request $request)
     {
@@ -306,12 +343,32 @@ public function horarios_cita(Request $request)
     }
 
 //--------------------------------------------Ver especialidades-----------------------------------------
-public function ver_especialidad (){{
+public function ver_especialidad (){
         $especialidades = especialidades::all();
         return view('templates.especialidades.ver_especialidad')
         ->with(['especialidades' => $especialidades]);
     }
+
+  
+  public function editar_especialidad(Request $request)
+  {
+      $especialidades = especialidades::select('*')->where('id_especialidad', '=', $request['id'])->get();
+      return view('templates.especialidades.editar_especialidad')
+      ->with(["especialidades" => $especialidades]);
   }
+  
+  public function actualizar_especialidad(Request $request)
+  {
+        $cancelar_cita = DB::table('especialidades')->where('id_especialidad', '=', $request['id'])->update([
+        'nombre_especialidad' => $request['especialidad'],
+        'precio' => $request['precio']
+        ]);
+    echo '<script language="javascript">alert("Tu especialidad se actualizo exitosamente"); window.location.href="ver_especialidad";</script>';
+  }
+
+  public function borrar_especialidad(Request $request)
+    {
+        $especialidades = especialidades::select('*')->where('id_especialidad', '=', $request['id'])->delete();
+        echo '<script language="javascript">alert("Tu especialidad se borro correctamente"); window.location.href="ver_especialidad";</script>';
+    }
 }
-
-
