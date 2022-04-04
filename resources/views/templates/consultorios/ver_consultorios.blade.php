@@ -26,23 +26,26 @@
         <thead>
             <tr>
                 <th>
-                    <h3>Numero de especialidad</h3>
+                    <h3>Especialidad</h3>
                 </th>
                 <th>
                     <h3>Nombre</h3>
                 </th>
                 <th>
-                    <h3>Precio</h3>
+                    <h3>especialidad</h3>
+                </th>
+                <th>
+                    <h3>Estatus</h3>
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($especialidades as $especialidad)
+            @foreach ($consultorios as $consultorio)
             <tr>
-                <td>{{$especialidad->id_especialidad}}</td>
-                <td>{{$especialidad->nombre_especialidad}}</td>
-                <td>{{$especialidad->precio}}</td>
-                
+                <td>{{$consultorio->id_especialidad}}</td>
+                <td>{{$consultorio->numero_de_consultorio}}</td>
+                <td>{{$consultorio->id_especialidad}}</td>
+                <td>{{$consultorio->estatus}}</td>
             </tr>
             @endforeach
         </tbody>

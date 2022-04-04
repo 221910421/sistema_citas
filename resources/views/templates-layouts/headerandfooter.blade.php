@@ -119,13 +119,13 @@
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
-								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-									<a class="nav-link" href="">Acerca de Nosotros</a>
-								</li>
-								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-									<a class="nav-link" href="">Conócenos</a>
-								</li>
 								@if(empty(session('session_id')))
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+									<a class="nav-link" href="">Especialidades</a>
+								</li>
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+									<a class="nav-link" href="">Consultorios</a>
+								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -143,6 +143,12 @@
 										<i class="fas fa-sign-in-alt mr-2"></i>Ingresar</a>
 								</li>
 								@else
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+									<a class="nav-link" href="{{route('ver_especialidad')}}">Especialidades</a>
+								</li>
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+									<a class="nav-link" href="{{route('consultorios')}}">Consultorios</a>
+								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -254,7 +260,7 @@
 										<a href="{{route('index')}}">Inicio</a>
 									</li>
 									<li class="mt-2">
-										<a href="">Acerca de Nosotros</a>
+										<a href="">Especialidades</a>
 									</li>
 									<li class="mt-2">
 										<a href="{{route('nueva_cita')}}">Agendar Cita</a>

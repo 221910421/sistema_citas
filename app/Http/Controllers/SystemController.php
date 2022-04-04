@@ -284,6 +284,13 @@ public function horarios_cita(Request $request)
     }
     }
 
+//---------------------------------------------------Ver consultorios------------------------------------------------//
+    public function consultorios()
+    {
+        $consultorios = consultorios::all();
+        return view("templates.consultorios.ver_consultorios")
+        ->with(["consultorios" => $consultorios]);
+    }
     
 //---------------------------------------------------Guardar especialidad--------------------------------------------//
     public function guardar_especialidad(Request $request)
