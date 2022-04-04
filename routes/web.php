@@ -47,6 +47,7 @@ Route::name('detalles_cita')->post('detalles_cita/', 'App\Http\Controllers\Syste
 Route::name('guardar_detalles_cita')->post('guardar_detalles_cita/', 'App\Http\Controllers\SystemController@guardar_detalles_cita');
 Route::name('cancelar_cita')->post('cancelar_cita/', 'App\Http\Controllers\SystemController@cancelar_cita');
 Route::name('horarios_cita')->get('horarios_cita/', 'App\Http\Controllers\SystemController@horarios_cita');
+Route::name('busqueda_tiempo_real')->get('busqueda_tiempo_real', 'App\Http\Controllers\SystemController@busqueda_tiempo_real');
 
 //------------------Consultorios---------------------------//
 Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controllers\SystemController@nuevo_consultorio');

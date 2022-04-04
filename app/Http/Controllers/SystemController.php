@@ -120,18 +120,46 @@ class SystemController extends Controller
 //-----------------------------------------crear_cita-------------------------//
     public function nueva_cita(){
         $especialidades = especialidades::all();
+        $consultorios = consultorios::all();
         $date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
         $next_date = date('Y-m-d', strtotime($date .' +1 day'));
-        return view('templates.citas.crear_cita')
-        ->with(["especialidades" => $especialidades])
-        ->with(['next_date' => $next_date]);
+        if(count($especialidades) == 0){
+            echo '<script language="javascript">alert("No existe ninguna especialidad por favor creela"); window.location.href="crear_especialidad";</script>';
+        }elseif(count($consultorios)==0){
+            echo '<script language="javascript">alert("No existe ningun consultorio por favor creela"); window.location.href="nuevo_consultorio";</script>';
+        }else{
+            return view('templates.citas.crear_cita')
+            ->with(["especialidades" => $especialidades])
+            ->with(['next_date' => $next_date]);
+        }
     }
+
+//----------------------------------------Busqueda tiempo real-------------------------------------------//
+    public function busqueda_tiempo_real(Request $request){
+        $terminob = $request['termino'];
+        $campo = $request['campo'];
+        $citas = citas::select('*')->where($campo, 'like', '%'.$terminob.'%')->get();
+        if(count($citas) >= 1){
+            foreach($citas as $cita){
+                $curp = Crypt::decrypt($cita->curp_paciente);
+            }
+            return view('templates.citas.tabla_citas')
+            ->with(['citas' => $citas])
+            ->with(['curp' => $curp]);
+        }else{
+            return view('templates.citas.tabla_citas')
+            ->with(['citas' => $citas])
+            ->with(['campo' => $campo])
+            ->with(['terminob' => $terminob]);
+    }
+    }
+
 
 //----------------------------------------Guardar cita------------------------//
     public function guardar_cita(Request $request){
         $letra_usu = substr(session("session_name"), 0, 2); 
         $folio = $request['especialidad'].".".$request['fecha'].".".$request['hora'].".".$letra_usu;
-        $citaexist = DB::select("SELECT * FROM citas  WHERE folio = '$folio'");
+        $citaexist = DB::select("SELECT * FROM citas  WHERE folio = '$folio' AND estatus_cita = 'Activo'");
         if(count($citaexist) == 0){
         $paciente = citas::create(array(
             'id_paciente' => session('session_id'),
@@ -144,7 +172,7 @@ class SystemController extends Controller
             'hora_cita' => $request['hora'],
             'id_consultorio' => $request['consultorio']
         ));
-        echo '<script language="javascript">alert("Cita agendada correctamente"); window.location.href="/";</script>';
+        echo '<script language="javascript">alert("Cita agendada correctamente"); window.location.href="citas";</script>';
     }else{
         echo'<script type="text/javascript">alert("Esta cita ya fue agendada con anterioridad");history.go(-1);</script>';
     }
@@ -228,7 +256,6 @@ public function horarios_cita(Request $request)
     {
         $id_cita = $request['id'];
         $cancelar_cita = DB::table('citas')->where('id_cita', '=', $id_cita)->update([
-            'folio' => 'Cancelado', 
             'estatus_cita' => 'Cancelado'
     ]);
 
