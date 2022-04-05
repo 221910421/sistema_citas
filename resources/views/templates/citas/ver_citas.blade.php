@@ -79,14 +79,13 @@
                         @csrf
                         <input type="text" name="id" readonly value="{{$cita->id_cita}}" hidden>
                         <input type="text" name="folio" readonly value="{{$cita->folio}}" hidden>
-                        @if($cita->folio != "Cancelado")
-                        <input type="button" value="Cancelar cita"
-                            style="border-radius: 5px; width: 130px; cursor: pointer; background-color: red;"
-                            onclick="confirmacion()">
+                        @if($cita->estatus_cita != "Cancelado")
+                        <input type="submit" value="Cancelar cita"
+                            style="border-radius: 5px; width: 130px; cursor: pointer; background-color: red;">
+                            
                         @else
                         <input type="button" value="Cancelar cita"
-                            style="border-radius: 5px; width: 130px; cursor: pointer; background-color: red;"
-                            onclick="cancelado()">
+                            style="border-radius: 5px; width: 130px; cursor: pointer; background-color: red;" onclick="cancelado()">
                         @endif
                     </form>
                 </td>
@@ -142,16 +141,6 @@
     });
 </script>
 
-<script>
-    function confirmacion() {
-        var mensaje = confirm("Se va a cancelar la cita este proceso es irreversible");
-        if (mensaje) {
-            document.getElementById("cancelar").submit();
-        }else{
-            alert("No se ha cancelado la cita has denegado la cancelación");
-        }
-    }
-</script>
 
 <script>
     function cancelado() {

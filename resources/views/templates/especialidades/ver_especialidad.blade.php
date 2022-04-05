@@ -21,7 +21,7 @@
     });
 </script>
 <h1>Reporte de especialidades</h1>
-<form action="{{route('nuevo_consultorio')}}" method="get">
+<form action="{{route('crear_especialidad')}}" method="get">
     <input style="border-radius: 4px; background-color:green" type="submit" value="Crear nueva especialidad"></form>
 <div class="table-responsive">
     <table class="table">

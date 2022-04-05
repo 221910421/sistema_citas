@@ -28,10 +28,10 @@
         <thead>
             <tr>
                 <th>
-                    <h3>Especialidad</h3>
+                    <h3>Consultorio</h3>
                 </th>
                 <th>
-                    <h3>Nombre</h3>
+                    <h3>Especialidad</h3>
                 </th>
                 <th>
                     <h3>Estatus</h3>
@@ -44,8 +44,10 @@
         <tbody>
             @foreach ($consultorios as $consultorio)
             <tr>
-                <td>{{$consultorio->id_especialidad}}</td>
                 <td>{{$consultorio->numero_de_consultorio}}</td>
+                @foreach($especialidades as $especialidad)
+                <td>{{$especialidad->nombre_especialidad}}</td>
+                @endforeach
                 <td>{{$consultorio->estatus}}</td>
                 <td>
                     <form action="{{route('editar_consultorio')}}" method="post"> 

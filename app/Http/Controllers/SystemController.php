@@ -288,8 +288,17 @@ public function horarios_cita(Request $request)
     public function consultorios()
     {
         $consultorios = consultorios::all();
+        foreach($consultorios as $consul){
+            $id = $consul->id_especialidad;
+        }
+
+        print_r($id);
+
+        $especialidades = especialidades::select('*')->where('id_especialidad', '=', $id)->get();
+
         return view("templates.consultorios.ver_consultorios")
-        ->with(["consultorios" => $consultorios]);
+        ->with(["consultorios" => $consultorios])
+        ->with(["especialidades" => $especialidades]);
     }
     
 
@@ -318,7 +327,7 @@ public function horarios_cita(Request $request)
                 'id_especialidad' => $request['id_especialidad']
             ]);
         }
-        echo '<script language="javascript">alert("Tu consultorio se a actualizado correctamente"); window.location.href="consultorios";</script>';
+        echo '<script language="javascript">alert("Tu consultorio se a actualizado correctamente"); window.location.href="/consultorios";</script>';
     }
 
 //---------------------------------------------------Borrar consultorio----------------------------------------------//
@@ -326,7 +335,7 @@ public function horarios_cita(Request $request)
     {
         $id_consultorio = $request['id'];
         $consultorios = consultorios::select('*')->where('id_consultorio', '=', $id_consultorio)->delete();
-        echo '<script language="javascript">alert("Tu consultorio se borro correctamente"); window.location.href="consultorios";</script>';
+        echo '<script language="javascript">alert("Tu consultorio se borro correctamente"); window.location.href="/consultorios";</script>';
     }
 
 //---------------------------------------------------Guardar especialidad--------------------------------------------//
@@ -338,7 +347,7 @@ public function horarios_cita(Request $request)
                 'nombre_especialidad' => $request['especialidad'],
                 'precio' => $request['precio']
             ));
-            echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/";</script>';
+            echo '<script language="javascript">alert("Tu especialidad se guardo exitosamente"); window.location.href="/ver_especialidad";</script>';
         }
     }
 
@@ -363,12 +372,12 @@ public function ver_especialidad (){
         'nombre_especialidad' => $request['especialidad'],
         'precio' => $request['precio']
         ]);
-    echo '<script language="javascript">alert("Tu especialidad se actualizo exitosamente"); window.location.href="ver_especialidad";</script>';
+    echo '<script language="javascript">alert("Tu especialidad se actualizo exitosamente"); window.location.href="/ver_especialidad";</script>';
   }
 
   public function borrar_especialidad(Request $request)
     {
         $especialidades = especialidades::select('*')->where('id_especialidad', '=', $request['id'])->delete();
-        echo '<script language="javascript">alert("Tu especialidad se borro correctamente"); window.location.href="ver_especialidad";</script>';
+        echo '<script language="javascript">alert("Tu especialidad se borro correctamente"); window.location.href="/ver_especialidad";</script>';
     }
 }
