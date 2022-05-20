@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('foto');
             $table->string('cedula')->unique();
             $table->text('correo')->unique();
-            $table->enum('rol', ['usr', 'admin']);
             $table->string('contraseña');
             $table->enum('estatus',['Activo', 'Inactivo']);
             $table->timestamps();
