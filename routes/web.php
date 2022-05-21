@@ -22,8 +22,8 @@ Route::name('index')->get('/', function () {
 Route::get('iniciarsesion/', function () {
     return view('templates.iniciar_sesion');
 });
-Route::name('login')->post('login/', 'App\Http\Controllers\loginController@validar');
-Route::name('salir')->get('salir/', 'App\Http\Controllers\loginController@logout');
+Route::name('login')->post('login/', 'App\Http\Controllers\LoginController@validar');
+Route::name('salir')->get('salir/', 'App\Http\Controllers\LoginController@logout');
 
 
 //------------------Usuarios--------------
