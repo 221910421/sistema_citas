@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('edad');
             $table->string('foto');
             $table->string('cedula')->unique();
-            $table->text('correo')->unique();
+            $table->text('correo');
             $table->string('contraseña');
             $table->enum('estatus',['Activo', 'Inactivo']);
             $table->timestamps();
