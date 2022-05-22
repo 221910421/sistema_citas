@@ -64,7 +64,7 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Foto*:</label>
-                            <input type="file" class="form-file" name="foto" required="" accept="image/*" type="file">
+                            <input type="file" class="form-file" name="foto" accept="image/*" type="file">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Calle*:</label>

@@ -288,17 +288,19 @@ public function horarios_cita(Request $request)
     public function consultorios()
     {
         $consultorios = consultorios::all();
+        if(count($consultorios) == 0){
+            echo 'No hay consultorios';
+        }else{
         foreach($consultorios as $consul){
             $id = $consul->id_especialidad;
         }
-
-        print_r($id);
 
         $especialidades = especialidades::select('*')->where('id_especialidad', '=', $id)->get();
 
         return view("templates.consultorios.ver_consultorios")
         ->with(["consultorios" => $consultorios])
         ->with(["especialidades" => $especialidades]);
+        }
     }
     
 
