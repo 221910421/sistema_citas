@@ -12,6 +12,14 @@
     </div>
     <!-- //banner 2 -->
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var refreshId = setInterval(function () {
+            $('#sesion').load("{{route('verificar_sesion')}}");
+        }, 500);
+    });
+</script>
 <!-- page details -->
 <div class="breadcrumb-agile">
     <div aria-label="breadcrumb">
@@ -119,14 +127,7 @@
         });
     });
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var refreshId = setInterval(function () {
-            $('#sesion').load("{{route('verificar_sesion')}}");
-        }, 500);
-    });
-</script>
+
 <!-- //banner slider -->
 
 <!-- fixed navigation -->
