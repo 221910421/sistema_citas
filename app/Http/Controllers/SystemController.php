@@ -59,7 +59,7 @@ class SystemController extends Controller
             $date = date('Ymd_His_');
                 $foto2 =  $date . $foto;
 
-            \Storage::disk('local')->put($foto2, \File::get($file));
+            $file->move(public_path().'images/user/',$foto2);
         }
         else{
             $foto2 = "shadow.png";

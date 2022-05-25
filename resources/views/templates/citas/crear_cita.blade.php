@@ -30,13 +30,13 @@
     <div class="py-xl-5 py-lg-3">
         <div class="w3ls-titles text-center mb-5">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var refreshId = setInterval(function () {
+        <script>
+            $(document).ready(function () {
+            var refreshId = setInterval(function () {
             $('#sesion').load("{{route('verificar_sesion')}}");
-        }, 500);
-    });
-</script>
+            }, 500);
+            });
+        </script>
             <h3 class="title">Crear mi cita {{session('session_name')}} {{session('session_ap')}}</h3>
             <span>
                 <i class="fas fa-user-md"></i>
