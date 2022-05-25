@@ -1,4 +1,10 @@
 @extends('templates-layouts.headerandfooter')
+@if(empty(session('session_id')))
+<script type="text/javascript">
+    alert("No tiene los permisos suficientes para acceder a esta ventana por favor inicie sesión o contacte a un administrador");
+    window.location.href = "/";
+</script>
+@else
 @section('body')
 <div class="inner-banner-w3ls">
     <div class="container">
@@ -163,3 +169,4 @@
 
 <!-- //Js files -->
 @endsection
+@endif

@@ -37,7 +37,7 @@ class UserController extends Controller
             $foto2 = $request['foto_original'];
         }
 
-        $actualizar_dato = DB::table('pacientes')->where('id_pacientes', 1)->update(['nombre' => strtoupper($request['nombre']), 
+        $actualizar_dato = DB::table('pacientes')->where('id_pacientes', session('session_id'))->update(['nombre' => strtoupper($request['nombre']), 
         'apellido_paterno' => strtoupper($request['apellido_paterno']),
         'apellido_materno' => strtoupper($request['apellido_materno']),
         'genero' => $request['genero'],
