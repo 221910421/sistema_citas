@@ -6,6 +6,14 @@
     window.location.href = "/";
 </script>
 @else
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var refreshId = setInterval(function () {
+            $('#sesion').load("{{route('verificar_sesion')}}");
+        }, 500);
+    });
+</script>
 <div class="inner-banner-w3ls">
     <div class="container">
 
