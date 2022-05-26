@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\pacientes;
 use \Crypt;
+use File;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -25,14 +26,21 @@ class UserController extends Controller
     public function actualizar_datos(Request $request)
     {
         if($request->file('foto') != ''){
+
+            $borrar = File::delete(public_path('images/user/' . session('session_foto')));
+
             $file = $request->file('foto');
 
-            $foto =$file->getClientOriginalName(); 
+            $foto =Crypt::encrypt($file->getClientOriginalName()); 
+
+            $extension = $file->getClientOriginalExtension();
 
             $date = date('Ymd_His_');
-                $foto2 =  $date . $foto;
+                $foto2 =  $date . $foto . "." .$extension;
 
-            \Storage::disk('local')->put($foto2, \File::get($file));
+            $file->move(public_path("images/user/"),$foto2);
+
+            $request->session()->put('session_foto', $foto2);
         }else{
             $foto2 = $request['foto_original'];
         }

@@ -54,14 +54,15 @@ class SystemController extends Controller
         if($request->file('foto') != ''){
             $file = $request->file('foto');
 
-            $foto =$file->getClientOriginalName(); 
+            $foto =Crypt::encrypt($file->getClientOriginalName()); 
+
+            $extension = $file->getClientOriginalExtension();
 
             $date = date('Ymd_His_');
-                $foto2 =  $date . $foto;
+                $foto2 =  $date . $foto . "." .$extension;
 
-            $file->move(public_path(),$foto2);
-        }
-        else{
+            $file->move(public_path("images/user/"),$foto2);
+        }else{
             $foto2 = "shadow.png";
         }
         if($contraseña = $confirmcontraseña){
