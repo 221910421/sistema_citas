@@ -85,6 +85,14 @@ class SystemController extends Controller
                 'curp' => Crypt::encrypt($request['curp']),
                 'estatus' => $request['estatus']
             ));
+
+            $data =[
+                'correo' => $request['correo'],
+                'nombre' => strtoupper($request['nombre']) . " " . strtoupper($request['apellido_paterno']) . " " .  strtoupper($request['apellido_materno']),
+                'fecha' => date('d-m-Y')
+            ];
+            \Mail::to($request['correo'])->send(new \App\Mail\NuevoUsuario($data));
+
             echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
         }else{
             echo'<script type="text/javascript">
