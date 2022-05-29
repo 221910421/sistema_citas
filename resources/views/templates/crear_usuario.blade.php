@@ -1,5 +1,10 @@
 @extends('templates-layouts.headerandfooter')
 @section('body')
+<style>
+    input{
+  text-transform: uppercase;
+}
+</style>
 <div class="inner-banner-w3ls">
     <div class="container">
 
@@ -116,6 +121,11 @@
                             <div id="error_longitud">
 
                             </div>
+                            <div id="error_num">
+                            </div>
+                            <div id="error_capital">
+
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">CURP:*</label>
@@ -135,12 +145,35 @@
 <script type="text/javascript">
     function comprobarpass() {
         var pass = document.getElementById('contraseña').value;
-        var confirmpass = document.getElementById('confirmcontraseña').value;
-       
-        if ( pass.length >= 8 ) {
-            $("#error_longitud").empty();
-    } else {
+        var passnum = pass.replace(/[^0-9]/g,"").length;
+
+    if(pass.length >= 8){
+        $("#error_longitud").empty();
+        $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" class="btn_apt">');
+    }else{
         $("#error_longitud").html('<label style="color: red;">La contraseña debe contener 8 caracteres</label>');
+        $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" disabled class="btn_apt">');
+    }
+    if(passnum >= 1){
+        $("#error_num").empty();
+        $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" class="btn_apt">');
+    } else{
+        $("#error_num").html('<label style="color: red;">Tu contraseña debe contener números</label>');
+        $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" disabled class="btn_apt">');
+    }
+    
+    if ( pass.match(/[A-Z]/) ) {
+        $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" class="btn_apt">');
+        $("#error_capital").empty();
+    }else{
+        $("#error_capital").html('<label style="color: red;">Tu contraseña debe contener al menos una letra mayuscula</label>');
+        $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" disabled class="btn_apt">');
+    }
+    if(passnum == 0 && pass.length == 0){
+        $("#error_num").empty();
+        $("#error_capital").empty();
+        $("#error_longitud").empty();
+        $("#enviar").html('<input type="submit" value="Guardar nuevo usuario" disabled class="btn_apt">');
     }
 
     }

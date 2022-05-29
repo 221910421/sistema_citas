@@ -143,8 +143,8 @@
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">CURP:*</label>
                                     <input type="text" class="form-control" minlength="13" maxlength="13"
-                                        placeholder="Ingresa el número de tu dirección, (Dejar vacio si no cuenta con número)"
-                                        name="rfc" value="{{$rfc}}">
+                                        placeholder="Ingresa tu curp de forma correcta)"
+                                        name="curp" value="{{$rfc}}">
                                 </div>
                                 <div id="enviar">
                                     <input type="submit" value="Actualizar mis datos" class="btn_apt">

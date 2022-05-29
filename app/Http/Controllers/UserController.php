@@ -57,7 +57,7 @@ class UserController extends Controller
         'municipio' => $request['municipio'],
         'telefono' => $request['telefono'],
         'correo' => $request['correo'],
-        'curp' => Crypt::encrypt($request['rfc'])
+        'curp' => Crypt::encrypt( strtoupper($request['curp']))
     ]);
     echo '<script language="javascript">alert("Tus datos se han actualizado correctamente"); window.location.href="/misdatos";</script>';
     }

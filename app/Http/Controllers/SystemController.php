@@ -82,7 +82,7 @@ class SystemController extends Controller
                 'telefono' => $request['telefono'],
                 'correo' => $request['correo'],
                 'contraseña' => Crypt::encrypt($contraseña),
-                'curp' => Crypt::encrypt($request['curp']),
+                'curp' => Crypt::encrypt( strtoupper($request['curp'])),
                 'estatus' => $request['estatus']
             ));
 
