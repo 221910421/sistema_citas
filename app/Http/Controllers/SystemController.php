@@ -91,9 +91,16 @@ class SystemController extends Controller
                 'nombre' => strtoupper($request['nombre']) . " " . strtoupper($request['apellido_paterno']) . " " .  strtoupper($request['apellido_materno']),
                 'fecha' => date('d-m-Y')
             ];
-            \Mail::to($request['correo'])->send(new \App\Mail\NuevoUsuario($data));
 
-            echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
+            try {
+                \Mail::to($request['correo'])->send(new \App\Mail\NuevoUsuario($data));
+                echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
+            } catch (\Exception $e) {
+                echo'<script type="text/javascript">
+                        alert("Te has registrado apropiadamento peor no hemos podido enviar el correo lo sentimos");
+                        window.location.href="/";
+                        </script>';
+            }
         }else{
             echo'<script type="text/javascript">
                         alert("El usuario ya ha sido registrado anteriormente");
