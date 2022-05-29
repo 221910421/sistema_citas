@@ -54,7 +54,7 @@ class SystemController extends Controller
         if($request->file('foto') != ''){
             $file = $request->file('foto');
 
-            $foto =Crypt::encrypt($file->getClientOriginalName()); 
+            $foto =md5($file->getClientOriginalName()); 
 
             $extension = $file->getClientOriginalExtension();
 
