@@ -33,7 +33,7 @@
         <script>
             $(document).ready(function () {
             var refreshId = setInterval(function () {
-            $('#sesion').load("{{route('verificar_sesion')}}");
+            window.location.href="/";
             }, 500);
             });
         </script>
