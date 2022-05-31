@@ -10,6 +10,8 @@ use App\Models\consultorios;
 use App\Models\consultas;
 use App\Models\horarios;
 use Illuminate\Support\Facades\DB;
+use \App\Mail\NuevoUsuario;
+use \Mail;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
 
@@ -65,6 +67,8 @@ class SystemController extends Controller
         }else{
             $foto2 = "shadow.png";
         }
+        $length = 10;
+        $codigo= substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
         if($contraseña = $confirmcontraseña){
         $emailexist = DB::select("SELECT * FROM pacientes  WHERE correo = '$correo'");
         if(count($emailexist) == 0){
@@ -83,17 +87,19 @@ class SystemController extends Controller
                 'correo' => $request['correo'],
                 'contraseña' => Crypt::encrypt($contraseña),
                 'curp' => Crypt::encrypt( strtoupper($request['curp'])),
-                'estatus' => $request['estatus']
+                'estatus' => $request['estatus'],
+                'codigo' => $codigo,
+                'correo_verificado' => 'no'
             ));
-
             $data =[
                 'correo' => $request['correo'],
                 'nombre' => strtoupper($request['nombre']) . " " . strtoupper($request['apellido_paterno']) . " " .  strtoupper($request['apellido_materno']),
-                'fecha' => date('d-m-Y')
+                'fecha' => date('d-m-Y'),
+                'codigo' => $codigo
             ];
 
             try {
-                \Mail::to($request['correo'])->send(new \App\Mail\NuevoUsuario($data));
+                Mail::to($request['correo'])->send(new NuevoUsuario($data));
                 echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
             } catch (\Exception $e) {
                 echo'<script type="text/javascript">

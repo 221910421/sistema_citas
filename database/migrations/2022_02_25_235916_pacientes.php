@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('contraseña');
             $table->string('curp');
             $table->enum('estatus',['Activo', 'Cancelado']);
+            $table->string('codigo');
+            $table->enum('correo_verificado', ['si', 'no']);
             $table->timestamps();
         });
     }

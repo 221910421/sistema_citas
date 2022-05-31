@@ -1205,6 +1205,8 @@ ul.blog_list.my-3 li {
 
 /* //comments */
 .leave-coment-form input[type="text"],
+.leave-coment-form input[type="number"],
+.leave-coment-form input[type="password"],
 .leave-coment-form input[type="email"],
 .leave-coment-form textarea {
     outline: none;
@@ -1403,13 +1405,15 @@ h5.title-w3 {
 }
 
 .contact-right-w3l input[type="text"],
+.contact-right-w3l input[type="number"],
+.contact-right-w3l input[type="password"],
 .contact-right-w3l input[type="email"],
 .contact-right-w3l textarea,
 .contact-right-w3l select.form-control {
     font-size: 15px;
     border: none;
     border-bottom: 1px solid #4575bd;
-    background: #fff;
+    background: #FFF;
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.28);
     outline: none;
     margin-bottom: 1.5em;
@@ -1855,6 +1859,8 @@ label.col-form-label {
     }
 
     .leave-coment-form input[type="text"],
+    .leave-coment-form input[type="number"],
+    .leave-coment-form input[type="password"],
     .leave-coment-form input[type="email"],
     .leave-coment-form textarea {
         width: 100%;
@@ -2204,6 +2210,8 @@ label.col-form-label {
     }
 
     .contact-right-w3l input[type="text"],
+    .contact-right-w3l input[type="number"],
+    .contact-right-w3l input[type="password"],
     .contact-right-w3l input[type="email"],
     .contact-right-w3l textarea,
     .contact-right-w3l select.form-control {
@@ -2444,5 +2452,14 @@ label.col-form-label {
     border-radius: 800px;
     overflow: hidden;
     }
+
+    input[type=text]{
+        text-transform: uppercase;
+      }
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      }
 
 /* //responsive */

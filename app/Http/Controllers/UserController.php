@@ -61,4 +61,22 @@ class UserController extends Controller
     ]);
     echo '<script language="javascript">alert("Tus datos se han actualizado correctamente"); window.location.href="/misdatos";</script>';
     }
+
+    public function verificar_correo(Request $request){
+        $usuarios = pacientes::select('codigo')->where('id_pacientes', '=', session('session_idtemp'))->get();
+        foreach ($usuarios as $usuario){
+            $codigousu = $usuario->codigo;
+        }
+        $codigo = $request['codigo'];
+        if($codigo == $codigousu){
+            $actualizar_dato = DB::table('pacientes')->where('id_pacientes', session('session_idtemp'))->update(['correo_verificado' => 'si', 'codigo' => '-----']); 
+            $request->session()->forget('session_idtemp');
+            echo '<script language="javascript">alert("Gracias por vericar tu correo, ya puedes iniciar sesión"); window.location.href="/";</script>';
+        }else{
+            echo'<script type="text/javascript">
+                        alert("El código de verificación ingresado es incorrecto");
+                        history.go(-1);
+                        </script>';  
+        }
+    }
 }

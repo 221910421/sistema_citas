@@ -1,10 +1,6 @@
 @extends('templates-layouts.headerandfooter')
 @section('body')
-<style>
-    input{
-  text-transform: uppercase;
-}
-</style>
+
 <div class="inner-banner-w3ls">
     <div class="container">
 
@@ -64,7 +60,7 @@
                             class="col-form-label">Femenino</label>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Edad*:</label>
-                            <input type="text" maxlength="2" pattern="[0-9]{2}" class="form-control"
+                            <input type="number"  maxlength="2" title="Ingresa solo números y 10 digitos" class="form-control"
                                 placeholder="Ingresa tu edad" name="edad" required="">
                         </div>
                         <div class="form-group">
@@ -78,9 +74,9 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Numero:</label>
-                            <input type="text" class="form-control" pattern="[0-9]{2}"
+                            <input type="number" class="form-control"
                                 placeholder="Ingresa el número de tu dirección, (Dejar vacio si no cuenta con número)"
-                                name="numero" maxlength="4" minlength="2">
+                                name="numero" maxlength="5" minlength="2">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Codigo postal:*</label>
@@ -93,7 +89,7 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Telefono:*</label>
-                            <input type="text" class="form-control" pattern="[0-9]{10}"
+                            <input type="number" class="form-control" minlength="10" maxlength="10"
                                 placeholder="Ingresa tú número de telefono" name="telefono" id="recipient-phone">
                         </div>
                         <div class="form-group">
@@ -104,17 +100,13 @@
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Contraseña*:</label>
                             <input type="password" class="form-control" name="contraseña" id="contraseña"
-                                pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*{8}"
-                                title="La contraseña debe empezar con una letra, contener al menos un dígito y una longitud total de 8 digitos"
-                                required="" onkeyup="comprobarpass()">
+                               required="" onkeyup="comprobarpass()">
 
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Verifica tu contraseña*:</label>
                             <input type="password" class="form-control" name="confirmarcon" id="confirmcontraseña"
-                            onkeyup="comprobarpassiguales()"
-                            pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*{8}"
-                                title="La contraseña debe empezar con una letra, contener al menos un dígito y una longitud total de 8 digitos">
+                            onkeyup="comprobarpassiguales()">
                             <div id="error_pass_iguales">
 
                             </div>

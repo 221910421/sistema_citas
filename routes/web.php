@@ -36,6 +36,7 @@ Route::name('verificar_sesion')->get('verificar_sesion/', 'App\Http\Controllers\
 Route::name('detallesusu')->post('detalles-usuario/', 'App\Http\Controllers\SystemController@detallesusu');
 Route::name('misdatos')->get('misdatos/', 'App\Http\Controllers\UserController@verdatosuser');
 Route::name('actualizar_datos')->post('actualizar_datos/', 'App\Http\Controllers\UserController@actualizar_datos');
+Route::name('verificar_correo')->post('verficar_correo/', 'App\Http\Controllers\UserController@verificar_correo');
 
 
 //-----------------Citas--------------------//

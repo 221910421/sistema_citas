@@ -27,6 +27,8 @@ class pacientes extends Model
         'correo',
         'contraseña',
         'curp',
-        'activo'
+        'activo',
+        'codigo',
+        'correo_verificado'
     ];
 }
