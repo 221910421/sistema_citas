@@ -11,7 +11,7 @@
     <p>Tu registro fue exitoso en nuestro sistema, te has registrado con el correo {{ $data['correo'] }}, con fecha de
         {{ $data['fecha'] }}</p> <br> <br>
     
-    <h3>{{$data['codigo']}}</h3>
+    <h3>Codigo de verificación: {{$data['codigo']}}</h3>
 </body>
 
 </html>
