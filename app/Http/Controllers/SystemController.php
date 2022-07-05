@@ -56,7 +56,7 @@ class SystemController extends Controller
         if($request->file('foto') != ''){
             $file = $request->file('foto');
 
-            $foto =md5($file->getClientOriginalName()); 
+            $foto =md5($file->getClientOriginalName());
 
             $extension = $file->getClientOriginalExtension();
 
@@ -68,7 +68,7 @@ class SystemController extends Controller
             $foto2 = "shadow.png";
         }
         $length = 10;
-        $codigo= substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
+        $codigo= substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
         if($contraseña = $confirmcontraseña){
         $emailexist = DB::select("SELECT * FROM pacientes  WHERE correo = '$correo'");
         if(count($emailexist) == 0){
@@ -103,7 +103,7 @@ class SystemController extends Controller
                 echo '<script language="javascript">alert("Te has registrado apropiadamente"); window.location.href="/";</script>';
             } catch (\Exception $e) {
                 echo'<script type="text/javascript">
-                        alert("Te has registrado apropiadamento peor no hemos podido enviar el correo lo sentimos");
+                        alert("Te has registrado apropiadamento pero no hemos podido enviar el correo lo sentimos");
                         window.location.href="/";
                         </script>';
             }
@@ -111,13 +111,13 @@ class SystemController extends Controller
             echo'<script type="text/javascript">
                         alert("El usuario ya ha sido registrado anteriormente");
                         history.go(-1);
-                        </script>';  
+                        </script>';
         }
       }else{
         echo'<script type="text/javascript">
                         alert("Las contraseñas deben ser iguales por favor verifique");
                         history.go(-1);
-                        </script>';  
+                        </script>';
       }
     }
 
@@ -179,7 +179,7 @@ class SystemController extends Controller
 
 //----------------------------------------Guardar cita------------------------//
     public function guardar_cita(Request $request){
-        $letra_usu = substr(session("session_name"), 0, 2); 
+        $letra_usu = substr(session("session_name"), 0, 2);
         $folio = $request['especialidad'].".".$request['fecha'].".".$request['hora'].".".$letra_usu;
         $citaexist = DB::select("SELECT * FROM citas  WHERE folio = '$folio' AND estatus_cita = 'Activo'");
         if(count($citaexist) == 0){
@@ -216,7 +216,7 @@ class SystemController extends Controller
             ->with(['paciente' => $paciente]);
         }else{
             foreach ($pacientes as $paci){
-                $nombre_completopa = $paci->nombre." ".$paci->apellido_paterno." ".$paci->apellido_materno; 
+                $nombre_completopa = $paci->nombre." ".$paci->apellido_paterno." ".$paci->apellido_materno;
             }
             return view('templates.citas.detalles_cita')
             ->with(['folio' => $folio])
@@ -245,7 +245,7 @@ public function horarios_cita(Request $request)
         if($request->file('observacion') != ''){
             $file = $request->file('observacion');
 
-            $foto =$file->getClientOriginalName(); 
+            $foto =$file->getClientOriginalName();
 
             $date = date('Ymd_His_');
                 $foto2 =  $date.$foto;
@@ -255,7 +255,7 @@ public function horarios_cita(Request $request)
         else{
             $foto2 = "N/A";
         }
-        
+
 
         $detalles_cita = consultas::create(array(
             'id_cita' => $request['id_cita'],
@@ -324,7 +324,7 @@ public function horarios_cita(Request $request)
         ->with(["especialidades" => $especialidades]);
         }
     }
-    
+
 
 //---------------------------------------------------Editar consultorio----------------------------------------------//
     public function editar_consultorio(Request $request)
@@ -382,14 +382,14 @@ public function ver_especialidad (){
         ->with(['especialidades' => $especialidades]);
     }
 
-  
+
   public function editar_especialidad(Request $request)
   {
       $especialidades = especialidades::select('*')->where('id_especialidad', '=', $request['id'])->get();
       return view('templates.especialidades.editar_especialidad')
       ->with(["especialidades" => $especialidades]);
   }
-  
+
   public function actualizar_especialidad(Request $request)
   {
         $cancelar_cita = DB::table('especialidades')->where('id_especialidad', '=', $request['id'])->update([
