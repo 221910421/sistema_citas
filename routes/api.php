@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\pacientesApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/pacientesApi', [pacientesApi::class, 'index'])->name('pacientesApi');
+
+Route::get('/pacientesApi/buscar', [pacientesApi::class, 'show'])->name('pacientesApi/buscar');
+
+Route::put('/pacientesApi/actualizar', [pacientesApi::class, 'update'])->name('pacientesApi/actualizar');
+
+Route::put('/pacientesApi/borrar', [pacientesApi::class, 'destroy'])->name('pacientesApi/borrar');
