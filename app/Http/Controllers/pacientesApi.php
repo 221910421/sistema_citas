@@ -40,17 +40,35 @@ class pacientesApi extends Controller
         $pacientes = new pacientes();
         $pacientes->nombre = strtoupper($request->nombre);
         $pacientes->apellido_paterno = strtoupper($request->apellido_paterno);
+        $pacientes->apellido_materno = strtoupper($request->apellido_materno);
+        $pacientes->genero = $request->genero;
+        $pacientes->edad = $request->edad;
+        $pacientes->foto = 'shadow.png';
+        $pacientes->calle = strtoupper($request->calle);
+        $pacientes->numero = $request->numero;
+        $pacientes->codigo_postal = $request->codigo_postal;
+        $pacientes->municipio = strtoupper($request->municipio);
+        $pacientes->telefono = $request->telefono;
+        $pacientes->correo = $request->correo;
+        $pacientes->contraseña = $request->contraseña;
+        $pacientes->curp = strtoupper($request->curp);
+        $pacientes->estatus = 'Activo';
+        $pacientes->codigo = '-----';
+        $pacientes->correo_verificado = 'si';
+
+        $pacientes->save();
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  string  $id
+     * @param  string  $correo
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
     {
-        $pacientes = Pacientes::findOrFail($request->id_paciente);
+        $pacientes = pacientes::select('*')->where('correo','=',$request['correo'])->where('estatus', '=', 'Activo')->get();
         return $pacientes;
     }
 

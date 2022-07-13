@@ -25,4 +25,7 @@ Route::get('/pacientesApi/buscar', [pacientesApi::class, 'show'])->name('pacient
 
 Route::put('/pacientesApi/actualizar', [pacientesApi::class, 'update'])->name('pacientesApi/actualizar');
 
-Route::put('/pacientesApi/borrar', [pacientesApi::class, 'destroy'])->name('pacientesApi/borrar');
+Route::delete('/pacientesApi/borrar', [pacientesApi::class, 'destroy'])->name('pacientesApi/borrar');
+
+Route::post('/pacientesApi/guardar', [pacientesApi::class, 'store'])->name('pacientesApi/guardar');
+
