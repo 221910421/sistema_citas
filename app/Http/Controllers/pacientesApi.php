@@ -15,7 +15,7 @@ class pacientesApi extends Controller
      */
     public function index()
     {
-        $pacientes = Pacientes::all();
+        $pacientes = pacientes::all();
         return $pacientes;
     }
 
@@ -92,7 +92,7 @@ class pacientesApi extends Controller
      */
     public function update(Request $request)
     {
-        $pacientes = Pacientes::findOrFail($request->id_paciente);
+        $pacientes = pacientes::findOrFail($request->id_paciente);
 
         $pacientes->foto = $request->foto;
         $pacientes->calle = strtoupper($request->calle);
@@ -100,7 +100,7 @@ class pacientesApi extends Controller
         $pacientes->codigo_postal = $request->codigo_postal;
         $pacientes->municipio = strtoupper($request->municipio);
         $pacientes->correo = $request->correo;
-        $pacientes->contraseña = Crypt::encrypt($request->contraseña);
+        $pacientes->contraseña = $request->contraseña;
 
         $pacientes->save();
 

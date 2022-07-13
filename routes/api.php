@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pacientesApi;
+use App\Http\Controllers\citasApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Routes pacientes Api
 Route::get('/pacientesApi', [pacientesApi::class, 'index'])->name('pacientesApi');
 
 Route::get('/pacientesApi/buscar', [pacientesApi::class, 'show'])->name('pacientesApi/buscar');
@@ -29,3 +31,13 @@ Route::delete('/pacientesApi/borrar', [pacientesApi::class, 'destroy'])->name('p
 
 Route::post('/pacientesApi/guardar', [pacientesApi::class, 'store'])->name('pacientesApi/guardar');
 
+//Routes citas Api
+Route::get('/citasApi', [citasApi::class, 'index'])->name('citasApi');
+
+Route::post('/citasApi/guardar', [citasApi::class, 'store'])->name('citasApi/guardar');
+
+Route::get('/citasApi/buscar', [citasApi::class, 'show'])->name('citasApi/buscar');
+
+Route::put('/citasApi/actualizar', [citasApi::class, 'update'])->name('citasApi/actualizar');
+
+Route::delete('/citasApi/borrar', [citasApi::class, 'destroy'])->name('citasApi/borrar');
