@@ -51,7 +51,7 @@
 								<!-- social icons -->
 								<ul class="col-lg-4 col-6 top-right-info text-center">
 									<li>
-										<a href="https://www.facebook.com/UNEVT.Edomex">
+										<a href="https://www.facebook.com/EspecialistasEnCuidarTuSalud">
 											<i class="fab fa-facebook-f"></i>
 										</a>
 									</li>
@@ -64,8 +64,7 @@
 								<!-- //social icons -->
 								<div class="col-6 header-top_w3layouts pl-3 text-lg-left text-center">
 									<p class="text-white">
-										<i class="fas fa-map-marker-alt mr-2"></i>Acueducto del Alto Lerma Pedregal de
-										Guadalupe Hidalgo, Méx.
+										<i class="fas fa-map-marker-alt mr-2"></i>Vicente Guerrero No. 200 Bis, Bo. San Miguel. 52104 San Mateo Atenco, Estado de México.
 										<!--cambiar-->
 									</p>
 								</div>
@@ -81,8 +80,8 @@
 								</div>
 								<div class="col-lg-5 col-6 header-w3layouts pl-4 text-lg-left">
 									<p class="text-white">
-										<i class="fas fa-phone mr-2"></i><a href="tel:7282878382"
-											style="color:#FFF;">7282878382</a>
+										<i class="fas fa-phone mr-2"></i><a href="tel:728 113 6734"
+											style="color:#FFF;">728 113 6734</a>
 										<!--Cambiar-->
 									</p>
 								</div>
@@ -101,8 +100,8 @@
 						<!-- logo -->
 						<h1>
 							<a class="navbar-brand font-weight-bold font-italic" href="{{route('index')}}">
-								<img style="width: 69px;height: 69px;" src="images/logo.png">
-								<span>Clínica</span>Integral
+								<img style="width: 69px;height: 69px;" src="images/logo1.jpeg">
+								<span>Clínica </span>San Miguel
 								<i class="fas fa-hospital"></i>
 							</a>
 						</h1>
@@ -144,10 +143,11 @@
 								</li>
 								@else
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-									<a class="nav-link" href="{{route('ver_especialidad')}}">Especialidades</a>
+									<a class="nav-link" href="{{route('ver_especialidad')}}">Especialidades <br> *</a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-									<a class="nav-link" href="{{route('consultorios')}}">Consultorios</a>
+									<a class="nav-link" href="{{route('consultorios')}}">Consultorios<br>*3
+									</a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
@@ -223,7 +223,7 @@
 						<div class="col-md-4 w3l-footer">
 							<h2 class="mb-sm-3 mb-2">
 								<a href="{{route('index')}}" class="text-white font-italic font-weight-bold">
-									<span>Clínica</span>Integral
+									<span>Clínica </span>San Miguel
 									<i class="far fa-hospital"></i>
 								</a>
 							</h2>
@@ -237,17 +237,17 @@
 							<ul class="list-unstyled">
 								<li>
 									<i class="fas fa-location-arrow float-left"></i>
-									<!--<p class="ml-4">Acueducto del Alto Lerma Pedregal de Guadalupe Hidalgo, Méx.</p>-->
+									<p class="ml-4">Vicente Guerrero No. 200 Bis , Bo. San Miguel. 52104 San Mateo Atenco, Estado de México, México</p>
 									<div class="clearfix"></div>
 								</li>
 								<li class="my-3">
 									<i class="fas fa-phone float-left"></i>
-									<p class="ml-4"></p>
+									<p class="ml-4">728 113 6734</p>
 									<div class="clearfix"></div>
 								</li>
 								<li>
 									<i class="fas fa-globe"></i>
-									<!--<a href="" class="text-white">Nuestro Sitio Web</a>-->
+									<a href="" class="text-white">Nuestro Sitio Web</a>
 									<div class="clearfix"></div>
 								</li>
 							</ul>
