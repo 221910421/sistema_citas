@@ -20,15 +20,16 @@ class LoginController extends Controller
             $decryptpass = Crypt::decrypt($usuario->contraseña);
             $cv = $usuario->correo_verificado;
             $id = $usuario->id_pacientes;
+            $correo = $usuario->correo;
         }
         $request->session()->put('session_idtemp', $id);
-        
+
         if($cv == 'no'){
             return view('templates.verificar_correo');
         }else{
             if($correo == $usuarioc && $decryptpass == $contraseña){
                 $consulta = DB::select("SELECT * FROM pacientes WHERE correo = '$usuarioc'");
-    
+
                 $request->session()->put('session_id', $consulta[0]->id_pacientes);
                 $request->session()->put('session_name', $consulta[0]->nombre);
                 $request->session()->put('session_ap', $consulta[0]->apellido_paterno);
