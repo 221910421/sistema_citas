@@ -33,6 +33,10 @@
     <label for="">Buscar: </label>
     <input type="text" name="buscar" id="buscar" placeholder="Termino a buscar" onkeyup="comprobarHora()">
 </form>
+<br>
+<a href="{{route('excel', ['crit' => $crit])}}">
+<img width="50" height="50" src="images/excel.jpg">
+</a>
 <div id="table-content" class="table-responsive">
     <table class="table">
         <thead>

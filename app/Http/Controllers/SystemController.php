@@ -14,6 +14,9 @@ use \App\Mail\NuevoUsuario;
 use \Mail;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
+use App\Exports\RegcitasExpory;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class SystemController extends Controller
 {
@@ -403,5 +406,13 @@ public function ver_especialidad (){
     {
         $especialidades = especialidades::select('*')->where('id_especialidad', '=', $request['id'])->delete();
         echo '<script language="javascript">alert("Tu especialidad se borro correctamente"); window.location.href="/ver_especialidad";</script>';
+    }
+
+
+    
+    public function export(Request $req)
+    {
+        return Excel::download(new RegcitasExport($req->crit), 'citas.xlsx');
+        
     }
 }

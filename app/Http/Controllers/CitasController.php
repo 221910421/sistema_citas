@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\consultorios;
 
+
 class CitasController extends Controller
 {
     public function consultorios_cita(Request $request){
