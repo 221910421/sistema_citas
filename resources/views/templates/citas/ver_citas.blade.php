@@ -1,25 +1,4 @@
 @extends('templates-layouts.headerandfooter')
-@if(empty(session('session_id')))
-<script type="text/javascript">
-    alert("No tiene los permisos suficientes para acceder a esta ventana por favor inicie sesión o contacte a un administrador");
-    window.location.href = "/";
-</script>
-@else
-@section('body')
-<div class="inner-banner-w3ls">
-    <div class="container">
-
-    </div>
-    <!-- //banner 2 -->
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var refreshId = setInterval(function () {
-            $('#sesion').load("{{route('verificar_sesion')}}");
-        }, 500);
-    });
-</script>
 <h1>Reporte de citas</h1>
 <form action="" method="get">
     <label for="">Elija el campo del que desea tomar la información:</label>
