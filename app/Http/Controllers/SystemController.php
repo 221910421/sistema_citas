@@ -16,6 +16,7 @@ use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotograf
 
 use App\Exports\RegcitasExpory;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class SystemController extends Controller
@@ -408,11 +409,24 @@ public function ver_especialidad (){
         echo '<script language="javascript">alert("Tu especialidad se borro correctamente"); window.location.href="/ver_especialidad";</script>';
     }
 
-
+//////////////////excel
     
     public function export(Request $req)
     {
         return Excel::download(new RegcitasExport($req->crit), 'citas.xlsx');
         
     }
+
+////////////pdf
+    public function download(Request $req)
+{
+        $crit = $req['crit'];
+    
+        $citas =DB::SELECT("SELECT * FROM citas WHERE id_paciente LIKE '%$crit%' OR id_doctor LIKE '%$crit%' OR id_especialidad LIKE '%$crit%' OR icurp_paciente LIKE '%$crit%' OR estatus_cita LIKE '%$crit%' OR folio LIKE '%$crit%' OR fecha_cita LIKE '%$crit%' OR hora_cita LIKE '%$crit%' OR id_consultorio LIKE '%$crit%'");
+    
+        $pdf = PDF::loadView('citaspdf', ['citas' => $citas])
+          ->save(storage_path('app/public/') . 'citas.pdf');
+          return $pdf->download('citas.pdf'); 
+}
+
 }
