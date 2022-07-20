@@ -16,8 +16,8 @@ use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotograf
 
 use App\Exports\RegcitasExport;
 use Maatwebsite\Excel\Facades\Excel;
-use Barryvdh\DomPDF\Facade as PDF;
-use Barryvdh\DomPDF\Facade;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 
 
@@ -428,8 +428,7 @@ public function ver_especialidad (){
     
         $citas =DB::SELECT("SELECT * FROM citas WHERE id_paciente LIKE '%$crit%' OR id_doctor LIKE '%$crit%' OR id_especialidad LIKE '%$crit%' OR curp_paciente LIKE '%$crit%' OR estatus_cita LIKE '%$crit%' OR folio LIKE '%$crit%' OR fecha_cita LIKE '%$crit%' OR hora_cita LIKE '%$crit%' OR id_consultorio LIKE '%$crit%'");
     
-        $pdf = PDF::loadView('templates.citas.citaspdf', ['citas' => $citas])
-          ->save(storage_path('app/public/') . 'citas.pdf');
+        $pdf = PDF::loadView('templates.citas.citaspdf', ['citas' => $citas]);
           return $pdf->download('citas.pdf'); 
     }
 }
