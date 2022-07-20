@@ -52,6 +52,7 @@ Route::name('busqueda_tiempo_real')->get('busqueda_tiempo_real', 'App\Http\Contr
 Route::name('export')->get('/excel', 'App\Http\Controllers\SystemController@export');
 Route::name('pdf')->get('/pdf', 'App\Http\Controllers\SystemController@download');
 
+
 //------------------Consultorios---------------------------//
 Route::name('nuevo_consultorio')->get('nuevo_consultorio/', 'App\Http\Controllers\SystemController@nuevo_consultorio');
 Route::name('guardar_consultorio')->post('guardar_consultorio/', 'App\Http\Controllers\SystemController@guardar_consultorio');
