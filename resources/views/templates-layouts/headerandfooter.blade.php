@@ -126,6 +126,9 @@
 									<a class="nav-link" href="">Consultorios</a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+								<a class="nav-link" href="">Pagar Consulta</a>
+								</li>
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
@@ -143,11 +146,14 @@
 								</li>
 								@else
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-									<a class="nav-link" href="{{route('ver_especialidad')}}">Especialidades <br> *</a>
+									<a class="nav-link" href="{{route('ver_especialidad')}}">Especialidades <br> </a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-									<a class="nav-link" href="{{route('consultorios')}}">Consultorios<br>*3
+									<a class="nav-link" href="{{route('consultorios')}}">Consultorios<br>
 									</a>
+								</li>
+								<li class="nav-item mx-lg-4 my-lg-0 my-3">
+								<a class="nav-link" href="{{route('crear_pago')}}">Pagar Consulta</a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">

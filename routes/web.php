@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\EjemploController;
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,10 @@ Route::name('ver_especialidad')->get('ver_especialidad/', 'App\Http\Controllers\
 Route::name('editar_especialidad')->post('editar_especialidad/', 'App\Http\Controllers\SystemController@editar_especialidad');
 Route::name('actualizar_especialidad')->post('actualizar_especialidad/', 'App\Http\Controllers\SystemController@actualizar_especialidad');
 Route::name('borrar_especialidad')->post('borrar_especialidad/', 'App\Http\Controllers\SystemController@borrar_especialidad');
+
+
+//-----------------------PAYPAL
+Route::get('crear_pago', [PayPalController::class, 'crear_pago'])->name('crear_pago');
+Route::get('proceso_pago', [PayPalController::class, 'proceso_pago'])->name('proceso_pago');
+Route::get('iniciar_pago', [PayPalController::class, 'iniciar_pago'])->name('iniciar_pago');
+Route::get('cancelar_pago', [PayPalController::class, 'cancelar_pago'])->name('cancelar_pago');
