@@ -179,7 +179,6 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
 
-
     ],
 
     /*
@@ -192,11 +191,12 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-    'aliases' => Facade::defaultAliases()->merge([
+    'aliases' =>[ //Facade::defaultAliases()->merge([
         
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+]
         // ...
-    ])->toArray(),
+    //])->toArray(),
 
 ];

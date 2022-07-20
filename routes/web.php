@@ -49,7 +49,7 @@ Route::name('guardar_detalles_cita')->post('guardar_detalles_cita/', 'App\Http\C
 Route::name('cancelar_cita')->post('cancelar_cita/', 'App\Http\Controllers\SystemController@cancelar_cita');
 Route::name('horarios_cita')->get('horarios_cita/', 'App\Http\Controllers\SystemController@horarios_cita');
 Route::name('busqueda_tiempo_real')->get('busqueda_tiempo_real', 'App\Http\Controllers\SystemController@busqueda_tiempo_real');
-Route::name('export')->get('/excel', 'App\Http\Controllers\SystemController@export');
+Route::name('excel')->get('/excel', 'App\Http\Controllers\SystemController@export');
 Route::name('pdf')->get('/pdf', 'App\Http\Controllers\SystemController@download');
 
 

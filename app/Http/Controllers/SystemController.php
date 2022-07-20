@@ -14,7 +14,7 @@ use \App\Mail\NuevoUsuario;
 use \Mail;
 use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
-use App\Exports\RegcitasExpory;
+use App\Exports\RegcitasExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -413,20 +413,21 @@ public function ver_especialidad (){
     
     public function export(Request $req)
     {
-        return Excel::download(new RegcitasExport($req->crit), 'citas.xlsx');
+        return Excel::download(new RegcitasExport($req->citas), 'citas.xlsx');
         
     }
 
+    
 ////////////pdf
+
     public function download(Request $req)
-{
+    {
         $crit = $req['crit'];
     
         $citas =DB::SELECT("SELECT * FROM citas WHERE id_paciente LIKE '%$crit%' OR id_doctor LIKE '%$crit%' OR id_especialidad LIKE '%$crit%' OR curp_paciente LIKE '%$crit%' OR estatus_cita LIKE '%$crit%' OR folio LIKE '%$crit%' OR fecha_cita LIKE '%$crit%' OR hora_cita LIKE '%$crit%' OR id_consultorio LIKE '%$crit%'");
     
-        $pdf = PDF::loadView('citaspdf', ['citas' => $citas])
+        $pdf = PDF::loadView('templates.citas.citaspdf', ['citas' => $citas])
           ->save(storage_path('app/public/') . 'citas.pdf');
           return $pdf->download('citas.pdf'); 
-}
-
+    }
 }
