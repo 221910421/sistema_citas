@@ -1,5 +1,34 @@
 @extends('templates-layouts.headerandfooter')
-<h1>Reporte de citas</h1>
+@if(empty(session('session_id')))
+<script type="text/javascript">
+    alert("No tiene los permisos suficientes para acceder a esta ventana por favor inicie sesión o contacte a un administrador");
+    window.location.href = "/";
+</script>
+@else
+@section('body')
+<div class="inner-banner-w3ls">
+    <div class="container">
+
+    </div>
+    <!-- //banner 2 -->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var refreshId = setInterval(function () {
+            $('#sesion').load("{{route('verificar_sesion')}}");
+        }, 500);
+    });
+</script>
+<br>
+<center><h1>Reporte de citas</h1></center>
+<a href="{{route('excel', ['citas' => $citas])}}">
+    <img align="right" width="100" height="100" src="images/excel.jpg">
+    </a>
+    <a href="{{route('pdf', ['citas' => $citas])}}"> 
+	<img align="right" width="100" height="100" src="images/pdf.jpg">
+    </a>
+    <br>
 <form action="" method="get">
     <label for="">Elija el campo del que desea tomar la información:</label>
     <select name="campo" id="campo">
@@ -13,12 +42,7 @@
     <input type="text" name="buscar" id="buscar" placeholder="Termino a buscar" onkeyup="comprobarHora()">
 </form>
    <br>
-    <a href="{{route('excel', ['crit' => $crit])}}">
-    <img width="50" height="50" src="images/excel.jpg">
-    </a>
-    <a href="{{route('pdf', ['crit' => $crit])}}"> 
-	<img align="right" width="50" height="50" src="img/pdf.jpg">
-    </a>
+    @if(isset($citas))
 <div id="table-content" class="table-responsive">
     <table class="table">
         <thead>
@@ -79,6 +103,7 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>
 
 <div id="sesion">

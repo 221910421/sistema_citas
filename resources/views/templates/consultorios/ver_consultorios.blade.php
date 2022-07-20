@@ -19,8 +19,8 @@
             $('#sesion').load("{{route('verificar_sesion')}}");
         }, 500);
     });
-</script>
-<h1>Reporte de especialidades</h1>
+</script><br>
+<center><h1>Reporte de consultorios</h1></center><br>
 <form action="{{route('nuevo_consultorio')}}" method="get">
     <input style="border-radius: 4px; background-color:green" type="submit" value="Crear nuevo consultorio"></form>
 <div class="table-responsive">

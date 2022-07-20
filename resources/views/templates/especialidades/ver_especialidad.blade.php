@@ -20,7 +20,7 @@
         }, 500);
     });
 </script>
-<h1>Reporte de especialidades</h1>
+<center><h1>Reporte de especialidades</h1></center>
 <form action="{{route('crear_especialidad')}}" method="get">
     <input style="border-radius: 4px; background-color:green" type="submit" value="Crear nueva especialidad"></form>
 <div class="table-responsive">
