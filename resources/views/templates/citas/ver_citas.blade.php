@@ -25,7 +25,7 @@
 <a href="{{route('excel', ['crit' => $crit])}}">
     <img align="right" width="100" height="100" src="images/excel.jpg">
     </a>
-    <a href="{{route('pdf', ['citas' => $citas])}}"> 
+    <a href="{{route('pdf', ['crit' => $crit])}}"> 
 	<img align="right" width="100" height="100" src="images/pdf.jpg">
     </a>
     <br>

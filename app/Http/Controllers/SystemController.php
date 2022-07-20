@@ -17,6 +17,8 @@ use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotograf
 use App\Exports\RegcitasExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade;
+
 
 
 class SystemController extends Controller
