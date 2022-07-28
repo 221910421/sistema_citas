@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use \Crypt;
 use App\Models\pacientes;
+use Illuminate\Support\Facades\Crypt;
 
 class LoginController extends Controller
 {
