@@ -12,7 +12,7 @@ use App\Models\horarios;
 use Illuminate\Support\Facades\DB;
 use \App\Mail\NuevoUsuario;
 use \Mail;
-use \Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
+use Illuminate\Support\Facades\Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 
 use App\Exports\RegcitasExport;
 use Maatwebsite\Excel\Facades\Excel;
