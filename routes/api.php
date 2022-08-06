@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pacientesApi;
 use App\Http\Controllers\citasApi;
+use App\Http\Controllers\serviciosApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,7 @@ Route::get('/citasApi/buscar', [citasApi::class, 'show'])->name('citasApi/buscar
 Route::put('/citasApi/actualizar', [citasApi::class, 'update'])->name('citasApi/actualizar');
 
 Route::delete('/citasApi/borrar', [citasApi::class, 'destroy'])->name('citasApi/borrar');
+
+
+//Routes servicios Api
+Route::get('/serviciosApi', [serviciosApi::class, 'index'])->name('serviciosApi');
