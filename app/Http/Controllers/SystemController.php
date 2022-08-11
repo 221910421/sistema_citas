@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\DB;
 use \App\Mail\NuevoUsuario;
 use \Mail;
 use Illuminate\Support\Facades\Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
-
+use Illuminate\Support\Facades\Storage;//---->Se llama a la librería que nos permite almacenar las fotografías y contraseñas.
+use Illuminate\Support\Facades\File;//---->Se llama a la librería que nos permite eliminar las fotografías y contraseñas.
 use App\Exports\RegcitasExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -134,11 +135,14 @@ class SystemController extends Controller
         $citas = citas::orderBy('fecha_cita', 'ASC', 'hora_cita', 'DESC')->get();
         if(count($citas) >= 1){
             foreach($citas as $cita){
-                $curp = Crypt::decrypt($cita->curp_paciente);
+                $curp = $cita->curp_paciente;
             }
+            $curp = Crypt::decrypt($curp);
+            $crit = 0;
             return view('templates.citas.ver_citas')
             ->with(['citas' => $citas])
-            ->with(['curp' => $curp]);
+            ->with(['curp' => $curp])
+            ->with(['crit' => $crit]);
         }else{
             return view('templates.citas.ver_citas')
             ->with(['citas' => $citas]);
@@ -256,7 +260,7 @@ public function horarios_cita(Request $request)
             $date = date('Ymd_His_');
                 $foto2 =  $date.$foto;
 
-            \Storage::disk('local')->put($foto2, \File::get($file));
+            Storage::disk('local')->put($foto2, File::get($file));
         }
         else{
             $foto2 = "N/A";
@@ -412,23 +416,23 @@ public function ver_especialidad (){
     }
 
 //////////////////excel
-    
+
     public function export(Request $req)
     {
         return Excel::download(new RegcitasExport($req->citas), 'citas.xlsx');
-        
+
     }
 
-    
+
 ////////////pdf
 
     public function download(Request $req)
     {
         $crit = $req['crit'];
-    
+
         $citas =DB::SELECT("SELECT * FROM citas WHERE id_paciente LIKE '%$crit%' OR id_doctor LIKE '%$crit%' OR id_especialidad LIKE '%$crit%' OR curp_paciente LIKE '%$crit%' OR estatus_cita LIKE '%$crit%' OR folio LIKE '%$crit%' OR fecha_cita LIKE '%$crit%' OR hora_cita LIKE '%$crit%' OR id_consultorio LIKE '%$crit%'");
-    
+
         $pdf = PDF::loadView('templates.citas.citaspdf', ['citas' => $citas]);
-          return $pdf->download('citas.pdf'); 
+          return $pdf->download('citas.pdf');
     }
 }
