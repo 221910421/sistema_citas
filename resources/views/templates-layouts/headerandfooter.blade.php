@@ -126,9 +126,6 @@
 									<a class="nav-link" href="">Consultorios</a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-								<a class="nav-link" href="">Pagar Consulta</a>
-								</li>
-								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
@@ -153,15 +150,13 @@
 									</a>
 								</li>
 								<li class="nav-item mx-lg-4 my-lg-0 my-3">
-								<a class="nav-link" href="{{route('crear_pago')}}">Pagar Consulta</a>
-								</li>
-								<li class="nav-item mx-lg-4 my-lg-0 my-3">
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<a class="dropdown-item" href="{{route('nueva_cita')}}">Agendar Cita</a>
 										<a class="dropdown-item" href="{{route('citas')}}">Ver todas las citas</a>
+          								<a class="nav-link" href="{{route('crear_pago')}}">Pagar Consulta</a>
 									</div>
 								</li>
 								</li>

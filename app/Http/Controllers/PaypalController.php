@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Srmklive\PayPal\Services\ExpressCheckout;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 
 class PaypalController extends Controller
 
 {
+
     /**
      * crear_pago.
      *
@@ -18,6 +20,7 @@ class PaypalController extends Controller
     {
         return view('templates.paypal.paypal');
     }
+
 
     /**
      * proceso del pago

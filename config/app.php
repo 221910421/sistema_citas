@@ -178,6 +178,7 @@ return [
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
 
     ],
 
@@ -193,8 +194,9 @@ return [
     */
     'aliases' =>[ //Facade::defaultAliases()->merge([
         
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Excel' => Maatwebsite\Excel\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class
 ]
         // ...
     //])->toArray(),
