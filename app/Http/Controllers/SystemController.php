@@ -134,7 +134,8 @@ class SystemController extends Controller
         $citas = citas::orderBy('fecha_cita', 'ASC', 'hora_cita', 'DESC')->get();
         if(count($citas) >= 1){
             foreach($citas as $cita){
-                $curp = Crypt::decrypt($cita->curp_paciente);
+                //$curp = Crypt::decrypt($cita->curp_paciente);
+                $curp = $cita->curp_paciente;
             }
             return view('templates.citas.ver_citas')
             ->with(['citas' => $citas])
