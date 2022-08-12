@@ -11,7 +11,7 @@ use App\Models\consultas;
 use App\Models\horarios;
 use Illuminate\Support\Facades\DB;
 use \App\Mail\NuevoUsuario;
-use \Mail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;//---->Se llama a la librería que nos permite encriptar las fotografías y contraseñas.
 use Illuminate\Support\Facades\Storage;//---->Se llama a la librería que nos permite almacenar las fotografías y contraseñas.
 use Illuminate\Support\Facades\File;//---->Se llama a la librería que nos permite eliminar las fotografías y contraseñas.
@@ -432,7 +432,11 @@ public function ver_especialidad (){
 
         $citas =DB::SELECT("SELECT * FROM citas WHERE id_paciente LIKE '%$crit%' OR id_doctor LIKE '%$crit%' OR id_especialidad LIKE '%$crit%' OR curp_paciente LIKE '%$crit%' OR estatus_cita LIKE '%$crit%' OR folio LIKE '%$crit%' OR fecha_cita LIKE '%$crit%' OR hora_cita LIKE '%$crit%' OR id_consultorio LIKE '%$crit%'");
 
-        $pdf = PDF::loadView('templates.citas.citaspdf', ['citas' => $citas]);
+        foreach($citas as $cita){
+                $curp = Crypt::decrypt($cita->curp_paciente);
+        }
+
+        $pdf = PDF::loadView('templates.citas.citaspdf', ['citas' => $citas], ['curp' => $curp]);
           return $pdf->download('citas.pdf');
     }
 }

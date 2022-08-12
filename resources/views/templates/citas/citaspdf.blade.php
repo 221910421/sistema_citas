@@ -40,7 +40,7 @@
         <tbody>
             @foreach ($citas as $cita)
             <tr>
-                <td>{{$cita->curp_paciente}}</td>
+                <td>{{$curp}}</td>
                 <td>{{$cita->folio}}</td>
                 <td>{{$cita->fecha_cita}}</td>
                 <td>{{$cita->hora_cita}}</td>
