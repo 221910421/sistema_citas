@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\EjemploController;
 /*
@@ -75,7 +75,7 @@ Route::name('borrar_especialidad')->post('borrar_especialidad/', 'App\Http\Contr
 
 
 //-----------------------PAYPAL
-Route::get('crear_pago', [PayPalController::class, 'crear_pago'])->name('crear_pago');
-Route::get('proceso_pago', [PayPalController::class, 'proceso_pago'])->name('proceso_pago');
-Route::get('iniciar_pago', [PayPalController::class, 'iniciar_pago'])->name('iniciar_pago');
-Route::get('cancelar_pago', [PayPalController::class, 'cancelar_pago'])->name('cancelar_pago');
+Route::get('crear_pago', [PaypalController::class, 'crear_pago'])->name('crear_pago');
+Route::get('proceso_pago', [PaypalController::class, 'proceso_pago'])->name('proceso_pago');
+Route::get('iniciar_pago', [PaypalController::class, 'iniciar_pago'])->name('iniciar_pago');
+Route::get('cancelar_pago', [PaypalController::class, 'cancelar_pago'])->name('cancelar_pago');

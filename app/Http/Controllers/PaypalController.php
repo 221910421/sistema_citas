@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\ExpressCheckout;
-use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Srmklive\PayPal\Services\PayPal as PaypalClient;
 
 
 class PaypalController extends Controller
@@ -29,7 +29,7 @@ class PaypalController extends Controller
      */
     public function proceso_pago(Request $request)
     {
-        $provider = new PayPalClient;
+        $provider = new PaypalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
 
@@ -45,7 +45,7 @@ class PaypalController extends Controller
                         "currency_code" => "MXN",
                         "value" => "500.00"
                     ]
-                ] 
+                ]
             ]
         ]);
 
@@ -76,7 +76,7 @@ class PaypalController extends Controller
      */
     public function iniciar_pago(Request $request)
     {
-        $provider = new PayPalClient;
+        $provider = new PaypalClient;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
