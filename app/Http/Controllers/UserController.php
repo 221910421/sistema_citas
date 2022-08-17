@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\pacientes;
 //use \Crypt;
 use Illuminate\Support\Facades\Crypt;
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -32,7 +32,7 @@ class UserController extends Controller
 
             $file = $request->file('foto');
 
-            $foto =md5($file->getClientOriginalName()); 
+            $foto =md5($file->getClientOriginalName());
 
             $extension = $file->getClientOriginalExtension();
 
@@ -46,7 +46,7 @@ class UserController extends Controller
             $foto2 = $request['foto_original'];
         }
 
-        $actualizar_dato = DB::table('pacientes')->where('id_pacientes', session('session_id'))->update(['nombre' => strtoupper($request['nombre']), 
+        $actualizar_dato = DB::table('pacientes')->where('id_pacientes', session('session_id'))->update(['nombre' => strtoupper($request['nombre']),
         'apellido_paterno' => strtoupper($request['apellido_paterno']),
         'apellido_materno' => strtoupper($request['apellido_materno']),
         'genero' => $request['genero'],
@@ -70,14 +70,14 @@ class UserController extends Controller
         }
         $codigo = $request['codigo'];
         if($codigo == $codigousu){
-            $actualizar_dato = DB::table('pacientes')->where('id_pacientes', session('session_idtemp'))->update(['correo_verificado' => 'si', 'codigo' => '-----']); 
+            $actualizar_dato = DB::table('pacientes')->where('id_pacientes', session('session_idtemp'))->update(['correo_verificado' => 'si', 'codigo' => '-----']);
             $request->session()->forget('session_idtemp');
             echo '<script language="javascript">alert("Gracias por vericar tu correo, ya puedes iniciar sesión"); window.location.href="/";</script>';
         }else{
             echo'<script type="text/javascript">
                         alert("El código de verificación ingresado es incorrecto");
                         history.go(-1);
-                        </script>';  
+                        </script>';
         }
     }
 }
